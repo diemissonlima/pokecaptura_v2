@@ -1,0 +1,571 @@
+[gd_scene load_steps=13 format=3 uid="uid://caytunxghrl0p"]
+
+[ext_resource type="Texture2D" uid="uid://b5ufy0q4ckuvl" path="res://assets/prefabs/interface/pokemart.png" id="1_lfu6l"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_s8c2p"]
+[ext_resource type="Texture2D" uid="uid://dw0gy721svm1s" path="res://assets/prefabs/interface/background_bg.png" id="2_1ijrr"]
+[ext_resource type="Texture2D" uid="uid://b6f4g2jmojg7k" path="res://assets/prefabs/pokeball/greatball.png" id="3_5y8tl"]
+[ext_resource type="Texture2D" uid="uid://ctue1djlmon05" path="res://assets/prefabs/interface/title_background.png" id="3_28jeg"]
+[ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="3_wcdch"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="4_74dor"]
+[ext_resource type="Texture2D" uid="uid://dqhqmtm4xwrk8" path="res://assets/prefabs/pokeball/ultraball.png" id="6_fa44u"]
+[ext_resource type="Texture2D" uid="uid://b16ndrpvm3mr8" path="res://assets/prefabs/interface/money.png" id="8_7qo8r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gp0mq"]
+line_spacing = 0.0
+font = ExtResource("4_74dor")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_ax1o7"]
+line_spacing = 0.0
+font = ExtResource("4_74dor")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qira5"]
+line_spacing = 0.0
+font = ExtResource("4_74dor")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Shop" type="Control" node_paths=PackedStringArray("money_icon", "name_item_label", "cost_label", "buy_button", "alert")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s8c2p")
+money_icon = NodePath("Background/BackgroundMask/MoneyIcon")
+name_item_label = NodePath("Background/BackgroundMask/NameItemLabel")
+cost_label = NodePath("Background/BackgroundMask/CostLabel")
+buy_button = NodePath("Background/BackgroundMask/BuyButton")
+alert = NodePath("Background/BackgroundMask/AlertNoCredits")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lfu6l")
+
+[node name="BackgroundMask" type="TextureRect" parent="Background"]
+self_modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(502, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -125.0
+offset_right = 251.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ijrr")
+
+[node name="Title" type="TextureRect" parent="Background/BackgroundMask"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.5
+offset_top = 8.0
+offset_right = 66.5
+offset_bottom = 48.0
+grow_horizontal = 2
+texture = ExtResource("3_28jeg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.5
+offset_right = 35.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "POKEMART"
+label_settings = SubResource("LabelSettings_gp0mq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot1" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 144.0
+offset_top = 56.0
+offset_right = 184.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+
+[node name="Pokeball" type="TextureButton" parent="Background/BackgroundMask/Slot1" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_wcdch")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot1/Pokeball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.5
+offset_top = -4.5
+offset_right = 8.5
+offset_bottom = 8.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 224.0
+offset_top = 56.0
+offset_right = 264.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+
+[node name="Pokeball" type="TextureButton" parent="Background/BackgroundMask/Slot2" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_wcdch")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot2/Pokeball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -5.0
+offset_right = 9.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "5"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 56.0
+offset_right = 344.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+
+[node name="Pokeball" type="TextureButton" parent="Background/BackgroundMask/Slot3" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_wcdch")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot3/Pokeball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "10"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot4" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 144.0
+offset_top = 104.0
+offset_right = 184.0
+offset_bottom = 144.0
+color = Color(0, 0, 0, 1)
+
+[node name="Greatball" type="TextureButton" parent="Background/BackgroundMask/Slot4" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_5y8tl")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot4/Greatball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.5
+offset_top = -5.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot5" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 224.0
+offset_top = 104.0
+offset_right = 264.0
+offset_bottom = 144.0
+color = Color(0, 0, 0, 1)
+
+[node name="Greatball" type="TextureButton" parent="Background/BackgroundMask/Slot5" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_5y8tl")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot5/Greatball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.5
+offset_top = -5.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "5"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot6" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 104.0
+offset_right = 344.0
+offset_bottom = 144.0
+color = Color(0, 0, 0, 1)
+
+[node name="Greatball" type="TextureButton" parent="Background/BackgroundMask/Slot6" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_5y8tl")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot6/Greatball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.5
+offset_top = -5.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "10"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot7" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 144.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ultraball" type="TextureButton" parent="Background/BackgroundMask/Slot7" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_fa44u")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot7/Ultraball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.5
+offset_top = -5.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot8" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 224.0
+offset_top = 152.0
+offset_right = 264.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ultraball" type="TextureButton" parent="Background/BackgroundMask/Slot8" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_fa44u")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot8/Ultraball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.5
+offset_top = -5.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "5"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot9" type="ColorRect" parent="Background/BackgroundMask"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 152.0
+offset_right = 344.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ultraball" type="TextureButton" parent="Background/BackgroundMask/Slot9" groups=["button_shop"]]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -13.5
+offset_right = 11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_fa44u")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/BackgroundMask/Slot9/Ultraball"]
+custom_minimum_size = Vector2(11, 13)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.5
+offset_top = -5.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "10"
+label_settings = SubResource("LabelSettings_ax1o7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyIcon" type="TextureRect" parent="Background/BackgroundMask"]
+visible = false
+layout_mode = 0
+offset_left = 144.0
+offset_top = 222.0
+offset_right = 164.0
+offset_bottom = 242.0
+texture = ExtResource("8_7qo8r")
+expand_mode = 1
+
+[node name="NameItemLabel" type="Label" parent="Background/BackgroundMask"]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 205.0
+offset_right = 256.0
+offset_bottom = 218.0
+text = "Pokebola"
+label_settings = SubResource("LabelSettings_qira5")
+
+[node name="CostLabel" type="Label" parent="Background/BackgroundMask"]
+visible = false
+layout_mode = 0
+offset_left = 177.0
+offset_top = 226.0
+offset_right = 288.0
+offset_bottom = 239.0
+text = "Custo: 150 Créditos"
+label_settings = SubResource("LabelSettings_qira5")
+
+[node name="AlertNoCredits" type="Label" parent="Background/BackgroundMask"]
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_top = 205.0
+offset_right = 440.0
+offset_bottom = 218.0
+text = "Compra Realizada!!!"
+label_settings = SubResource("LabelSettings_qira5")
+
+[node name="BuyButton" type="Button" parent="Background/BackgroundMask"]
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_top = 223.0
+offset_right = 370.0
+offset_bottom = 244.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_74dor")
+theme_override_font_sizes/font_size = 12
+text = "Comprar"
+
+[connection signal="pressed" from="Background/BackgroundMask/BuyButton" to="." method="_on_buy_button_pressed"]

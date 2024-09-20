@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvqmplhsdrisp"]
+
+[ext_resource type="PackedScene" uid="uid://bhcv3qhvbuahj" path="res://scenes/map_management/base_map.tscn" id="1_yke4i"]
+[ext_resource type="Texture2D" uid="uid://pcfpxs1mw1ui" path="res://assets/prefabs/background_map/background_2.png" id="2_mf2de"]
+
+[node name="Mapa02" instance=ExtResource("1_yke4i")]
+path_background = "res://assets/prefabs/background_map/background_2.png"
+
+[node name="Background" parent="." index="1"]
+texture = ExtResource("2_mf2de")
+
+[node name="SpawnPosition" parent="Background" index="0"]
+position = Vector2(278, 132)

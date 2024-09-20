@@ -1,0 +1,1228 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwwku3dl7y2yj"]
+
+[ext_resource type="Texture2D" uid="uid://bg8kfj6a0gjmo" path="res://assets/prefabs/interface/background.png" id="1_3gsba"]
+[ext_resource type="PackedScene" uid="uid://cmpfk8jd6b1y8" path="res://scenes/interface/slot.tscn" id="2_3adry"]
+[ext_resource type="Script" path="res://scripts/pokedex.gd" id="2_opbv4"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="4_y44fa"]
+[ext_resource type="Texture2D" uid="uid://cnwktcanwvcq7" path="res://assets/prefabs/interface/summary_01.png" id="5_5u2u0"]
+[ext_resource type="Texture2D" uid="uid://dytnrn3yh6u6a" path="res://assets/prefabs/interface/summary_02.png" id="7_x200h"]
+[ext_resource type="Texture2D" uid="uid://dv02we72wfru2" path="res://assets/prefabs/interface/summary_03.png" id="8_6otmm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b6yap"]
+line_spacing = 0.0
+font = ExtResource("4_y44fa")
+font_size = 10
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p07l8"]
+line_spacing = 0.0
+font = ExtResource("4_y44fa")
+font_size = 9
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_08845"]
+line_spacing = 0.0
+font = ExtResource("4_y44fa")
+font_size = 8
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_container", "info_pokemon", "title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description") groups=["pokedex_info"]]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -130.0
+offset_right = 230.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_3gsba")
+script = ExtResource("2_opbv4")
+dex_container = NodePath("ScrollContainer/GridContainer")
+info_pokemon = NodePath("InfoPokemon")
+title = NodePath("InfoPokemon/SummaryBG/PokeName")
+sprite = NodePath("InfoPokemon/SummaryBG/Sprite")
+primary_type = NodePath("InfoPokemon/SummaryBG/TypeContainer/PrimaryType")
+secondary_type = NodePath("InfoPokemon/SummaryBG/TypeContainer/SecondaryType")
+id_poke = NodePath("InfoPokemon/SummaryBG02/ID/Amount")
+poke_name = NodePath("InfoPokemon/SummaryBG02/Name/Name")
+catch = NodePath("InfoPokemon/SummaryBG02/Capturado/Amount")
+seen = NodePath("InfoPokemon/SummaryBG02/Visto/Amount")
+catch_shiny = NodePath("InfoPokemon/SummaryBG02/CapturadoShiny/Amount")
+seen_shiny = NodePath("InfoPokemon/SummaryBG02/VistoShiny/Amount")
+dex_description = NodePath("InfoPokemon/SummaryBG02/Descricao/TextDescricao")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+offset_left = 29.0
+offset_top = 17.0
+offset_right = 434.0
+offset_bottom = 247.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 8
+
+[node name="Slot1" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "001"
+img_path = "res://assets/pokemon_sprite/gen_1/001.png"
+
+[node name="Slot2" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "002"
+img_path = "res://assets/pokemon_sprite/gen_1/002.png"
+
+[node name="Slot3" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "003"
+img_path = "res://assets/pokemon_sprite/gen_1/003.png"
+
+[node name="Slot4" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "004"
+img_path = "res://assets/pokemon_sprite/gen_1/004.png"
+
+[node name="Slot5" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "005"
+img_path = "res://assets/pokemon_sprite/gen_1/005.png"
+
+[node name="Slot6" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "006"
+img_path = "res://assets/pokemon_sprite/gen_1/006.png"
+
+[node name="Slot7" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "007"
+img_path = "res://assets/pokemon_sprite/gen_1/007.png"
+
+[node name="Slot8" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "008"
+img_path = "res://assets/pokemon_sprite/gen_1/008.png"
+
+[node name="Slot9" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "009"
+img_path = "res://assets/pokemon_sprite/gen_1/009.png"
+
+[node name="Slot10" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "010"
+img_path = "res://assets/pokemon_sprite/gen_1/010.png"
+
+[node name="Slot11" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "011"
+img_path = "res://assets/pokemon_sprite/gen_1/011.png"
+
+[node name="Slot12" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "012"
+img_path = "res://assets/pokemon_sprite/gen_1/012.png"
+
+[node name="Slot13" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "013"
+img_path = "res://assets/pokemon_sprite/gen_1/013.png"
+
+[node name="Slot14" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "014"
+img_path = "res://assets/pokemon_sprite/gen_1/014.png"
+
+[node name="Slot15" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "015"
+img_path = "res://assets/pokemon_sprite/gen_1/015.png"
+
+[node name="Slot16" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "016"
+img_path = "res://assets/pokemon_sprite/gen_1/016.png"
+
+[node name="Slot17" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "017"
+img_path = "res://assets/pokemon_sprite/gen_1/017.png"
+
+[node name="Slot18" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "018"
+img_path = "res://assets/pokemon_sprite/gen_1/018.png"
+
+[node name="Slot19" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "019"
+img_path = "res://assets/pokemon_sprite/gen_1/019.png"
+
+[node name="Slot20" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "020"
+img_path = "res://assets/pokemon_sprite/gen_1/020.png"
+
+[node name="Slot21" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "021"
+img_path = "res://assets/pokemon_sprite/gen_1/021.png"
+
+[node name="Slot22" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "022"
+img_path = "res://assets/pokemon_sprite/gen_1/022.png"
+
+[node name="Slot23" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "023"
+img_path = "res://assets/pokemon_sprite/gen_1/023.png"
+
+[node name="Slot24" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "024"
+img_path = "res://assets/pokemon_sprite/gen_1/024.png"
+
+[node name="Slot25" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "025"
+img_path = "res://assets/pokemon_sprite/gen_1/025.png"
+
+[node name="Slot26" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "026"
+img_path = "res://assets/pokemon_sprite/gen_1/026.png"
+
+[node name="Slot27" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "027"
+img_path = "res://assets/pokemon_sprite/gen_1/027.png"
+
+[node name="Slot28" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "028"
+img_path = "res://assets/pokemon_sprite/gen_1/028.png"
+
+[node name="Slot29" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "029"
+img_path = "res://assets/pokemon_sprite/gen_1/029.png"
+
+[node name="Slot30" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "030"
+img_path = "res://assets/pokemon_sprite/gen_1/030.png"
+
+[node name="Slot31" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "031"
+img_path = "res://assets/pokemon_sprite/gen_1/031.png"
+
+[node name="Slot32" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "032"
+img_path = "res://assets/pokemon_sprite/gen_1/032.png"
+
+[node name="Slot33" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "033"
+img_path = "res://assets/pokemon_sprite/gen_1/033.png"
+
+[node name="Slot34" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "034"
+img_path = "res://assets/pokemon_sprite/gen_1/034.png"
+
+[node name="Slot35" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "035"
+img_path = "res://assets/pokemon_sprite/gen_1/035.png"
+
+[node name="Slot36" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "036"
+img_path = "res://assets/pokemon_sprite/gen_1/036.png"
+
+[node name="Slot37" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "037"
+img_path = "res://assets/pokemon_sprite/gen_1/037.png"
+
+[node name="Slot38" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "038"
+img_path = "res://assets/pokemon_sprite/gen_1/038.png"
+
+[node name="Slot39" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "039"
+img_path = "res://assets/pokemon_sprite/gen_1/039.png"
+
+[node name="Slot40" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "040"
+img_path = "res://assets/pokemon_sprite/gen_1/040.png"
+
+[node name="Slot41" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "041"
+img_path = "res://assets/pokemon_sprite/gen_1/041.png"
+
+[node name="Slot42" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "042"
+img_path = "res://assets/pokemon_sprite/gen_1/042.png"
+
+[node name="Slot43" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "043"
+img_path = "res://assets/pokemon_sprite/gen_1/043.png"
+
+[node name="Slot44" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "044"
+img_path = "res://assets/pokemon_sprite/gen_1/044.png"
+
+[node name="Slot45" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "045"
+img_path = "res://assets/pokemon_sprite/gen_1/045.png"
+
+[node name="Slot46" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "046"
+img_path = "res://assets/pokemon_sprite/gen_1/046.png"
+
+[node name="Slot47" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "047"
+img_path = "res://assets/pokemon_sprite/gen_1/047.png"
+
+[node name="Slot48" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "048"
+img_path = "res://assets/pokemon_sprite/gen_1/048.png"
+
+[node name="Slot49" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "049"
+img_path = "res://assets/pokemon_sprite/gen_1/049.png"
+
+[node name="Slot50" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "050"
+img_path = "res://assets/pokemon_sprite/gen_1/050.png"
+
+[node name="Slot51" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "051"
+img_path = "res://assets/pokemon_sprite/gen_1/051.png"
+
+[node name="Slot52" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "052"
+img_path = "res://assets/pokemon_sprite/gen_1/052.png"
+
+[node name="Slot53" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "053"
+img_path = "res://assets/pokemon_sprite/gen_1/053.png"
+
+[node name="Slot54" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "054"
+img_path = "res://assets/pokemon_sprite/gen_1/054.png"
+
+[node name="Slot55" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "055"
+img_path = "res://assets/pokemon_sprite/gen_1/055.png"
+
+[node name="Slot56" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "056"
+img_path = "res://assets/pokemon_sprite/gen_1/056.png"
+
+[node name="Slot57" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "057"
+img_path = "res://assets/pokemon_sprite/gen_1/057.png"
+
+[node name="Slot58" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "058"
+img_path = "res://assets/pokemon_sprite/gen_1/058.png"
+
+[node name="Slot59" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "059"
+img_path = "res://assets/pokemon_sprite/gen_1/059.png"
+
+[node name="Slot60" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "060"
+img_path = "res://assets/pokemon_sprite/gen_1/060.png"
+
+[node name="Slot61" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "061"
+img_path = "res://assets/pokemon_sprite/gen_1/061.png"
+
+[node name="Slot62" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "062"
+img_path = "res://assets/pokemon_sprite/gen_1/062.png"
+
+[node name="Slot63" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "063"
+img_path = "res://assets/pokemon_sprite/gen_1/063.png"
+
+[node name="Slot64" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "064"
+img_path = "res://assets/pokemon_sprite/gen_1/064.png"
+
+[node name="Slot65" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "065"
+img_path = "res://assets/pokemon_sprite/gen_1/065.png"
+
+[node name="Slot66" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "066"
+img_path = "res://assets/pokemon_sprite/gen_1/066.png"
+
+[node name="Slot67" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "067"
+img_path = "res://assets/pokemon_sprite/gen_1/067.png"
+
+[node name="Slot68" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "068"
+img_path = "res://assets/pokemon_sprite/gen_1/068.png"
+
+[node name="Slot69" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "069"
+img_path = "res://assets/pokemon_sprite/gen_1/069.png"
+
+[node name="Slot70" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "070"
+img_path = "res://assets/pokemon_sprite/gen_1/070.png"
+
+[node name="Slot71" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "071"
+img_path = "res://assets/pokemon_sprite/gen_1/071.png"
+
+[node name="Slot72" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "072"
+img_path = "res://assets/pokemon_sprite/gen_1/072.png"
+
+[node name="Slot73" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "073"
+img_path = "res://assets/pokemon_sprite/gen_1/073.png"
+
+[node name="Slot74" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "074"
+img_path = "res://assets/pokemon_sprite/gen_1/074.png"
+
+[node name="Slot75" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "075"
+img_path = "res://assets/pokemon_sprite/gen_1/075.png"
+
+[node name="Slot76" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "076"
+img_path = "res://assets/pokemon_sprite/gen_1/076.png"
+
+[node name="Slot77" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "077"
+img_path = "res://assets/pokemon_sprite/gen_1/077.png"
+
+[node name="Slot78" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "078"
+img_path = "res://assets/pokemon_sprite/gen_1/078.png"
+
+[node name="Slot79" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "079"
+img_path = "res://assets/pokemon_sprite/gen_1/079.png"
+
+[node name="Slot80" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "080"
+img_path = "res://assets/pokemon_sprite/gen_1/080.png"
+
+[node name="Slot81" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "081"
+img_path = "res://assets/pokemon_sprite/gen_1/081.png"
+
+[node name="Slot82" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "082"
+img_path = "res://assets/pokemon_sprite/gen_1/082.png"
+
+[node name="Slot83" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "083"
+img_path = "res://assets/pokemon_sprite/gen_1/083.png"
+
+[node name="Slot84" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "084"
+img_path = "res://assets/pokemon_sprite/gen_1/084.png"
+
+[node name="Slot85" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "085"
+img_path = "res://assets/pokemon_sprite/gen_1/085.png"
+
+[node name="Slot86" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "086"
+img_path = "res://assets/pokemon_sprite/gen_1/086.png"
+
+[node name="Slot87" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "087"
+img_path = "res://assets/pokemon_sprite/gen_1/087.png"
+
+[node name="Slot88" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "088"
+img_path = "res://assets/pokemon_sprite/gen_1/088.png"
+
+[node name="Slot89" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "089"
+img_path = "res://assets/pokemon_sprite/gen_1/089.png"
+
+[node name="Slot90" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "090"
+img_path = "res://assets/pokemon_sprite/gen_1/090.png"
+
+[node name="Slot91" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "091"
+img_path = "res://assets/pokemon_sprite/gen_1/091.png"
+
+[node name="Slot92" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "092"
+img_path = "res://assets/pokemon_sprite/gen_1/092.png"
+
+[node name="Slot93" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "093"
+img_path = "res://assets/pokemon_sprite/gen_1/093.png"
+
+[node name="Slot94" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "094"
+img_path = "res://assets/pokemon_sprite/gen_1/094.png"
+
+[node name="Slot95" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "095"
+img_path = "res://assets/pokemon_sprite/gen_1/095.png"
+
+[node name="Slot96" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "096"
+img_path = "res://assets/pokemon_sprite/gen_1/096.png"
+
+[node name="Slot97" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "097"
+img_path = "res://assets/pokemon_sprite/gen_1/097.png"
+
+[node name="Slot98" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "098"
+img_path = "res://assets/pokemon_sprite/gen_1/098.png"
+
+[node name="Slot99" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "099"
+img_path = "res://assets/pokemon_sprite/gen_1/099.png"
+
+[node name="Slot100" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "100"
+img_path = "res://assets/pokemon_sprite/gen_1/100.png"
+
+[node name="Slot101" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "101"
+img_path = "res://assets/pokemon_sprite/gen_1/101.png"
+
+[node name="Slot102" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "102"
+img_path = "res://assets/pokemon_sprite/gen_1/102.png"
+
+[node name="Slot103" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "103"
+img_path = "res://assets/pokemon_sprite/gen_1/103.png"
+
+[node name="Slot104" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "104"
+img_path = "res://assets/pokemon_sprite/gen_1/104.png"
+
+[node name="Slot105" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "105"
+img_path = "res://assets/pokemon_sprite/gen_1/105.png"
+
+[node name="Slot106" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "106"
+img_path = "res://assets/pokemon_sprite/gen_1/106.png"
+
+[node name="Slot107" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "107"
+img_path = "res://assets/pokemon_sprite/gen_1/107.png"
+
+[node name="Slot108" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "108"
+img_path = "res://assets/pokemon_sprite/gen_1/108.png"
+
+[node name="Slot109" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "109"
+img_path = "res://assets/pokemon_sprite/gen_1/109.png"
+
+[node name="Slot110" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "110"
+img_path = "res://assets/pokemon_sprite/gen_1/110.png"
+
+[node name="Slot111" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "111"
+img_path = "res://assets/pokemon_sprite/gen_1/111.png"
+
+[node name="Slot112" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "112"
+img_path = "res://assets/pokemon_sprite/gen_1/112.png"
+
+[node name="Slot113" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "113"
+img_path = "res://assets/pokemon_sprite/gen_1/113.png"
+
+[node name="Slot114" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "114"
+img_path = "res://assets/pokemon_sprite/gen_1/114.png"
+
+[node name="Slot115" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "115"
+img_path = "res://assets/pokemon_sprite/gen_1/115.png"
+
+[node name="Slot116" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "116"
+img_path = "res://assets/pokemon_sprite/gen_1/116.png"
+
+[node name="Slot117" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "117"
+img_path = "res://assets/pokemon_sprite/gen_1/117.png"
+
+[node name="Slot118" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "118"
+img_path = "res://assets/pokemon_sprite/gen_1/118.png"
+
+[node name="Slot119" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "119"
+img_path = "res://assets/pokemon_sprite/gen_1/119.png"
+
+[node name="Slot120" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "120"
+img_path = "res://assets/pokemon_sprite/gen_1/120.png"
+
+[node name="Slot121" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "121"
+img_path = "res://assets/pokemon_sprite/gen_1/121.png"
+
+[node name="Slot122" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "122"
+img_path = "res://assets/pokemon_sprite/gen_1/122.png"
+
+[node name="Slot123" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "123"
+img_path = "res://assets/pokemon_sprite/gen_1/123.png"
+
+[node name="Slot124" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "124"
+img_path = "res://assets/pokemon_sprite/gen_1/124.png"
+
+[node name="Slot125" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "125"
+img_path = "res://assets/pokemon_sprite/gen_1/125.png"
+
+[node name="Slot126" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "126"
+img_path = "res://assets/pokemon_sprite/gen_1/126.png"
+
+[node name="Slot127" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "127"
+img_path = "res://assets/pokemon_sprite/gen_1/127.png"
+
+[node name="Slot128" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "128"
+img_path = "res://assets/pokemon_sprite/gen_1/128.png"
+
+[node name="Slot129" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "129"
+img_path = "res://assets/pokemon_sprite/gen_1/129.png"
+
+[node name="Slot130" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "130"
+img_path = "res://assets/pokemon_sprite/gen_1/130.png"
+
+[node name="Slot131" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "131"
+img_path = "res://assets/pokemon_sprite/gen_1/131.png"
+
+[node name="Slot132" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "132"
+img_path = "res://assets/pokemon_sprite/gen_1/132.png"
+
+[node name="Slot133" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "133"
+img_path = "res://assets/pokemon_sprite/gen_1/133.png"
+
+[node name="Slot134" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "134"
+img_path = "res://assets/pokemon_sprite/gen_1/134.png"
+
+[node name="Slot135" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "135"
+img_path = "res://assets/pokemon_sprite/gen_1/135.png"
+
+[node name="Slot136" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "136"
+img_path = "res://assets/pokemon_sprite/gen_1/136.png"
+
+[node name="Slot137" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "137"
+img_path = "res://assets/pokemon_sprite/gen_1/137.png"
+
+[node name="Slot138" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "138"
+img_path = "res://assets/pokemon_sprite/gen_1/138.png"
+
+[node name="Slot139" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "139"
+img_path = "res://assets/pokemon_sprite/gen_1/139.png"
+
+[node name="Slot140" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "140"
+img_path = "res://assets/pokemon_sprite/gen_1/140.png"
+
+[node name="Slot141" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "141"
+img_path = "res://assets/pokemon_sprite/gen_1/141.png"
+
+[node name="Slot142" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "142"
+img_path = "res://assets/pokemon_sprite/gen_1/142.png"
+
+[node name="Slot143" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "143"
+img_path = "res://assets/pokemon_sprite/gen_1/143.png"
+
+[node name="Slot144" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "144"
+img_path = "res://assets/pokemon_sprite/gen_1/144.png"
+
+[node name="Slot145" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "145"
+img_path = "res://assets/pokemon_sprite/gen_1/145.png"
+
+[node name="Slot146" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "146"
+img_path = "res://assets/pokemon_sprite/gen_1/146.png"
+
+[node name="Slot147" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "147"
+img_path = "res://assets/pokemon_sprite/gen_1/147.png"
+
+[node name="Slot148" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "148"
+img_path = "res://assets/pokemon_sprite/gen_1/148.png"
+
+[node name="Slot149" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "149"
+img_path = "res://assets/pokemon_sprite/gen_1/149.png"
+
+[node name="Slot150" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "150"
+img_path = "res://assets/pokemon_sprite/gen_1/150.png"
+
+[node name="Slot151" parent="ScrollContainer/GridContainer" instance=ExtResource("2_3adry")]
+layout_mode = 2
+slot_id = "151"
+img_path = "res://assets/pokemon_sprite/gen_1/151.png"
+
+[node name="InfoPokemon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_3gsba")
+expand_mode = 1
+
+[node name="SummaryBG" type="TextureRect" parent="InfoPokemon"]
+layout_mode = 1
+offset_left = 102.0
+offset_top = 50.0
+offset_right = 223.0
+offset_bottom = 134.0
+mouse_filter = 2
+texture = ExtResource("5_5u2u0")
+
+[node name="PokeName" type="Label" parent="InfoPokemon/SummaryBG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = 4.0
+offset_right = 31.0
+offset_bottom = 15.0
+grow_horizontal = 2
+text = "BULBASAUR"
+label_settings = SubResource("LabelSettings_b6yap")
+horizontal_alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="InfoPokemon/SummaryBG"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="InfoPokemon/SummaryBG"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 0
+offset_left = 241.0
+offset_right = 279.0
+offset_bottom = 31.0
+scale = Vector2(0.5, 0.5)
+text = "Sair"
+
+[node name="TypeContainer" type="HBoxContainer" parent="InfoPokemon/SummaryBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = 27.0
+offset_right = 458.5
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PrimaryType" type="TextureRect" parent="InfoPokemon/SummaryBG/TypeContainer"]
+layout_mode = 2
+
+[node name="SecondaryType" type="TextureRect" parent="InfoPokemon/SummaryBG/TypeContainer"]
+layout_mode = 2
+
+[node name="SummaryBG02" type="TextureRect" parent="InfoPokemon"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 50.0
+offset_right = 342.0
+offset_bottom = 194.0
+texture = ExtResource("7_x200h")
+
+[node name="ID" type="TextureRect" parent="InfoPokemon/SummaryBG02"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 6.0
+offset_right = 165.0
+offset_bottom = 15.0
+texture = ExtResource("8_6otmm")
+expand_mode = 1
+
+[node name="PokeID" type="Label" parent="InfoPokemon/SummaryBG02/ID"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 6.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Amount" type="Label" parent="InfoPokemon/SummaryBG02/ID"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -5.0
+offset_right = 62.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "001"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Name" type="TextureRect" parent="InfoPokemon/SummaryBG02"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 21.0
+offset_right = 165.0
+offset_bottom = 30.0
+texture = ExtResource("8_6otmm")
+expand_mode = 1
+
+[node name="PokeName" type="Label" parent="InfoPokemon/SummaryBG02/Name"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -3.5
+offset_right = 9.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="InfoPokemon/SummaryBG02/Name"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.5
+offset_top = -5.0
+offset_right = 69.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Capturado" type="TextureRect" parent="InfoPokemon/SummaryBG02"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 36.0
+offset_right = 165.0
+offset_bottom = 45.0
+texture = ExtResource("8_6otmm")
+expand_mode = 1
+
+[node name="PokeCapturado" type="Label" parent="InfoPokemon/SummaryBG02/Capturado"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -3.5
+offset_right = 9.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Catch"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Amount" type="Label" parent="InfoPokemon/SummaryBG02/Capturado"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.5
+offset_top = -5.0
+offset_right = 69.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "15"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Visto" type="TextureRect" parent="InfoPokemon/SummaryBG02"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 51.0
+offset_right = 165.0
+offset_bottom = 60.0
+texture = ExtResource("8_6otmm")
+expand_mode = 1
+
+[node name="PokeVisto" type="Label" parent="InfoPokemon/SummaryBG02/Visto"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -3.5
+offset_right = 5.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Seen"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Amount" type="Label" parent="InfoPokemon/SummaryBG02/Visto"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 45.5
+offset_top = -5.0
+offset_right = 66.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "32"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="CapturadoShiny" type="TextureRect" parent="InfoPokemon/SummaryBG02"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 66.0
+offset_right = 165.0
+offset_bottom = 75.0
+texture = ExtResource("8_6otmm")
+expand_mode = 1
+
+[node name="PokeCapturadoShiny" type="Label" parent="InfoPokemon/SummaryBG02/CapturadoShiny"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -3.5
+offset_right = 7.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Catch S"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Amount" type="Label" parent="InfoPokemon/SummaryBG02/CapturadoShiny"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 38.5
+offset_top = -5.0
+offset_right = 73.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="VistoShiny" type="TextureRect" parent="InfoPokemon/SummaryBG02"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 81.0
+offset_right = 165.0
+offset_bottom = 90.0
+texture = ExtResource("8_6otmm")
+expand_mode = 1
+
+[node name="PokeVistoShiny" type="Label" parent="InfoPokemon/SummaryBG02/VistoShiny"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -3.5
+offset_right = 7.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Seen S"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Amount" type="Label" parent="InfoPokemon/SummaryBG02/VistoShiny"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 41.5
+offset_top = -5.0
+offset_right = 70.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="Descricao" type="TextureRect" parent="InfoPokemon/SummaryBG02"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 87.0
+offset_right = 83.0
+offset_bottom = 96.0
+texture = ExtResource("8_6otmm")
+expand_mode = 1
+
+[node name="DexDescricao" type="Label" parent="InfoPokemon/SummaryBG02/Descricao"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -5.0
+offset_right = 36.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dex Description"
+label_settings = SubResource("LabelSettings_p07l8")
+horizontal_alignment = 1
+
+[node name="TextDescricao" type="Label" parent="InfoPokemon/SummaryBG02/Descricao"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = 7.5
+offset_right = 192.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Há uma semente de planta em suas costas desde o dia em que este POKéMON nasceu. A semente cresce lentamente.
+
+Pode ser Visto no Mapa 01"
+label_settings = SubResource("LabelSettings_08845")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="InfoPokemon/SummaryBG/Button" to="." method="_on_button_pressed"]

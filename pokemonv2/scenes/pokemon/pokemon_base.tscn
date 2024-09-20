@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqfltesy73m1g"]
+
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="1_djocj"]
+[ext_resource type="Script" path="res://scripts/pokemon_base.gd" id="1_kh0jm"]
+[ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="2_j03lw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aod4h"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"shiny",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cqc4e"]
+line_spacing = 0.0
+font = ExtResource("1_djocj")
+font_size = 14
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j8ec"]
+
+[node name="pokemon_base" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "info_catch", "type_1", "type_2", "is_shiny_label")]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_kh0jm")
+animated_sprite = NodePath("anim_sprite")
+info_catch = NodePath("catch")
+type_1 = NodePath("type_1")
+type_2 = NodePath("type_2")
+is_shiny_label = NodePath("is_shiny")
+
+[node name="anim_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aod4h")
+autoplay = "default"
+
+[node name="is_shiny" type="Label" parent="."]
+offset_left = -28.5882
+offset_top = -81.8571
+offset_right = 13.4118
+offset_bottom = -67.8571
+text = "Shiny"
+label_settings = SubResource("LabelSettings_cqc4e")
+horizontal_alignment = 1
+
+[node name="poke_name" type="Label" parent="."]
+offset_left = -28.5882
+offset_top = -59.0
+offset_right = -27.5882
+offset_bottom = -45.0
+label_settings = SubResource("LabelSettings_cqc4e")
+horizontal_alignment = 1
+
+[node name="catch" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(-57, -54)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_j03lw")
+region_enabled = true
+region_rect = Rect2(1, 0, 58, 58)
+
+[node name="type_1" type="Sprite2D" parent="."]
+position = Vector2(63, -64.0001)
+scale = Vector2(0.25, 0.25)
+region_rect = Rect2(-84.75, 417.25, 4, 5)
+
+[node name="type_2" type="Sprite2D" parent="."]
+position = Vector2(65, -52)
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2j8ec")
+disabled = true

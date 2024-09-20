@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://1fbhfp67w6j0"]
+
+[ext_resource type="Script" path="res://scripts/screen_capture.gd" id="1_sutfu"]
+[ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="2_ld1u6"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="3_01mhj"]
+[ext_resource type="Texture2D" uid="uid://b6f4g2jmojg7k" path="res://assets/prefabs/pokeball/greatball.png" id="4_wh2fk"]
+[ext_resource type="Texture2D" uid="uid://dqhqmtm4xwrk8" path="res://assets/prefabs/pokeball/ultraball.png" id="5_lgalq"]
+[ext_resource type="Texture2D" uid="uid://jts8riuf0cna" path="res://assets/prefabs/pokeball/masterball.png" id="6_5c5l7"]
+[ext_resource type="Texture2D" uid="uid://b7w2ktihoeb5h" path="res://assets/prefabs/interface/IconB05.png" id="7_w61yr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dc55v"]
+line_spacing = 0.0
+font = ExtResource("3_01mhj")
+font_size = 30
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ey7q"]
+line_spacing = 0.0
+font = ExtResource("3_01mhj")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ScreenCapture" type="Control" node_paths=PackedStringArray("pokemon_position", "background", "options_container", "info_captura", "pokeball_label", "greatball_label", "ultraball_label", "masterball_label") groups=["screen_capture"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sutfu")
+pokemon_position = NodePath("Background/PokePosition")
+background = NodePath("Background")
+options_container = NodePath("Background/OptionsContainer")
+info_captura = NodePath("Background/InfoCaptura")
+pokeball_label = NodePath("Background/OptionsContainer/LabelPokeball")
+greatball_label = NodePath("Background/OptionsContainer/LabelGreatball")
+ultraball_label = NodePath("Background/OptionsContainer/LabelUltraball")
+masterball_label = NodePath("Background/OptionsContainer/LabelMasterball")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PokePosition" type="Marker2D" parent="Background"]
+
+[node name="OptionsContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = 62.0
+offset_right = 327.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 15
+
+[node name="Pokeball" type="TextureButton" parent="Background/OptionsContainer" groups=["button_on_screen_capture"]]
+layout_mode = 2
+texture_normal = ExtResource("2_ld1u6")
+
+[node name="LabelPokeball" type="Label" parent="Background/OptionsContainer"]
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_dc55v")
+
+[node name="Greatball" type="TextureButton" parent="Background/OptionsContainer" groups=["button_on_screen_capture"]]
+layout_mode = 2
+texture_normal = ExtResource("4_wh2fk")
+
+[node name="LabelGreatball" type="Label" parent="Background/OptionsContainer"]
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_dc55v")
+
+[node name="Ultraball" type="TextureButton" parent="Background/OptionsContainer" groups=["button_on_screen_capture"]]
+layout_mode = 2
+texture_normal = ExtResource("5_lgalq")
+
+[node name="LabelUltraball" type="Label" parent="Background/OptionsContainer"]
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_dc55v")
+
+[node name="Masterball" type="TextureButton" parent="Background/OptionsContainer" groups=["button_on_screen_capture"]]
+layout_mode = 2
+texture_normal = ExtResource("6_5c5l7")
+
+[node name="LabelMasterball" type="Label" parent="Background/OptionsContainer"]
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_dc55v")
+
+[node name="InfoCaptura" type="Label" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 224.0
+offset_top = 219.0
+offset_right = 345.0
+offset_bottom = 235.0
+text = "Iniciando Captura!!"
+label_settings = SubResource("LabelSettings_7ey7q")
+horizontal_alignment = 1
+
+[node name="TryAgain" type="Label" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 202.0
+offset_top = 241.0
+offset_right = 378.0
+offset_bottom = 257.0
+text = "Tentar Captura Novamente?"
+label_settings = SubResource("LabelSettings_7ey7q")
+horizontal_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="Background"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 46.0
+grow_horizontal = 0
+texture_normal = ExtResource("7_w61yr")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Sim" type="Button" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 221.0
+offset_top = 270.0
+offset_right = 253.0
+offset_bottom = 291.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_01mhj")
+theme_override_font_sizes/font_size = 12
+text = "Sim"
+
+[node name="Nao" type="Button" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 313.0
+offset_top = 270.0
+offset_right = 345.0
+offset_bottom = 291.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_01mhj")
+theme_override_font_sizes/font_size = 12
+text = "Não"
+
+[connection signal="pressed" from="Background/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Background/Sim" to="." method="_on_try_again_sim_pressed"]
+[connection signal="pressed" from="Background/Nao" to="." method="_on_try_again_nao_pressed"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmpfk8jd6b1y8"]
+
+[ext_resource type="Script" path="res://scripts/slot.gd" id="1_ht38i"]
+[ext_resource type="Texture2D" uid="uid://b4vfx38y41m3l" path="res://assets/prefabs/interface/type_1.png" id="1_ot7ys"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="2_2fge3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aimar"]
+line_spacing = 0.0
+font = ExtResource("2_2fge3")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Slot" type="Control" node_paths=PackedStringArray("sprite", "background", "id_poke") groups=["slot"]]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ht38i")
+background_list = Array[String](["res://assets/prefabs/interface/type_1.png", "res://assets/prefabs/interface/type_2.png", "res://assets/prefabs/interface/type_3.png"])
+sprite = NodePath("Sprite")
+background = NodePath("Background")
+id_poke = NodePath("SlotId")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ot7ys")
+stretch_mode = 5
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -10.0
+offset_right = 15.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlotId" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -9.5
+offset_top = -2.0
+offset_right = 7.5
+offset_bottom = 11.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_aimar")
