@@ -75,7 +75,7 @@ func details_pokemon(info: Dictionary) -> void:
 		secondary_type.show()
 		secondary_type.texture = load(show_type_pokemon(info["secondary_type"]))
 		
-	sprite.texture = load("res://assets/pokemon_sprite/gen1/normal/" + info["id"] + ".png")
+	sprite.texture = load(load_sprite(info["id"]))
 	
 	poke_name.text = info["nome"]
 	catch.text = str(info["capturado"])
@@ -88,6 +88,23 @@ func details_pokemon(info: Dictionary) -> void:
 func show_type_pokemon(type: String) -> String:
 	var type_texture_path: String = "res://assets/prefabs/pokemon_type/" + type.to_lower() + ".png"
 	return type_texture_path
+	
+	
+func load_sprite(slot_id: String) -> String:
+	var gen: String = ""
+	var new_slot_id: int
+	var sprite_path: String
+	
+	new_slot_id = int(slot_id)
+	
+	if new_slot_id <= 151:
+		gen = "gen1"
+	elif new_slot_id > 151 and new_slot_id <= 251:
+		gen = "gen2"
+
+	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + slot_id + ".png"
+
+	return sprite_path
 
 
 func on_mouse_entered(slot_id: String) -> void:
