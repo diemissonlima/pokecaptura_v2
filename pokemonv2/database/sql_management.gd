@@ -77,12 +77,16 @@ func update_pokemon(id_pokemon: String, sql_column: String) -> void:
 	value += 1
 	
 	db.update_rows("pokemon", "id = '" + id + "'", {column: value})
-	
+		
 	match column:
 		"visto":
+			if verify_pokemon_captured(id) == 2:
+				return
 			db.update_rows("pokemon", "id = '" + id + "'", {"status_pokedex": 1})
 			
 		"shiny_visto":
+			if verify_pokemon_captured(id) == 2:
+				return
 			db.update_rows("pokemon", "id = '" + id + "'", {"status_pokedex": 1})
 			
 		"capturado":

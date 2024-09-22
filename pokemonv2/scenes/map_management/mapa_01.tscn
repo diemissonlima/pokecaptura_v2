@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c75cke0y43c2c"]
+[gd_scene load_steps=8 format=3 uid="uid://c75cke0y43c2c"]
 
 [ext_resource type="PackedScene" uid="uid://bhcv3qhvbuahj" path="res://scenes/map_management/base_map.tscn" id="1_tcxil"]
 [ext_resource type="Texture2D" uid="uid://bjp7nval7bah1" path="res://assets/prefabs/background_map/background_1.png" id="2_b0y4m"]
-[ext_resource type="PackedScene" uid="uid://b6w7st2wo4nsr" path="res://scenes/pokemon/gen2/Feraligatr.tscn" id="2_g88rn"]
-[ext_resource type="PackedScene" uid="uid://p6n63mxbtfkm" path="res://scenes/pokemon/gen2/Aipom.tscn" id="3_j5pwa"]
-[ext_resource type="PackedScene" uid="uid://dnxw8g3xha5y" path="res://scenes/pokemon/gen2/Ampharos.tscn" id="4_7byos"]
+[ext_resource type="PackedScene" uid="uid://cc8jw1g1ncwv" path="res://scenes/pokemon/gen1/bellsprout.tscn" id="9_wunoi"]
+[ext_resource type="PackedScene" uid="uid://bhtaxo1xpk43" path="res://scenes/pokemon/gen1/caterpie.tscn" id="13_uu4bg"]
+[ext_resource type="PackedScene" uid="uid://cwmrqfaca4j2y" path="res://scenes/pokemon/gen1/gastly.tscn" id="41_1eka3"]
+[ext_resource type="PackedScene" uid="uid://bk4e2d0iatw5b" path="res://scenes/pokemon/gen1/machop.tscn" id="74_hr710"]
+[ext_resource type="PackedScene" uid="uid://b5tjj2jkbffxp" path="res://scenes/pokemon/gen1/slowpoke.tscn" id="128_mmv2p"]
 
 [node name="Mapa01" instance=ExtResource("1_tcxil")]
-pokemon_list = Array[PackedScene]([ExtResource("2_g88rn"), ExtResource("3_j5pwa"), ExtResource("4_7byos")])
+pokemon_list = Array[PackedScene]([ExtResource("128_mmv2p"), ExtResource("9_wunoi"), ExtResource("13_uu4bg"), ExtResource("41_1eka3"), ExtResource("74_hr710")])
 path_background = "res://assets/prefabs/background_map/background_1.png"
 
 [node name="Background" parent="." index="1"]

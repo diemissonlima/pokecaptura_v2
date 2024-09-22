@@ -1,9 +1,9 @@
 [gd_scene load_steps=85 format=3 uid="uid://pgpwxdlpnltj"]
 
 [ext_resource type="PackedScene" uid="uid://dqfltesy73m1g" path="res://scenes/pokemon/pokemon_base.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://bqwkygg82etcw" path="res://assets/pokemon/gen_1/pinsir.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bqwkygg82etcw" path="res://assets/pokemon/gen1/normal/pinsir.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://u1gyeeacbug2" path="res://assets/prefabs/pokemon_type/bug.png" id="3_0ny4f"]
-[ext_resource type="Texture2D" uid="uid://d0jpolc7ddkel" path="res://assets/pokemon/gen_1_shiny/pinsir.png" id="3_oq1ah"]
+[ext_resource type="Texture2D" uid="uid://d0jpolc7ddkel" path="res://assets/pokemon/gen1/shiny/pinsir.png" id="3_oq1ah"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")
@@ -587,25 +587,26 @@ sprite_frames = SubResource("41")
 animation = &"shiny"
 
 [node name="is_shiny" parent="." index="1"]
-offset_left = -32.8571
+visible = false
+offset_left = -25.7142
 offset_top = -120.0
-offset_right = 9.14286
+offset_right = 16.2858
 offset_bottom = -106.0
 
 [node name="poke_name" parent="." index="2"]
-offset_left = -34.0196
+offset_left = -26.8767
 offset_top = -104.216
-offset_right = 9.98044
+offset_right = 17.1233
 offset_bottom = -90.2158
 text = "Pinsir"
 
 [node name="catch" parent="." index="3"]
-position = Vector2(-55.6862, -98.3333)
+position = Vector2(-48.5434, -98.3333)
 
 [node name="type_1" parent="." index="4"]
-position = Vector2(49.0195, -97.1569)
+position = Vector2(56.1624, -97.1569)
 texture = ExtResource("3_0ny4f")
 region_rect = Rect2(81, 252, 111, 57)
 
 [node name="type_2" parent="." index="5"]
-position = Vector2(54.5098, -90.3333)
+position = Vector2(61.6526, -90.3333)

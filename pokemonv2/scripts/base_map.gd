@@ -66,7 +66,10 @@ func _on_spawn_timer_timeout() -> void:
 		info.text = "Você encontrou um " + pokemon_spawned.pokemon_name + "! Deseja Captura-lo?"
 		SQL.update_pokemon(pokemon_spawned.id_dex, "visto")
 		
-	get_tree().call_group("pokedex_info", "show_pokemon", pokemon_spawned.id_dex, "visto")
-	
 	info.show()
 	options_container.show()
+
+	if SQL.verify_pokemon_captured(pokemon_spawned.id_dex) == 2:
+			return
+			
+	get_tree().call_group("pokedex_info", "show_pokemon", pokemon_spawned.id_dex, "visto")
