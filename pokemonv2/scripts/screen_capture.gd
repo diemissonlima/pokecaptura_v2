@@ -48,7 +48,7 @@ func set_capture(_pokeball_used: String) -> void:
 		else:
 			SQL.update_pokemon(pokemon_captured.id_dex, "capturado")
 			
-		SQL.update_database("estatisticas", "pokemon_capturado", "increase", 1)
+		# SQL.update_database("estatisticas", "pokemon_capturado", "increase", 1)
 		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado")
 		
 		info_captura.text = "Pokemon Capturado!!!"
@@ -57,7 +57,7 @@ func set_capture(_pokeball_used: String) -> void:
 		drop(pokemon_captured.dropped_credit)
 		
 	else:
-		SQL.update_database("estatisticas", "pokemon_perdido", "increase", 1)
+		# SQL.update_database("estatisticas", "pokemon_perdido", "increase", 1)
 		
 		info_captura.text = "Pokemon Escapou!!!"
 		$Background/TryAgain.show()
