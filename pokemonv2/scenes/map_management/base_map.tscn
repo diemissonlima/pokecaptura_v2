@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=160 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
@@ -157,6 +157,7 @@
 [ext_resource type="PackedScene" uid="uid://05o7lqiqqyy3" path="res://scenes/pokemon/gen1/zapdos.tscn" id="151_qfe45"]
 [ext_resource type="PackedScene" uid="uid://nv8sh7kyj5xo" path="res://scenes/pokemon/gen1/zubat.tscn" id="152_e51uw"]
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
+[ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_do8c8"]
 font = ExtResource("3_a26c1")
@@ -190,6 +191,8 @@ pokemon_list = Array[PackedScene]([ExtResource("2_6cenf"), ExtResource("3_piyom"
 visible = false
 
 [node name="Pokedex" parent="Interface" instance=ExtResource("154_nlgg3")]
+
+[node name="Map" parent="Interface" instance=ExtResource("156_kegge")]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
