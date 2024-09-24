@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwwku3dl7y2yj"]
+[gd_scene load_steps=12 format=3 uid="uid://dwwku3dl7y2yj"]
 
 [ext_resource type="Texture2D" uid="uid://bg8kfj6a0gjmo" path="res://assets/prefabs/interface/background.png" id="1_3gsba"]
 [ext_resource type="PackedScene" uid="uid://cmpfk8jd6b1y8" path="res://scenes/interface/slot.tscn" id="2_3adry"]
@@ -7,6 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://cnwktcanwvcq7" path="res://assets/prefabs/interface/summary_01.png" id="5_5u2u0"]
 [ext_resource type="Texture2D" uid="uid://dytnrn3yh6u6a" path="res://assets/prefabs/interface/summary_02.png" id="7_x200h"]
 [ext_resource type="Texture2D" uid="uid://dv02we72wfru2" path="res://assets/prefabs/interface/summary_03.png" id="8_6otmm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vwwee"]
+line_spacing = 0.0
+font = ExtResource("4_y44fa")
+font_size = 22
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_b6yap"]
 line_spacing = 0.0
@@ -29,7 +36,7 @@ font_size = 8
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_container", "info_pokemon", "title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description") groups=["pokedex_info"]]
+[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_container", "info_pokemon", "title", "seen_title", "catch_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,9 +44,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -230.0
-offset_top = -130.0
+offset_top = -134.0
 offset_right = 230.0
-offset_bottom = 130.0
+offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -48,6 +55,8 @@ script = ExtResource("2_opbv4")
 dex_container = NodePath("ScrollContainer/GridContainer")
 info_pokemon = NodePath("InfoPokemon")
 title = NodePath("InfoPokemon/SummaryBG/PokeName")
+seen_title = NodePath("HBoxContainer/Seen")
+catch_title = NodePath("HBoxContainer/Catch")
 sprite = NodePath("InfoPokemon/SummaryBG/Sprite")
 primary_type = NodePath("InfoPokemon/SummaryBG/TypeContainer/PrimaryType")
 secondary_type = NodePath("InfoPokemon/SummaryBG/TypeContainer/SecondaryType")
@@ -58,13 +67,36 @@ seen = NodePath("InfoPokemon/SummaryBG02/Visto/Amount")
 catch_shiny = NodePath("InfoPokemon/SummaryBG02/CapturadoShiny/Amount")
 seen_shiny = NodePath("InfoPokemon/SummaryBG02/VistoShiny/Amount")
 dex_description = NodePath("InfoPokemon/SummaryBG02/Descricao/TextDescricao")
+info_local = NodePath("InfoPokemon/SummaryBG02/Descricao/InfoLocal")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.5
+offset_top = 3.0
+offset_right = 138.5
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="Seen" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Visto: 75"
+label_settings = SubResource("LabelSettings_vwwee")
+
+[node name="Catch" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Capturado: 52"
+label_settings = SubResource("LabelSettings_vwwee")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 offset_left = 29.0
-offset_top = 17.0
+offset_top = 31.0
 offset_right = 434.0
-offset_bottom = 247.0
+offset_bottom = 261.0
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -1461,14 +1493,31 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -37.5
-offset_top = 7.5
-offset_right = 192.5
-offset_bottom = 48.5
+offset_top = 5.5
+offset_right = 193.5
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Há uma semente de planta em suas costas desde o dia em que este POKéMON nasceu. A semente cresce lentamente.
+text = "Há uma semente de planta em suas costas desde o dia em que este POKéMON nasceu. A semente cresce lentamente."
+label_settings = SubResource("LabelSettings_08845")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
-Pode ser Visto no Mapa 01"
+[node name="InfoLocal" type="Label" parent="InfoPokemon/SummaryBG02/Descricao"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.5
+offset_top = 35.0
+offset_right = 154.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Pode ser encontrado no Mapa 01"
 label_settings = SubResource("LabelSettings_08845")
 horizontal_alignment = 1
 vertical_alignment = 1

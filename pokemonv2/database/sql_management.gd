@@ -63,6 +63,25 @@ func insert_data() -> void:
 		db.insert_row("pokemon", row_dict)
 
 
+func return_pokedex_progress() -> Array:
+	var pokedex_progress: Array = []
+	db.query(
+		"SELECT COUNT(*) FROM pokemon WHERE status_pokedex > 0"
+	)
+	
+	var amount_visto: int = db.query_result[0]["COUNT(*)"]
+	pokedex_progress.append(amount_visto)
+	
+	db.query(
+		"SELECT COUNT(DISTINCT numero_dex) FROM banco_pokemon"
+	)
+	
+	var amount_capturado: int = db.query_result[0]["COUNT(DISTINCT numero_dex)"]
+	pokedex_progress.append(amount_capturado)
+	
+	return pokedex_progress
+
+
 func update_pokemon(id_pokemon: String, sql_column: String) -> void:
 	var id = id_pokemon
 	var column = sql_column

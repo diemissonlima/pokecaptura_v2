@@ -264,3 +264,9 @@ var data_management: Dictionary = {
 #UPDATE pokemon
 #SET img_path = (SELECT new_img_path FROM seq WHERE pokemon.ROWID = seq.id)
 #WHERE ROWID <= 151;
+
+
+# ATUALIZAÇÕES PROJETO
+# spawn de lendario aleatorio em cada mapa, um por mapa com 50% de chance de aparecer
+# na tela de informação do pokemon da pokedex agora mostra o mapa que ele aparece
+# 

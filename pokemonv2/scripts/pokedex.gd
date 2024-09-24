@@ -7,6 +7,8 @@ class_name Pokedex
 
 @export_category("Obejtos InfoPokedex")
 @export var title: Label
+@export var seen_title: Label
+@export var catch_title: Label
 @export var sprite: TextureRect
 @export var primary_type: TextureRect
 @export var secondary_type: TextureRect
@@ -17,6 +19,7 @@ class_name Pokedex
 @export var catch_shiny: Label
 @export var seen_shiny: Label
 @export var dex_description: Label
+@export var info_local: Label
 
 
 var slot_can_click: bool = false
@@ -37,12 +40,19 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	update_pokedex_progress()
+	
 	if Input.is_action_just_pressed("pokedex_info"):
 		visible = not visible
 		info_pokemon.hide()
 		
 	if Input.is_action_just_pressed("mouse_left_click") and slot_can_click: # verifica e habilita para o slot ser clicado
 		details_pokemon(SQL.info_pokedex(_slot_id)) # envia o Slot ID para a função que vai mostrar os dados do pokemon na pokedex
+
+
+func update_pokedex_progress() -> void:
+	seen_title.text = "Visto: " + str(SQL.return_pokedex_progress()[0])
+	catch_title.text = "Capturado: " + str(SQL.return_pokedex_progress()[1])
 
 
 func show_pokemon(id: String, status: String) -> void:
@@ -84,6 +94,7 @@ func details_pokemon(info: Dictionary) -> void:
 	catch_shiny.text = str(info["shiny_capturado"])
 	seen_shiny.text = str(info["shiny_visto"])
 	dex_description.text = info["desc_pokedex"]
+	info_local.text = "Pode ser encontrado no Mapa " + info["mapa"]
 
 
 func show_type_pokemon(type: String) -> String:

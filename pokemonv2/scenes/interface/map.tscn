@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxhi4ktidw6b3"]
+[gd_scene load_steps=6 format=3 uid="uid://cxhi4ktidw6b3"]
 
 [ext_resource type="Texture2D" uid="uid://dw0gy721svm1s" path="res://assets/prefabs/interface/background_bg.png" id="1_db6mj"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_kt4y1"]
 [ext_resource type="Texture2D" uid="uid://cnckprynd5kks" path="res://assets/prefabs/interface/map.png" id="2_v3lwt"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="4_f3o1f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pk8no"]
 line_spacing = 0.0
@@ -63,6 +64,24 @@ offset_left = 109.0
 offset_top = 172.0
 offset_right = 119.0
 offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("4_f3o1f")
+
+[node name="Label" type="Label" parent="Mapa_01"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -10.5
+offset_right = 4.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "1"
 
 [node name="Mapa_02" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -71,12 +90,46 @@ offset_top = 172.0
 offset_right = 173.0
 offset_bottom = 194.0
 
+[node name="Label" type="Label" parent="Mapa_02"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -10.0
+offset_right = 3.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "2"
+
 [node name="Mapa_03" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 136.0
 offset_top = 139.0
 offset_right = 155.0
 offset_bottom = 162.0
+
+[node name="Label" type="Label" parent="Mapa_03"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -10.5
+offset_right = 4.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "3"
 
 [node name="Mapa_04" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -85,12 +138,46 @@ offset_top = 107.0
 offset_right = 182.0
 offset_bottom = 130.0
 
+[node name="Label" type="Label" parent="Mapa_04"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -10.5
+offset_right = 6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "4"
+
 [node name="Mapa_05" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 190.0
 offset_top = 139.0
 offset_right = 209.0
 offset_bottom = 162.0
+
+[node name="Label" type="Label" parent="Mapa_05"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -10.5
+offset_right = 4.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "5"
 
 [node name="Mapa_06" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -99,12 +186,46 @@ offset_top = 213.0
 offset_right = 191.0
 offset_bottom = 228.0
 
+[node name="Label" type="Label" parent="Mapa_06"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -8.5
+offset_right = 5.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "6"
+
 [node name="Mapa_07" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 208.0
 offset_top = 192.0
 offset_right = 227.0
 offset_bottom = 207.0
+
+[node name="Label" type="Label" parent="Mapa_07"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -10.5
+offset_right = 6.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "7"
 
 [node name="Mapa_08" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -113,12 +234,46 @@ offset_top = 117.0
 offset_right = 218.0
 offset_bottom = 132.0
 
+[node name="Label" type="Label" parent="Mapa_08"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -9.5
+offset_right = 6.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "8"
+
 [node name="Mapa_09" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 244.0
 offset_top = 107.0
 offset_right = 263.0
 offset_bottom = 130.0
+
+[node name="Label" type="Label" parent="Mapa_09"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -10.5
+offset_right = 5.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "9"
 
 [node name="Mapa_10" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -127,12 +282,46 @@ offset_top = 191.0
 offset_right = 264.0
 offset_bottom = 208.0
 
+[node name="Label" type="Label" parent="Mapa_10"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -9.5
+offset_right = 8.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "10"
+
 [node name="Mapa_11" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 343.0
 offset_top = 139.0
 offset_right = 362.0
 offset_bottom = 162.0
+
+[node name="Label" type="Label" parent="Mapa_11"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -9.5
+offset_right = 7.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "11"
 
 [node name="Mapa_12" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -141,12 +330,46 @@ offset_top = 85.0
 offset_right = 371.0
 offset_bottom = 109.0
 
+[node name="Label" type="Label" parent="Mapa_12"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -10.5
+offset_right = 7.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "12"
+
 [node name="Mapa_13" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 423.0
 offset_top = 96.0
 offset_right = 443.0
 offset_bottom = 120.0
+
+[node name="Label" type="Label" parent="Mapa_13"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -10.5
+offset_right = 6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "13"
 
 [node name="Mapa_14" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -155,12 +378,46 @@ offset_top = 128.0
 offset_right = 443.0
 offset_bottom = 152.0
 
+[node name="Label" type="Label" parent="Mapa_14"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -10.5
+offset_right = 9.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "14"
+
 [node name="Mapa_15" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 396.0
 offset_top = 139.0
 offset_right = 416.0
 offset_bottom = 163.0
+
+[node name="Label" type="Label" parent="Mapa_15"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -10.5
+offset_right = 6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "15"
 
 [node name="Mapa_16" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -169,12 +426,46 @@ offset_top = 181.0
 offset_right = 364.0
 offset_bottom = 196.0
 
+[node name="Label" type="Label" parent="Mapa_16"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -8.5
+offset_right = 7.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "16"
+
 [node name="Mapa_17" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 350.0
 offset_top = 225.0
 offset_right = 364.0
 offset_bottom = 240.0
+
+[node name="Label" type="Label" parent="Mapa_17"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -10.5
+offset_right = 7.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "17"
 
 [node name="Mapa_18" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
@@ -183,6 +474,23 @@ offset_top = 193.0
 offset_right = 416.0
 offset_bottom = 217.0
 
+[node name="Label" type="Label" parent="Mapa_18"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -9.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "18"
+
 [node name="Mapa_19" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 424.0
@@ -190,9 +498,43 @@ offset_top = 160.0
 offset_right = 443.0
 offset_bottom = 184.0
 
+[node name="Label" type="Label" parent="Mapa_19"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -10.5
+offset_right = 7.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "19"
+
 [node name="Mapa_20" type="Button" parent="." groups=["button_map"]]
 layout_mode = 0
 offset_left = 458.0
 offset_top = 139.0
 offset_right = 472.0
 offset_bottom = 152.0
+
+[node name="Label2" type="Label" parent="Mapa_20"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -9.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_f3o1f")
+text = "20"

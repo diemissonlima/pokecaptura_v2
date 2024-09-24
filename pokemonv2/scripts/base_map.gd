@@ -14,6 +14,7 @@ class_name BaseMap
 
 @export_category("Variaveis")
 @export var pokemon_list: Array[PackedScene]
+@export var pokemon_legendary_list: Array[PackedScene]
 @export var path_background: String
 
 var pokemon_spawned
@@ -21,6 +22,12 @@ var pokemon_spawned
 
 func _ready() -> void:
 	get_tree().call_group("screen_capture", "get_texture_path", path_background)
+	spawn_legendary()
+
+
+func spawn_legendary() -> void:
+	var pokemon_legendary = pokemon_legendary_list.pick_random()
+	pokemon_list.append(pokemon_legendary)
 
 
 func spawn_pokemon() -> void:

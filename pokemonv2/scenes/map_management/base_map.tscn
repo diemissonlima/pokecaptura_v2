@@ -1,10 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=20 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
+[ext_resource type="PackedScene" uid="uid://bntgjwgly2d8k" path="res://scenes/pokemon/gen1/articuno.tscn" id="2_uu6u3"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="3_a26c1"]
 [ext_resource type="PackedScene" uid="uid://caytunxghrl0p" path="res://scenes/interface/shop.tscn" id="3_h25u6"]
+[ext_resource type="PackedScene" uid="uid://05o7lqiqqyy3" path="res://scenes/pokemon/gen1/zapdos.tscn" id="3_ox3qn"]
+[ext_resource type="PackedScene" uid="uid://ykh7i633v62b" path="res://scenes/pokemon/gen1/moltres.tscn" id="4_55rk3"]
 [ext_resource type="Texture2D" uid="uid://bg1r3h4w18aea" path="res://assets/prefabs/background_map/background_3.png" id="4_eruwt"]
+[ext_resource type="PackedScene" uid="uid://dgyoygbgbyr6k" path="res://scenes/pokemon/gen1/mew.tscn" id="5_407qi"]
+[ext_resource type="PackedScene" uid="uid://clvto13oeut85" path="res://scenes/pokemon/gen1/mewtwo.tscn" id="6_q7q16"]
+[ext_resource type="PackedScene" uid="uid://cm8o0eax001hf" path="res://scenes/pokemon/gen2/Entei.tscn" id="7_78ihx"]
+[ext_resource type="PackedScene" uid="uid://bpgm56c1bw5ve" path="res://scenes/pokemon/gen2/Suicune.tscn" id="8_secvh"]
+[ext_resource type="PackedScene" uid="uid://bu348khcctsot" path="res://scenes/pokemon/gen2/Raikou.tscn" id="9_w86nl"]
+[ext_resource type="PackedScene" uid="uid://du2qddvlvhcwb" path="res://scenes/pokemon/gen2/Ho-oh.tscn" id="10_hkum5"]
+[ext_resource type="PackedScene" uid="uid://sf4fuwy6oyev" path="res://scenes/pokemon/gen2/Lugia.tscn" id="11_3rsnu"]
+[ext_resource type="PackedScene" uid="uid://dhhings1hhwob" path="res://scenes/pokemon/gen2/Celebi.tscn" id="12_c8i4c"]
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
 [ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
@@ -30,6 +41,7 @@ options_container = NodePath("Background/OptionsContainer")
 button_start_hunting = NodePath("Background/StartHunting")
 info = NodePath("Background/Info")
 info2 = NodePath("Background/Info2")
+pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c")])
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
