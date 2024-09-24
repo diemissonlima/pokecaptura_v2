@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2ksc8ugt2vah"]
+[gd_scene load_steps=15 format=3 uid="uid://d2ksc8ugt2vah"]
 
 [ext_resource type="PackedScene" uid="uid://bhcv3qhvbuahj" path="res://scenes/map_management/base_map.tscn" id="1_aiif4"]
+[ext_resource type="PackedScene" uid="uid://csh02ew2qkjxw" path="res://scenes/pokemon/gen2/Elekid.tscn" id="2_1rhnj"]
 [ext_resource type="Texture2D" uid="uid://kq6q1wqxlt0i" path="res://assets/prefabs/background_map/background_8.png" id="2_t2h58"]
+[ext_resource type="PackedScene" uid="uid://dxcscyo3q6tka" path="res://scenes/pokemon/gen1/hypno.tscn" id="3_xlxa5"]
+[ext_resource type="PackedScene" uid="uid://ctp8bks2j2c4q" path="res://scenes/pokemon/gen2/Stantler.tscn" id="4_plmsh"]
+[ext_resource type="PackedScene" uid="uid://dvjygqbbs4vre" path="res://scenes/pokemon/gen2/Togetic.tscn" id="5_457re"]
+[ext_resource type="PackedScene" uid="uid://mls5vcldt7e6" path="res://scenes/pokemon/gen2/Teddiursa.tscn" id="6_x3lir"]
+[ext_resource type="PackedScene" uid="uid://diira212kflok" path="res://scenes/pokemon/gen1/venusaur.tscn" id="7_iyyvu"]
+[ext_resource type="PackedScene" uid="uid://b6mh4b3erv3qq" path="res://scenes/pokemon/gen1/primeape.tscn" id="8_sjyx1"]
+[ext_resource type="PackedScene" uid="uid://bw46jbagih2le" path="res://scenes/pokemon/gen2/Wobbuffet.tscn" id="9_xtepr"]
+[ext_resource type="PackedScene" uid="uid://beq4r4ngat865" path="res://scenes/pokemon/gen1/snorlax.tscn" id="10_fr1ph"]
+[ext_resource type="PackedScene" uid="uid://dnwshc5n02u3l" path="res://scenes/pokemon/gen1/gloom.tscn" id="11_qnbs3"]
+[ext_resource type="PackedScene" uid="uid://lboc3ccliqkg" path="res://scenes/pokemon/gen2/Chikorita.tscn" id="12_gekmj"]
+[ext_resource type="PackedScene" uid="uid://cd0tegneswe3t" path="res://scenes/pokemon/gen1/kangaskhan.tscn" id="13_dac6t"]
 
 [node name="Mapa08" instance=ExtResource("1_aiif4")]
+pokemon_list = Array[PackedScene]([ExtResource("2_1rhnj"), ExtResource("3_xlxa5"), ExtResource("4_plmsh"), ExtResource("5_457re"), ExtResource("6_x3lir"), ExtResource("7_iyyvu"), ExtResource("8_sjyx1"), ExtResource("9_xtepr"), ExtResource("10_fr1ph"), ExtResource("11_qnbs3"), ExtResource("12_gekmj"), ExtResource("13_dac6t")])
 path_background = "res://assets/prefabs/background_map/background_8.png"
 
 [node name="Background" parent="." index="1"]
