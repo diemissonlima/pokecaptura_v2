@@ -13,9 +13,6 @@ func _process(_delta: float) -> void:
 
 
 func on_button_pressed(button_name: String) -> void:
-	match button_name:
-		"ButtonMap1":
-			get_tree().change_scene_to_file("res://scenes/map_management/mapa_01.tscn")
-		
-		"ButtonMap2":
-			get_tree().change_scene_to_file("res://scenes/map_management/mapa_02.tscn")
+	visible = false
+	
+	get_tree().change_scene_to_file("res://scenes/map_management/" + button_name.to_lower() + ".tscn")
