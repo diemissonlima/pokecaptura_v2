@@ -255,18 +255,3 @@ var data_management: Dictionary = {
 		'250': {'id': '250' ,'nome': 'Ho-oh', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0},
 		'251': {'id': '251' ,'nome': 'Celebi', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0}}
 }
-
-#WITH seq AS (
-  #SELECT ROWID AS id, printf('res://assets/pokemon_sprite/gen_1/%03d.png', ROWID) AS new_img_path
-  #FROM pokemon
-  #WHERE ROWID <= 151
-#)
-#UPDATE pokemon
-#SET img_path = (SELECT new_img_path FROM seq WHERE pokemon.ROWID = seq.id)
-#WHERE ROWID <= 151;
-
-
-# ATUALIZAÇÕES PROJETO
-# spawn de lendario aleatorio em cada mapa, um por mapa com 50% de chance de aparecer
-# na tela de informação do pokemon da pokedex agora mostra o mapa que ele aparece
-# na pokedex agora mostra quantos pokemon foram visto ou capturado

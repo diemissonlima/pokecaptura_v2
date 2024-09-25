@@ -57,6 +57,8 @@ func set_capture(_pokeball_used: String) -> void:
 		SQL.add_pokemon_to_bank(pokemon_captured)
 		drop(pokemon_captured.dropped_credit)
 		
+		if pokemon_captured.primary_type == "Bug" or pokemon_captured.secondary_type == "Bug":
+			QuestUpdate.on_item_collected("Tipo Bug") # informa ao quest manager que o item foi coletado
 		
 	else:
 		# SQL.update_database("estatisticas", "pokemon_perdido", "increase", 1)
