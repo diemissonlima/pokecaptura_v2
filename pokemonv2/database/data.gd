@@ -269,4 +269,4 @@ var data_management: Dictionary = {
 # ATUALIZAÇÕES PROJETO
 # spawn de lendario aleatorio em cada mapa, um por mapa com 50% de chance de aparecer
 # na tela de informação do pokemon da pokedex agora mostra o mapa que ele aparece
-# 
+# na pokedex agora mostra quantos pokemon foram visto ou capturado

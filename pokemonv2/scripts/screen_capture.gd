@@ -5,6 +5,7 @@ class_name ScreenCapture
 @export var pokemon_position: Marker2D
 @export var background: TextureRect
 @export var options_container: HBoxContainer
+@export var text_box: TextureRect
 @export var info_captura: Label
 @export var pokeball_label: Label
 @export var greatball_label: Label
@@ -51,18 +52,20 @@ func set_capture(_pokeball_used: String) -> void:
 		# SQL.update_database("estatisticas", "pokemon_capturado", "increase", 1)
 		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado")
 		
-		info_captura.text = "Pokemon Capturado!!!"
+		info_captura.text = "Pokemon Capturado!\nDrop: " + str(pokemon_captured.dropped_credit) + " Créditos"
 		
 		SQL.add_pokemon_to_bank(pokemon_captured)
 		drop(pokemon_captured.dropped_credit)
 		
+		
 	else:
 		# SQL.update_database("estatisticas", "pokemon_perdido", "increase", 1)
 		
-		info_captura.text = "Pokemon Escapou!!!"
-		$Background/TryAgain.show()
+		info_captura.text = "Pokemon Escapou!!! Tentar Captura Novamente?"
 		$Background/Sim.show()
 		$Background/Nao.show()
+
+	text_box.show()
 
 
 func drop(value: int) -> void:
@@ -80,7 +83,7 @@ func _on_quit_pressed() -> void:
 	$Background/TryAgain.hide()
 	$Background/Sim.hide()
 	$Background/Nao.hide()
-	info_captura.hide()
+	text_box.hide()
 	options_container.show()
 	pokemon_captured.queue_free()
 	self.hide()
@@ -92,7 +95,7 @@ func on_button_pressed(button_name: String) -> void:
 		
 	options_container.hide()
 	info_captura.text = "Tentando Captura!!"
-	info_captura.show()
+	text_box.show()
 	
 	SQL.update_database("inventario", button_name, "decrease", 1)
 	
@@ -117,7 +120,7 @@ func on_button_pressed(button_name: String) -> void:
 
 
 func _on_try_again_sim_pressed() -> void:
-	info_captura.hide()
+	text_box.hide()
 	$Background/TryAgain.hide()
 	$Background/Sim.hide()
 	$Background/Nao.hide()
@@ -128,7 +131,7 @@ func _on_try_again_nao_pressed() -> void:
 	$Background/TryAgain.hide()
 	$Background/Sim.hide()
 	$Background/Nao.hide()
-	info_captura.hide()
+	text_box.hide()
 	options_container.show()
 	pokemon_captured.queue_free()
 	self.hide()

@@ -22,8 +22,20 @@ path_background = "res://assets/prefabs/background_map/background_1.png"
 [node name="Background" parent="." index="1"]
 texture = ExtResource("2_b0y4m")
 
-[node name="SpawnPosition" parent="Background" index="0"]
+[node name="SpawnPosition" parent="Background" index="2"]
 position = Vector2(278, 139)
+
+[node name="Info" parent="Background" index="3"]
+offset_top = 68.5
+offset_bottom = 79.5
+
+[node name="OptionsContainer" parent="Background" index="5"]
+offset_top = -59.0
+offset_bottom = -19.0
+
+[node name="StartHunting" parent="Background" index="6"]
+offset_top = -49.0
+offset_bottom = -24.0
 
 [node name="SpawnTimer" parent="." index="2"]
 wait_time = 1.9

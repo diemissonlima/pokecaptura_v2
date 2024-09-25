@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=22 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
@@ -19,13 +19,29 @@
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
 [ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_do8c8"]
+[sub_resource type="LabelSettings" id="LabelSettings_rxdvy"]
+line_spacing = 0.0
 font = ExtResource("3_a26c1")
-font_size = 12
+font_size = 22
+font_color = Color(0.877616, 0.877616, 0.877616, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "button_start_hunting", "info", "info2")]
+[sub_resource type="LabelSettings" id="LabelSettings_nftdm"]
+line_spacing = 0.0
+font = ExtResource("3_a26c1")
+font_size = 18
+font_color = Color(0.877616, 0.877616, 0.877616, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_do8c8"]
+font = ExtResource("3_a26c1")
+font_size = 10
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "button_start_hunting", "info", "info2", "spawn_lendario")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,6 +57,7 @@ options_container = NodePath("Background/OptionsContainer")
 button_start_hunting = NodePath("Background/StartHunting")
 info = NodePath("Background/Info")
 info2 = NodePath("Background/Info2")
+spawn_lendario = NodePath("Background/SpawnLendario")
 pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c")])
 
 [node name="Interface" type="CanvasLayer" parent="."]
@@ -63,6 +80,33 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_eruwt")
 
+[node name="MapName" type="Label" parent="Background"]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 110.0
+offset_bottom = 39.0
+text = "Mapa 01"
+label_settings = SubResource("LabelSettings_rxdvy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpawnLendario" type="Label" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -365.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 35.0
+grow_horizontal = 0
+text = "Um Pokémon Lendário está no local!!!"
+label_settings = SubResource("LabelSettings_nftdm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SpawnPosition" type="Marker2D" parent="Background"]
 position = Vector2(278, 144)
 
@@ -74,14 +118,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = 49.5
-offset_right = 153.0
-offset_bottom = 62.5
+offset_left = -131.0
+offset_top = 76.5
+offset_right = 131.0
+offset_bottom = 87.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Você encontrou um Charizard! Deseja Captura-lo?"
 label_settings = SubResource("LabelSettings_do8c8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Info2" type="Label" parent="Background"]
 visible = false
@@ -110,9 +156,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -47.0
-offset_top = -66.0
+offset_top = -60.0
 offset_right = 47.0
-offset_bottom = -26.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 15
@@ -139,9 +185,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -66.0
-offset_top = -49.0
+offset_top = -51.0
 offset_right = 67.0
-offset_bottom = -24.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 3

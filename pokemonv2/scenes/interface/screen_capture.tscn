@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1fbhfp67w6j0"]
+[gd_scene load_steps=11 format=3 uid="uid://1fbhfp67w6j0"]
 
 [ext_resource type="Script" path="res://scripts/screen_capture.gd" id="1_sutfu"]
 [ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="2_ld1u6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6f4g2jmojg7k" path="res://assets/prefabs/pokeball/greatball.png" id="4_wh2fk"]
 [ext_resource type="Texture2D" uid="uid://dqhqmtm4xwrk8" path="res://assets/prefabs/pokeball/ultraball.png" id="5_lgalq"]
 [ext_resource type="Texture2D" uid="uid://jts8riuf0cna" path="res://assets/prefabs/pokeball/masterball.png" id="6_5c5l7"]
+[ext_resource type="Texture2D" uid="uid://c3pkjdsidxvf8" path="res://assets/prefabs/interface/caixa_texto2.png" id="7_ashc3"]
 [ext_resource type="Texture2D" uid="uid://b7w2ktihoeb5h" path="res://assets/prefabs/interface/IconB05.png" id="7_w61yr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dc55v"]
@@ -22,7 +23,7 @@ font_size = 12
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ScreenCapture" type="Control" node_paths=PackedStringArray("pokemon_position", "background", "options_container", "info_captura", "pokeball_label", "greatball_label", "ultraball_label", "masterball_label") groups=["screen_capture"]]
+[node name="ScreenCapture" type="Control" node_paths=PackedStringArray("pokemon_position", "background", "options_container", "text_box", "info_captura", "pokeball_label", "greatball_label", "ultraball_label", "masterball_label") groups=["screen_capture"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -34,7 +35,8 @@ script = ExtResource("1_sutfu")
 pokemon_position = NodePath("Background/PokePosition")
 background = NodePath("Background")
 options_container = NodePath("Background/OptionsContainer")
-info_captura = NodePath("Background/InfoCaptura")
+text_box = NodePath("Background/TextBox")
+info_captura = NodePath("Background/TextBox/InfoCaptura")
 pokeball_label = NodePath("Background/OptionsContainer/LabelPokeball")
 greatball_label = NodePath("Background/OptionsContainer/LabelGreatball")
 ultraball_label = NodePath("Background/OptionsContainer/LabelUltraball")
@@ -102,16 +104,39 @@ layout_mode = 2
 text = "15"
 label_settings = SubResource("LabelSettings_dc55v")
 
-[node name="InfoCaptura" type="Label" parent="Background"]
+[node name="TextBox" type="TextureRect" parent="Background"]
 visible = false
-layout_mode = 0
-offset_left = 224.0
-offset_top = 219.0
-offset_right = 345.0
-offset_bottom = 235.0
-text = "Iniciando Captura!!"
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.5
+offset_top = -94.0
+offset_right = 125.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_ashc3")
+
+[node name="InfoCaptura" type="Label" parent="Background/TextBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -15.0
+offset_right = 101.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 label_settings = SubResource("LabelSettings_7ey7q")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="TryAgain" type="Label" parent="Background"]
 visible = false

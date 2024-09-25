@@ -11,6 +11,7 @@ class_name BaseMap
 @export var button_start_hunting: Button
 @export var info: Label
 @export var info2: Label
+@export var spawn_lendario: Label
 
 @export_category("Variaveis")
 @export var pokemon_list: Array[PackedScene]
@@ -26,8 +27,16 @@ func _ready() -> void:
 
 
 func spawn_legendary() -> void:
-	var pokemon_legendary = pokemon_legendary_list.pick_random()
-	pokemon_list.append(pokemon_legendary)
+	var random_number: float = randf()
+	var probability: float = 0.5
+	
+	if random_number <= probability:
+		var pokemon_legendary = pokemon_legendary_list.pick_random()
+		pokemon_list.append(pokemon_legendary)
+		
+		spawn_lendario.show()
+		await get_tree().create_timer(5.0).timeout
+		spawn_lendario.hide()
 
 
 func spawn_pokemon() -> void:
@@ -72,7 +81,7 @@ func _on_spawn_timer_timeout() -> void:
 	else:
 		info.text = "Você encontrou um " + pokemon_spawned.pokemon_name + "! Deseja Captura-lo?"
 		SQL.update_pokemon(pokemon_spawned.id_dex, "visto")
-		
+	
 	info.show()
 	options_container.show()
 
