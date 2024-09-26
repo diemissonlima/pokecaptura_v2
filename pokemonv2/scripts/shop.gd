@@ -29,13 +29,13 @@ func on_button_pressed(button: TextureButton) -> void:
 	
 	match button.name:
 		"Pokeball":
-			item_value = 150
+			item_value = 100
 			
 		"Greatball":
-			item_value = 250
+			item_value = 150
 			
 		"Ultraball":
-			item_value = 400
+			item_value = 200
 	
 	name_item_label.show()
 	name_item_label.text = button.name + " x" + button.get_node("Label").text

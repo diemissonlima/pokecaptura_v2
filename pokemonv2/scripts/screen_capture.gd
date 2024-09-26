@@ -38,6 +38,8 @@ func get_pokemon(_pokemon: CharacterBody2D, poke_position: Marker2D) -> void:
 
 
 func set_capture(_pokeball_used: String) -> void:
+	update_label_pokeball()
+	
 	var random_number: float = randf()
 	var chance_of_capture: float = (pokemon_captured.catch_rate / 255) * pokeball_rate
 	
@@ -57,8 +59,13 @@ func set_capture(_pokeball_used: String) -> void:
 		SQL.add_pokemon_to_bank(pokemon_captured)
 		drop(pokemon_captured.dropped_credit)
 		
-		if pokemon_captured.primary_type == "Bug" or pokemon_captured.secondary_type == "Bug":
-			QuestUpdate.on_item_collected("Tipo Bug") # informa ao quest manager que o item foi coletado
+		if QuestUpdate.active_quests.size() > 0:
+			var tipo_1 = pokemon_captured.primary_type
+			var tipo_2 = pokemon_captured.secondary_type
+			
+			for quest in QuestUpdate.active_quests:
+				if tipo_1 == quest.quest_type.capitalize() or tipo_2 == quest.quest_type.capitalize():
+					QuestUpdate.on_item_collected(quest.quest_name)
 		
 	else:
 		# SQL.update_database("estatisticas", "pokemon_perdido", "increase", 1)

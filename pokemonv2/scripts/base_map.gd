@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func spawn_legendary() -> void:
 	var random_number: float = randf()
-	var probability: float = 0.5
+	var probability: float = 0.1
 	
 	if random_number <= probability:
 		var pokemon_legendary = pokemon_legendary_list.pick_random()

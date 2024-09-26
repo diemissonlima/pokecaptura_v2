@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxbxofg37miv5"]
+
+[ext_resource type="Script" path="res://scripts/quest_panel.gd" id="1_ggey0"]
+[ext_resource type="Texture2D" uid="uid://cf6djsqji2g7p" path="res://assets/prefabs/interface/background_quest.png" id="1_iiuwp"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="2_dojmf"]
+[ext_resource type="Texture2D" uid="uid://cw8tluswhv4nh" path="res://assets/prefabs/interface/NotCompleted.png" id="3_xwyom"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xgxra"]
+line_spacing = 0.0
+font = ExtResource("2_dojmf")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jjuw4"]
+line_spacing = 0.0
+font = ExtResource("2_dojmf")
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fppra"]
+line_spacing = 0.0
+font = ExtResource("2_dojmf")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4pxc"]
+line_spacing = 0.0
+font = ExtResource("2_dojmf")
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="QuestPanel" type="Control" node_paths=PackedStringArray("quest_title", "quest_name_label", "quest_progress_label", "quest_description_progress_label", "quest_name_progress_label") groups=["quest_panel"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ggey0")
+quest_title = NodePath("Background/QuestToAccept/QuestDescription")
+quest_name_label = NodePath("Background/QuestToAccept/QuestName")
+quest_progress_label = NodePath("Background/Quests/QuestProgress")
+quest_description_progress_label = NodePath("Background/Quests/QuestDescriptionProgress")
+quest_name_progress_label = NodePath("Background/Quests/QuestNameProgress")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -144.0
+offset_right = 276.0
+offset_bottom = 145.0
+grow_vertical = 2
+texture = ExtResource("1_iiuwp")
+
+[node name="QuestToAccept" type="Node2D" parent="Background"]
+
+[node name="Title" type="Label" parent="Background/QuestToAccept"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 72.5
+offset_top = 80.0
+offset_right = 183.5
+offset_bottom = 97.0
+grow_horizontal = 2
+text = "Aceitar Quest"
+label_settings = SubResource("LabelSettings_xgxra")
+
+[node name="QuestName" type="Label" parent="Background/QuestToAccept"]
+offset_left = 18.0
+offset_top = 126.0
+offset_right = 234.0
+offset_bottom = 152.0
+label_settings = SubResource("LabelSettings_jjuw4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestDescription" type="Label" parent="Background/QuestToAccept"]
+offset_left = 18.0
+offset_top = 150.0
+offset_right = 234.0
+offset_bottom = 176.0
+label_settings = SubResource("LabelSettings_jjuw4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AccetpQuest" type="Button" parent="Background/QuestToAccept"]
+offset_left = 102.0
+offset_top = 189.0
+offset_right = 156.0
+offset_bottom = 210.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_dojmf")
+theme_override_font_sizes/font_size = 12
+text = "Aceitar"
+
+[node name="Quests" type="Node2D" parent="Background"]
+visible = false
+
+[node name="Title" type="Label" parent="Background/Quests"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 62.5
+offset_top = 80.0
+offset_right = 193.5
+offset_bottom = 97.0
+grow_horizontal = 2
+text = "Progresso Quest"
+label_settings = SubResource("LabelSettings_fppra")
+
+[node name="TextureRect" type="TextureRect" parent="Background/Quests"]
+offset_left = 39.0
+offset_top = 149.0
+offset_right = 66.0
+offset_bottom = 171.0
+texture = ExtResource("3_xwyom")
+expand_mode = 1
+
+[node name="QuestNameProgress" type="Label" parent="Background/Quests"]
+offset_left = 61.0
+offset_top = 121.0
+offset_right = 215.0
+offset_bottom = 147.0
+text = "- Fábulas Encantas"
+label_settings = SubResource("LabelSettings_v4pxc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestDescriptionProgress" type="Label" parent="Background/Quests"]
+offset_left = 72.0
+offset_top = 150.0
+offset_right = 209.0
+offset_bottom = 176.0
+text = "Capture 5 Pokémon do Tipo Bug"
+label_settings = SubResource("LabelSettings_v4pxc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestProgress" type="Label" parent="Background/Quests"]
+offset_left = 116.0
+offset_top = 182.0
+offset_right = 164.0
+offset_bottom = 195.0
+label_settings = SubResource("LabelSettings_v4pxc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Background/QuestToAccept/AccetpQuest" to="." method="_on_accetp_quest_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=23 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://du2qddvlvhcwb" path="res://scenes/pokemon/gen2/Ho-oh.tscn" id="10_hkum5"]
 [ext_resource type="PackedScene" uid="uid://sf4fuwy6oyev" path="res://scenes/pokemon/gen2/Lugia.tscn" id="11_3rsnu"]
 [ext_resource type="PackedScene" uid="uid://dhhings1hhwob" path="res://scenes/pokemon/gen2/Celebi.tscn" id="12_c8i4c"]
+[ext_resource type="PackedScene" uid="uid://dxbxofg37miv5" path="res://scenes/interface/quest_panel.tscn" id="17_csu76"]
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
 [ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
@@ -70,6 +71,8 @@ visible = false
 [node name="Pokedex" parent="Interface" instance=ExtResource("154_nlgg3")]
 
 [node name="Map" parent="Interface" instance=ExtResource("156_kegge")]
+
+[node name="QuestPanel" parent="Interface" instance=ExtResource("17_csu76")]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
