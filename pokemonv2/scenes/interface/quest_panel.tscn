@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxbxofg37miv5"]
+[gd_scene load_steps=8 format=3 uid="uid://dxbxofg37miv5"]
 
 [ext_resource type="Script" path="res://scripts/quest_panel.gd" id="1_ggey0"]
 [ext_resource type="Texture2D" uid="uid://cf6djsqji2g7p" path="res://assets/prefabs/interface/background_quest.png" id="1_iiuwp"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="2_dojmf"]
-[ext_resource type="Texture2D" uid="uid://cw8tluswhv4nh" path="res://assets/prefabs/interface/NotCompleted.png" id="3_xwyom"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xgxra"]
 line_spacing = 0.0
@@ -31,7 +30,7 @@ font_size = 12
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="QuestPanel" type="Control" node_paths=PackedStringArray("quest_title", "quest_name_label", "quest_progress_label", "quest_description_progress_label", "quest_name_progress_label") groups=["quest_panel"]]
+[node name="QuestPanel" type="Control" node_paths=PackedStringArray("quest_name_1", "quest_description_1", "quest_name_2", "quest_description_2", "quest_name_3", "quest_description_3", "quest_progress_label", "quest_description_progress_label", "quest_name_progress_label") groups=["quest_panel"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -40,8 +39,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ggey0")
-quest_title = NodePath("Background/QuestToAccept/QuestDescription")
-quest_name_label = NodePath("Background/QuestToAccept/QuestName")
+quest_name_1 = NodePath("Background/QuestToAccept/QuestName")
+quest_description_1 = NodePath("Background/QuestToAccept/QuestDescription")
+quest_name_2 = NodePath("Background/QuestToAccept/QuestName2")
+quest_description_2 = NodePath("Background/QuestToAccept/QuestDescription2")
+quest_name_3 = NodePath("Background/QuestToAccept/QuestName3")
+quest_description_3 = NodePath("Background/QuestToAccept/QuestDescription3")
 quest_progress_label = NodePath("Background/Quests/QuestProgress")
 quest_description_progress_label = NodePath("Background/Quests/QuestDescriptionProgress")
 quest_name_progress_label = NodePath("Background/Quests/QuestNameProgress")
@@ -65,18 +68,19 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 72.5
-offset_top = 80.0
+offset_top = 16.0
 offset_right = 183.5
-offset_bottom = 97.0
+offset_bottom = 33.0
 grow_horizontal = 2
 text = "Aceitar Quest"
 label_settings = SubResource("LabelSettings_xgxra")
 
 [node name="QuestName" type="Label" parent="Background/QuestToAccept"]
 offset_left = 18.0
-offset_top = 126.0
+offset_top = 46.0
 offset_right = 234.0
-offset_bottom = 152.0
+offset_bottom = 72.0
+text = "asdasdasd"
 label_settings = SubResource("LabelSettings_jjuw4")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -84,19 +88,84 @@ autowrap_mode = 2
 
 [node name="QuestDescription" type="Label" parent="Background/QuestToAccept"]
 offset_left = 18.0
-offset_top = 150.0
+offset_top = 70.0
 offset_right = 234.0
-offset_bottom = 176.0
+offset_bottom = 96.0
+text = "asdadasdads"
 label_settings = SubResource("LabelSettings_jjuw4")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="AccetpQuest" type="Button" parent="Background/QuestToAccept"]
-offset_left = 102.0
-offset_top = 189.0
-offset_right = 156.0
-offset_bottom = 210.0
+[node name="AcceptQuest1" type="Button" parent="Background/QuestToAccept" groups=["button_quest_panel"]]
+offset_left = 99.0
+offset_top = 97.0
+offset_right = 153.0
+offset_bottom = 118.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_dojmf")
+theme_override_font_sizes/font_size = 12
+text = "Aceitar"
+
+[node name="QuestName2" type="Label" parent="Background/QuestToAccept"]
+offset_left = 18.0
+offset_top = 120.0
+offset_right = 234.0
+offset_bottom = 146.0
+text = "asdadsadas"
+label_settings = SubResource("LabelSettings_jjuw4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestDescription2" type="Label" parent="Background/QuestToAccept"]
+offset_left = 18.0
+offset_top = 144.0
+offset_right = 234.0
+offset_bottom = 170.0
+text = "adsadasd"
+label_settings = SubResource("LabelSettings_jjuw4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AcceptQuest2" type="Button" parent="Background/QuestToAccept" groups=["button_quest_panel"]]
+offset_left = 99.0
+offset_top = 173.0
+offset_right = 153.0
+offset_bottom = 194.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_dojmf")
+theme_override_font_sizes/font_size = 12
+text = "Aceitar"
+
+[node name="QuestName3" type="Label" parent="Background/QuestToAccept"]
+offset_left = 18.0
+offset_top = 198.0
+offset_right = 234.0
+offset_bottom = 224.0
+text = "asdasdasd"
+label_settings = SubResource("LabelSettings_jjuw4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestDescription3" type="Label" parent="Background/QuestToAccept"]
+offset_left = 18.0
+offset_top = 222.0
+offset_right = 234.0
+offset_bottom = 248.0
+text = "adasdasd"
+label_settings = SubResource("LabelSettings_jjuw4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AcceptQuest3" type="Button" parent="Background/QuestToAccept" groups=["button_quest_panel"]]
+offset_left = 99.0
+offset_top = 251.0
+offset_right = 153.0
+offset_bottom = 272.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_dojmf")
 theme_override_font_sizes/font_size = 12
@@ -109,52 +178,40 @@ visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 62.5
-offset_top = 80.0
-offset_right = 193.5
-offset_bottom = 97.0
+offset_left = 73.0
+offset_top = 16.0
+offset_right = 183.0
+offset_bottom = 33.0
 grow_horizontal = 2
-text = "Progresso Quest"
+text = "Quests Aceita"
 label_settings = SubResource("LabelSettings_fppra")
 
-[node name="TextureRect" type="TextureRect" parent="Background/Quests"]
-offset_left = 39.0
-offset_top = 149.0
-offset_right = 66.0
-offset_bottom = 171.0
-texture = ExtResource("3_xwyom")
-expand_mode = 1
-
 [node name="QuestNameProgress" type="Label" parent="Background/Quests"]
-offset_left = 61.0
-offset_top = 121.0
-offset_right = 215.0
-offset_bottom = 147.0
-text = "- Fábulas Encantas"
+offset_left = 13.0
+offset_top = 65.0
+offset_right = 167.0
+offset_bottom = 91.0
 label_settings = SubResource("LabelSettings_v4pxc")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="QuestDescriptionProgress" type="Label" parent="Background/Quests"]
-offset_left = 72.0
-offset_top = 150.0
-offset_right = 209.0
-offset_bottom = 176.0
-text = "Capture 5 Pokémon do Tipo Bug"
+offset_left = 24.0
+offset_top = 94.0
+offset_right = 161.0
+offset_bottom = 120.0
 label_settings = SubResource("LabelSettings_v4pxc")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="QuestProgress" type="Label" parent="Background/Quests"]
-offset_left = 116.0
-offset_top = 182.0
-offset_right = 164.0
-offset_bottom = 195.0
+offset_left = 172.0
+offset_top = 95.0
+offset_right = 220.0
+offset_bottom = 108.0
 label_settings = SubResource("LabelSettings_v4pxc")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-
-[connection signal="pressed" from="Background/QuestToAccept/AccetpQuest" to="." method="_on_accetp_quest_pressed"]
