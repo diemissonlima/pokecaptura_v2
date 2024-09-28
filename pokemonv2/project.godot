@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="PokemonV2 - TESTE"
+config/name="PokemonV2"
+run/main_scene="res://scenes/map_management/mapa_01.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.png"
+config/icon="res://icon.svg"
 
 [autoload]
 
@@ -24,6 +25,7 @@ QuestUpdate="*res://scripts/quest_update.gd"
 
 window/size/viewport_width=552
 window/size/viewport_height=300
+window/size/resizable=false
 window/size/window_width_override=1104
 window/size/window_height_override=600
 window/stretch/mode="canvas_items"
