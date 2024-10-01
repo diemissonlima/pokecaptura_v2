@@ -24,7 +24,7 @@ font_size = 12
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ScreenCapture" type="Control" node_paths=PackedStringArray("pokemon_position", "background", "options_container", "text_box", "info_captura", "pokeball_label", "greatball_label", "ultraball_label", "repeatball_label", "heavyball_label", "masterball_label") groups=["screen_capture"]]
+[node name="ScreenCapture" type="Control" node_paths=PackedStringArray("pokemon_position", "background", "options_container", "text_box", "info_captura", "button_pokeball", "pokeball_label", "button_greatball", "greatball_label", "button_ultraball", "ultraball_label", "button_repeatball", "repeatball_label", "button_heavyball", "heavyball_label", "button_masterball", "masterball_label") groups=["screen_capture"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -38,11 +38,17 @@ background = NodePath("Background")
 options_container = NodePath("Background/OptionsContainer")
 text_box = NodePath("Background/TextBox")
 info_captura = NodePath("Background/TextBox/InfoCaptura")
+button_pokeball = NodePath("Background/OptionsContainer/Pokeball")
 pokeball_label = NodePath("Background/OptionsContainer/LabelPokeball")
+button_greatball = NodePath("Background/OptionsContainer/Greatball")
 greatball_label = NodePath("Background/OptionsContainer/LabelGreatball")
+button_ultraball = NodePath("Background/OptionsContainer/Ultraball")
 ultraball_label = NodePath("Background/OptionsContainer/LabelUltraball")
+button_repeatball = NodePath("Background/OptionsContainer/Repeatball")
 repeatball_label = NodePath("Background/OptionsContainer/LabelRepeatball")
+button_heavyball = NodePath("Background/OptionsContainer/Heavyball")
 heavyball_label = NodePath("Background/OptionsContainer/LabelHeavyball")
+button_masterball = NodePath("Background/OptionsContainer/Masterball")
 masterball_label = NodePath("Background/OptionsContainer/LabelMasterball")
 
 [node name="Background" type="TextureRect" parent="."]

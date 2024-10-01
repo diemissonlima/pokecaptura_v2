@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bejfsgpq36re6"]
+[gd_scene load_steps=21 format=3 uid="uid://bejfsgpq36re6"]
 
 [ext_resource type="PackedScene" uid="uid://bhcv3qhvbuahj" path="res://scenes/map_management/base_map.tscn" id="1_i58kj"]
 [ext_resource type="PackedScene" uid="uid://dkbfjc34xipo" path="res://scenes/pokemon/gen1/porygon.tscn" id="2_1vxdn"]
@@ -14,9 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://bm3susxtr4g7a" path="res://scenes/pokemon/gen2/Wooper.tscn" id="11_33pb3"]
 [ext_resource type="PackedScene" uid="uid://blpe1hior132l" path="res://scenes/pokemon/gen2/Sudowoodo.tscn" id="12_a8jn2"]
 [ext_resource type="PackedScene" uid="uid://ds3q1li2tgdsr" path="res://scenes/pokemon/gen2/Swinub.tscn" id="13_kcvto"]
+[ext_resource type="PackedScene" uid="uid://b6gsy7p7hnamm" path="res://scenes/pokemon/gen3/lotad.tscn" id="14_j1wyy"]
+[ext_resource type="PackedScene" uid="uid://dasraabxs4lul" path="res://scenes/pokemon/gen3/kirlia.tscn" id="15_mkur2"]
+[ext_resource type="PackedScene" uid="uid://bwvchayiyuf2c" path="res://scenes/pokemon/gen3/shedinja.tscn" id="16_q5bad"]
+[ext_resource type="PackedScene" uid="uid://c70rems36vjpy" path="res://scenes/pokemon/gen3/meditite.tscn" id="17_20s58"]
+[ext_resource type="PackedScene" uid="uid://cvbhg3f6dly71" path="res://scenes/pokemon/gen3/plusle.tscn" id="18_ydrs7"]
+[ext_resource type="PackedScene" uid="uid://b2ftwg6llf4tt" path="res://scenes/pokemon/gen3/bagon.tscn" id="19_d5vmv"]
 
 [node name="Mapa11" instance=ExtResource("1_i58kj")]
-pokemon_list = Array[PackedScene]([ExtResource("2_1vxdn"), ExtResource("3_0p7rb"), ExtResource("4_0cce7"), ExtResource("5_hrid2"), ExtResource("6_xp7a2"), ExtResource("7_1r8kr"), ExtResource("8_dfv8l"), ExtResource("9_c3cm6"), ExtResource("10_joply"), ExtResource("11_33pb3"), ExtResource("12_a8jn2"), ExtResource("13_kcvto")])
+pokemon_list = Array[PackedScene]([ExtResource("2_1vxdn"), ExtResource("3_0p7rb"), ExtResource("4_0cce7"), ExtResource("5_hrid2"), ExtResource("6_xp7a2"), ExtResource("7_1r8kr"), ExtResource("8_dfv8l"), ExtResource("9_c3cm6"), ExtResource("10_joply"), ExtResource("11_33pb3"), ExtResource("12_a8jn2"), ExtResource("13_kcvto"), ExtResource("14_j1wyy"), ExtResource("15_mkur2"), ExtResource("16_q5bad"), ExtResource("17_20s58"), ExtResource("18_ydrs7"), ExtResource("19_d5vmv")])
 path_background = "res://assets/prefabs/background_map/background_11.png"
 
 [node name="Background" parent="." index="1"]
@@ -25,5 +31,5 @@ texture = ExtResource("2_ak8r4")
 [node name="MapName" parent="Background" index="0"]
 text = "Mapa 11"
 
-[node name="SpawnPosition" parent="Background" index="1"]
+[node name="SpawnPosition" parent="Background" index="2"]
 position = Vector2(278, 136)

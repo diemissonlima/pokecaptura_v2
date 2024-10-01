@@ -123,7 +123,6 @@ func update_database(table_name: String, item_used: String, type: String, value:
 	)
 	
 	var amount: int = query[0]["amount"]
-	print(amount)
 	
 	match type:
 		"increase":

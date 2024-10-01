@@ -29,11 +29,11 @@ func _give_rewards() -> void:
 	# Implementar lógica para dar recompensas (ex: itens, XP)
 	var amount: int
 	var rewards_list: Array = [
-		"Pokeball", "Greatball", "Ultraball", "Repeatball", "Crédito"
+		"Pokeball", "Greatball", "Ultraball", "Repeatball", "Heavyball", "Credito"
 	]
 	var reward = rewards_list.pick_random()
 
-	if reward == "Crédito":
+	if reward == "Credito":
 		amount = goal * 150
 		print("Recompensa: ", reward, " Quantidade: ", amount)
 		

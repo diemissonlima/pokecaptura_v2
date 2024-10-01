@@ -8,7 +8,6 @@ var active_quests: Array = []
 
 func start_new_quest(
 	name: String, description: String, objective, quest_type: String) -> void:
-	print(name)
 		
 	quest_manager = QuestManager.new()
 	

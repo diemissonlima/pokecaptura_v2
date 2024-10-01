@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("open_shop"):
+		current_money_label.text = "Créditos: " + str(SQL.verify_item_amount_on_inventory("Credito"))
 		visible = not visible
 
 

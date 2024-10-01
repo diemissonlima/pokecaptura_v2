@@ -7,11 +7,19 @@ class_name ScreenCapture
 @export var options_container: HBoxContainer
 @export var text_box: TextureRect
 @export var info_captura: Label
+
+@export_category("Pokeballs")
+@export var button_pokeball: TextureButton
 @export var pokeball_label: Label
+@export var button_greatball: TextureButton
 @export var greatball_label: Label
+@export var button_ultraball: TextureButton
 @export var ultraball_label: Label
+@export var button_repeatball: TextureButton
 @export var repeatball_label: Label
+@export var button_heavyball: TextureButton
 @export var heavyball_label: Label
+@export var button_masterball: TextureButton
 @export var masterball_label: Label
 
 var pokemon_captured
@@ -42,8 +50,6 @@ func get_pokemon(_pokemon: CharacterBody2D, poke_position: Marker2D) -> void:
 
 
 func set_capture(_pokeball_used: String) -> void:
-	update_label_pokeball()
-	
 	var random_number: float = randf()
 	var chance_of_capture: float = (pokemon_captured.catch_rate / 255) * pokeball_rate
 	
@@ -155,7 +161,7 @@ func on_button_pressed(button_name: String) -> void:
 		"Masterball":
 			pokeball_rate = 51.0
 	
-	print("Rate Pokeball: ", pokeball_rate)
+	update_label_pokeball()
 	set_capture(button_name)
 	
 
