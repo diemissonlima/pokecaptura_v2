@@ -31,7 +31,7 @@ font_size = 12
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("money_icon", "name_item_label", "cost_label", "buy_button", "alert")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("current_money_label", "money_icon", "name_item_label", "cost_label", "buy_button", "alert")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +39,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s8c2p")
+current_money_label = NodePath("Background/BackgroundMask/CurrentMoneyLabel")
 money_icon = NodePath("Background/BackgroundMask/MoneyIcon")
 name_item_label = NodePath("Background/BackgroundMask/NameItemLabel")
 cost_label = NodePath("Background/BackgroundMask/CostLabel")
@@ -515,6 +516,25 @@ text = "10"
 label_settings = SubResource("LabelSettings_ax1o7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CurrentMoneyIcon" type="TextureRect" parent="Background/BackgroundMask"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 206.0
+offset_right = 39.0
+offset_bottom = 226.0
+texture = ExtResource("8_7qo8r")
+expand_mode = 1
+
+[node name="CurrentMoneyLabel" type="Label" parent="Background/BackgroundMask"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 210.0
+offset_right = 114.0
+offset_bottom = 223.0
+text = "Créditos: 15000"
+label_settings = SubResource("LabelSettings_qira5")
+horizontal_alignment = 1
 
 [node name="MoneyIcon" type="TextureRect" parent="Background/BackgroundMask"]
 visible = false

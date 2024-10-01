@@ -10,6 +10,8 @@ class_name ScreenCapture
 @export var pokeball_label: Label
 @export var greatball_label: Label
 @export var ultraball_label: Label
+@export var repeatball_label: Label
+@export var heavyball_label: Label
 @export var masterball_label: Label
 
 var pokemon_captured
@@ -23,6 +25,8 @@ func _ready() -> void:
 	pokeball_label.text = str(SQL.verify_item_amount_on_inventory("Pokeball"))
 	greatball_label.text = str(SQL.verify_item_amount_on_inventory("Greatball"))
 	ultraball_label.text = str(SQL.verify_item_amount_on_inventory("Ultraball"))
+	repeatball_label.text = str(SQL.verify_item_amount_on_inventory("Repeatball"))
+	heavyball_label.text = str(SQL.verify_item_amount_on_inventory("Heavyball"))
 	masterball_label.text = str(SQL.verify_item_amount_on_inventory("Masterball"))
 
 
@@ -85,6 +89,8 @@ func update_label_pokeball() -> void:
 	pokeball_label.text = str(SQL.verify_item_amount_on_inventory("Pokeball"))
 	greatball_label.text = str(SQL.verify_item_amount_on_inventory("Greatball"))
 	ultraball_label.text = str(SQL.verify_item_amount_on_inventory("Ultraball"))
+	repeatball_label.text = str(SQL.verify_item_amount_on_inventory("Repeatball"))
+	heavyball_label.text = str(SQL.verify_item_amount_on_inventory("Heavyball"))
 	masterball_label.text = str(SQL.verify_item_amount_on_inventory("Masterball"))
 
 
@@ -111,22 +117,47 @@ func on_button_pressed(button_name: String) -> void:
 	match button_name:
 		"Pokeball":
 			pokeball_rate = 1.0
-			pokeball_label.text = str(SQL.verify_item_amount_on_inventory(button_name))
 			
 		"Greatball":
 			pokeball_rate = 1.5
-			greatball_label.text = str(SQL.verify_item_amount_on_inventory(button_name))
 	
 		"Ultraball":
 			pokeball_rate = 2.0
-			ultraball_label.text = str(SQL.verify_item_amount_on_inventory(button_name))
+			
+		"Repeatball":
+			if pokemon_captured.info_catch.modulate.a == 1.0:
+				pokeball_rate = 3.0
+			else:
+				pokeball_rate = 1.0
+				
+		"Heavyball":
+			if pokemon_captured.weight <= 50:
+				pokeball_rate = 0.5
+			elif pokemon_captured.weight > 50 and pokemon_captured.weight <= 150:
+				pokeball_rate = 1.0
+			elif pokemon_captured.weight > 150 and pokemon_captured.weight <= 250:
+				pokeball_rate = 1.5
+			elif pokemon_captured.weight > 250 and pokemon_captured.weight <= 350:
+				pokeball_rate = 2.0
+			elif pokemon_captured.weight > 350 and pokemon_captured.weight <= 450:
+				pokeball_rate = 2.5
+			elif pokemon_captured.weight > 450 and pokemon_captured.weight <= 550:
+				pokeball_rate = 3.0
+			elif pokemon_captured.weight > 550 and pokemon_captured.weight <= 650:
+				pokeball_rate = 3.5
+			elif pokemon_captured.weight > 650 and pokemon_captured.weight <= 750:
+				pokeball_rate = 4.0
+			elif pokemon_captured.weight > 750 and pokemon_captured.weight <= 850:
+				pokeball_rate = 4.5
+			elif pokemon_captured.weight > 850:
+				pokeball_rate = 5.0
 			
 		"Masterball":
 			pokeball_rate = 51.0
-			masterball_label.text = str(SQL.verify_item_amount_on_inventory(button_name))
 	
+	print("Rate Pokeball: ", pokeball_rate)
 	set_capture(button_name)
-
+	
 
 func _on_try_again_sim_pressed() -> void:
 	text_box.hide()

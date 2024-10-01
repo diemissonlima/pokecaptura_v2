@@ -29,7 +29,7 @@ func _give_rewards() -> void:
 	# Implementar lógica para dar recompensas (ex: itens, XP)
 	var amount: int
 	var rewards_list: Array = [
-		"Pokeball", "Greatball", "Ultraball", "Crédito"
+		"Pokeball", "Greatball", "Ultraball", "Repeatball", "Crédito"
 	]
 	var reward = rewards_list.pick_random()
 
@@ -38,7 +38,7 @@ func _give_rewards() -> void:
 		print("Recompensa: ", reward, " Quantidade: ", amount)
 		
 	else:
-		amount = randi_range(1, 5)
+		amount = randi_range(2, 5)
 		print("Recompensa: ", reward, " Quantidade: ", amount)
 		
 	SQL.update_database("inventario", reward, "increase", amount)

@@ -29,5 +29,7 @@ func load_sprite() -> void:
 		gen = "gen1"
 	elif new_slot_id > 151 and new_slot_id <= 251:
 		gen = "gen2"
+	elif new_slot_id > 251 and new_slot_id <= 386:
+		gen = "gen3"
 	
 	sprite.texture = load("res://assets/pokemon_sprite/" + gen + "/normal/" + slot_id + ".png")

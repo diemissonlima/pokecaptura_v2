@@ -2,6 +2,7 @@ extends Control
 class_name PokeShop
 
 @export_category("Objetos")
+@export var current_money_label: Label
 @export var money_icon: TextureRect
 @export var name_item_label: Label
 @export var cost_label: Label
@@ -14,6 +15,8 @@ var _amount: int
 
 
 func _ready() -> void:
+	current_money_label.text = "Créditos: " + str(SQL.verify_item_amount_on_inventory("Credito"))
+	
 	for button in get_tree().get_nodes_in_group("button_shop"):
 		button.pressed.connect(on_button_pressed.bind(button))
 
@@ -88,3 +91,4 @@ func _on_buy_button_pressed() -> void:
 	SQL.update_database("inventario", _item_name, "increase", _amount) # atualiza o item comprado
 	
 	get_tree().call_group("screen_capture", "update_label_pokeball")
+	current_money_label.text = "Créditos: " + str(SQL.verify_item_amount_on_inventory("Credito"))

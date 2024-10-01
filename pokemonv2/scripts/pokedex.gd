@@ -1,6 +1,9 @@
 extends TextureRect
 class_name Pokedex
 
+const _POKEDEX_SIZE: int = 386
+const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
+
 @export_category("Objetos")
 @export var dex_container: GridContainer
 @export var info_pokemon: TextureRect
@@ -27,6 +30,8 @@ var _slot_id: String = ""
 
 
 func _ready() -> void:
+	spawn_slot()
+	
 	for slot in dex_container.get_children():
 		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
 			show_pokemon(slot.slot_id, "visto")
@@ -48,6 +53,21 @@ func _process(_delta: float) -> void:
 		
 	if Input.is_action_just_pressed("mouse_left_click") and slot_can_click: # verifica e habilita para o slot ser clicado
 		details_pokemon(SQL.info_pokedex(_slot_id)) # envia o Slot ID para a função que vai mostrar os dados do pokemon na pokedex
+
+
+func spawn_slot() -> void:
+	var index: int = 0
+	for j in _POKEDEX_SIZE:
+		index += 1
+		var slot = _POKEDEX_SLOT.instantiate()
+		if index <= 9:
+			slot.slot_id = "00" + str(index)
+		elif index >= 10 and index <= 99:
+			slot.slot_id = "0" + str(index)
+		elif index >= 100:
+			slot.slot_id = str(index)
+			
+		dex_container.add_child(slot)
 
 
 func update_pokedex_progress() -> void:
@@ -113,6 +133,8 @@ func load_sprite(slot_id: String) -> String:
 		gen = "gen1"
 	elif new_slot_id > 151 and new_slot_id <= 251:
 		gen = "gen2"
+	elif new_slot_id > 251 and new_slot_id <= 386:
+		gen = "gen3"
 
 	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + slot_id + ".png"
 
