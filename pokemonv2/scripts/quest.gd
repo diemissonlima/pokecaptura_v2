@@ -21,7 +21,6 @@ func add_progress(amount: int) -> void:
 func complete_quest() -> void:
 	if not is_complete:
 		is_complete = true
-		print("Quest completada: %s" % quest_name)
 		_give_rewards()
 
 
@@ -36,11 +35,9 @@ func _give_rewards() -> void:
 
 	if reward == "Credito":
 		amount = goal * 150
-		print("Recompensa: ", reward, " Quantidade: ", amount)
 		
 	else:
 		amount = randi_range(2, 5)
-		print("Recompensa: ", reward, " Quantidade: ", amount)
 		
 	SQL.update_database("inventario", reward, "increase", amount)
 	

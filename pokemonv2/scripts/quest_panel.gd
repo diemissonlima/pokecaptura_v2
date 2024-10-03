@@ -41,9 +41,7 @@ func _ready() -> void:
 		quest_objective = QuestUpdate.active_quests[0].goal
 		quest_progress = QuestUpdate.active_quests[0].progress
 		
-		quest_name_progress_label.text = "- " + quest_name
-		quest_progress_label.text = str(quest_progress) + " / " + str(quest_objective)
-		quest_description_progress_label.text = quest_description
+		update_textlabel_quest_progress()
 
 
 func _process(_delta: float) -> void:
@@ -56,7 +54,7 @@ func _process(_delta: float) -> void:
 		elif QuestUpdate.active_quests.size() == 0:
 			$Background/QuestToAccept.show()
 			$Background/Quests.hide()
-			
+
 
 func generate_quest() -> void:
 	var aux_available_quests: Array = []
@@ -156,6 +154,12 @@ func update_quest_progress(value: int) -> void:
 	quest_progress_label.text = str(quest_progress) + " / " + str(quest_objective)
 
 
+func update_textlabel_quest_progress() -> void:
+	quest_name_progress_label.text = "- " + quest_name
+	quest_progress_label.text = str(quest_progress) + " / " + str(quest_objective)
+	quest_description_progress_label.text = quest_description
+
+
 func on_button_pressed(button_name: String) -> void:
 	match button_name:
 		"AcceptQuest1":
@@ -176,11 +180,10 @@ func on_button_pressed(button_name: String) -> void:
 			quest_objective = available_quests[2][2]
 			quest_type = available_quests[2][3]
 	
-	QuestUpdate.start_new_quest(quest_name, quest_description, quest_objective, quest_type)
 	
-	quest_progress_label.text = str(quest_progress) + " / " + str(quest_objective)
-	quest_name_progress_label.text = "- " + quest_name
-	quest_description_progress_label.text = quest_description
+	update_textlabel_quest_progress()
+	
+	QuestUpdate.start_new_quest(quest_name, quest_description, quest_objective, quest_type)
 	
 	$Background/QuestToAccept.hide()
 	$Background/Quests.show()
