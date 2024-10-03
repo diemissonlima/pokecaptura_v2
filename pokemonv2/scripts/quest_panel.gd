@@ -47,8 +47,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quest_panel"):
 		visible = not visible
+		
 		if QuestUpdate.active_quests.size() == 1:
-			
 			$Background/QuestToAccept.hide()
 			$Background/Quests.show()
 		elif QuestUpdate.active_quests.size() == 0:

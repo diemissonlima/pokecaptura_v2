@@ -30,13 +30,12 @@ var pokeball_rate: float
 func _ready() -> void:
 	for button in get_tree().get_nodes_in_group("button_on_screen_capture"):
 		button.pressed.connect(on_button_pressed.bind(button.name))
-		
-	pokeball_label.text = str(SQL.verify_item_amount_on_inventory("Pokeball"))
-	greatball_label.text = str(SQL.verify_item_amount_on_inventory("Greatball"))
-	ultraball_label.text = str(SQL.verify_item_amount_on_inventory("Ultraball"))
-	repeatball_label.text = str(SQL.verify_item_amount_on_inventory("Repeatball"))
-	heavyball_label.text = str(SQL.verify_item_amount_on_inventory("Heavyball"))
-	masterball_label.text = str(SQL.verify_item_amount_on_inventory("Masterball"))
+	
+	update_label_pokeball()
+
+
+func _process(_delta: float) -> void:
+	show_pokeball_button()
 
 
 func get_texture_path(path: String) -> void:
@@ -90,6 +89,50 @@ func set_capture(_pokeball_used: String) -> void:
 
 func drop(value: int) -> void:
 	SQL.update_database("inventario", "Credito", "increase", value)
+
+
+func show_pokeball_button() -> void:
+	if int(pokeball_label.text) <= 0:
+		button_pokeball.hide()
+		pokeball_label.hide()
+	else:
+		button_pokeball.show()
+		pokeball_label.show()
+	
+	if int(greatball_label.text) <= 0:
+		button_greatball.hide()
+		greatball_label.hide()
+	else:
+		button_greatball.show()
+		greatball_label.show()
+		
+	if int(ultraball_label.text) <= 0:
+		button_ultraball.hide()
+		ultraball_label.hide()
+	else:
+		button_ultraball.show()
+		ultraball_label.show()
+	
+	if int(masterball_label.text) <= 0:
+		button_masterball.hide()
+		masterball_label.hide()
+	else:
+		button_masterball.show()
+		masterball_label.show()
+		
+	if int(repeatball_label.text) <= 0:
+		button_repeatball.hide()
+		repeatball_label.hide()
+	else:
+		button_masterball.show()
+		masterball_label.show()
+		
+	if int(heavyball_label.text) <= 0:
+		button_heavyball.hide()
+		heavyball_label.hide()
+	else:
+		button_heavyball.show()
+		heavyball_label.show()
 
 
 func update_label_pokeball() -> void:

@@ -1,0 +1,786 @@
+[gd_scene load_steps=27 format=3 uid="uid://y2o85cgbhjog"]
+
+[ext_resource type="Script" path="res://scripts/achievements.gd" id="1_83txt"]
+[ext_resource type="Texture2D" uid="uid://2xrf11fjdnak" path="res://assets/prefabs/interface/background_achievements.png" id="1_y2fjk"]
+[ext_resource type="Texture2D" uid="uid://ctue1djlmon05" path="res://assets/prefabs/interface/title_background.png" id="2_iluy4"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="3_quuk6"]
+[ext_resource type="Texture2D" uid="uid://u1gyeeacbug2" path="res://assets/prefabs/pokemon_type/bug.png" id="4_vvm2x"]
+[ext_resource type="Texture2D" uid="uid://c0kkkf37mem18" path="res://assets/prefabs/pokemon_type/dark.png" id="5_7qvgk"]
+[ext_resource type="Texture2D" uid="uid://byy2c6vkoo27w" path="res://assets/prefabs/interface/Background Static.png" id="6_7k2up"]
+[ext_resource type="Texture2D" uid="uid://cefnl4m4le5u3" path="res://assets/prefabs/pokemon_type/dragon.png" id="6_8cwe5"]
+[ext_resource type="Texture2D" uid="uid://bdxlee5hqcw68" path="res://assets/prefabs/interface/Background Bar.png" id="7_1qra1"]
+[ext_resource type="Texture2D" uid="uid://bgiloaseigk8y" path="res://assets/prefabs/pokemon_type/electric.png" id="7_lsa8r"]
+[ext_resource type="Texture2D" uid="uid://dxq3uwl0fpuxg" path="res://assets/prefabs/pokemon_type/fairy.png" id="8_thoit"]
+[ext_resource type="Texture2D" uid="uid://js6uvy5ljhyh" path="res://assets/prefabs/pokemon_type/fighting.png" id="9_auih4"]
+[ext_resource type="Texture2D" uid="uid://b5o53ggo35yeh" path="res://assets/prefabs/pokemon_type/fire.png" id="10_ngsye"]
+[ext_resource type="Texture2D" uid="uid://bp5oaicqn25cg" path="res://assets/prefabs/pokemon_type/flying.png" id="11_3wlb1"]
+[ext_resource type="Texture2D" uid="uid://n5oqptp7m4f7" path="res://assets/prefabs/pokemon_type/ghost.png" id="12_bwd7p"]
+[ext_resource type="Texture2D" uid="uid://bg7tdqfie2p5u" path="res://assets/prefabs/pokemon_type/grass.png" id="13_w0vts"]
+[ext_resource type="Texture2D" uid="uid://duvd7ed68vp05" path="res://assets/prefabs/pokemon_type/ground.png" id="14_5nlno"]
+[ext_resource type="Texture2D" uid="uid://eg7fa0jwcclo" path="res://assets/prefabs/pokemon_type/ice.png" id="15_5plea"]
+[ext_resource type="Texture2D" uid="uid://c0plbaewmvve" path="res://assets/prefabs/pokemon_type/normal.png" id="16_8ojww"]
+[ext_resource type="Texture2D" uid="uid://c25q1prkk162f" path="res://assets/prefabs/pokemon_type/poison.png" id="17_gqc4v"]
+[ext_resource type="Texture2D" uid="uid://debpi8qdfk2j3" path="res://assets/prefabs/pokemon_type/psychic.png" id="18_rrqjq"]
+[ext_resource type="Texture2D" uid="uid://dd8pxlwhowo8w" path="res://assets/prefabs/pokemon_type/rock.png" id="19_dur6f"]
+[ext_resource type="Texture2D" uid="uid://c8p3oiq0cl8xi" path="res://assets/prefabs/pokemon_type/steel.png" id="20_he6ic"]
+[ext_resource type="Texture2D" uid="uid://by3600k26ot2s" path="res://assets/prefabs/pokemon_type/water.png" id="21_q2cj7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6xi3"]
+line_spacing = 0.0
+font = ExtResource("3_quuk6")
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_rk0yy"]
+line_spacing = 0.0
+font = ExtResource("3_quuk6")
+font_size = 22
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Achievements" type="Control" node_paths=PackedStringArray("type_container") groups=["achievements"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_83txt")
+type_container = NodePath("Background/TypeContainer")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_y2fjk")
+
+[node name="Title" type="TextureRect" parent="Background"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.5
+offset_top = 8.0
+offset_right = 91.5
+offset_bottom = 48.0
+grow_horizontal = 2
+texture = ExtResource("2_iluy4")
+
+[node name="Label" type="Label" parent="Background/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -8.5
+offset_right = 46.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Conquistas"
+label_settings = SubResource("LabelSettings_f6xi3")
+
+[node name="TypeContainer" type="GridContainer" parent="Background"]
+custom_minimum_size = Vector2(0, 388)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -51.0
+offset_right = 1444.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 200
+columns = 6
+
+[node name="Bug" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("4_vvm2x")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Bug"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Bug/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Dark" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("5_7qvgk")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Dark"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Dark/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Dragon" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("6_8cwe5")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Dragon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Dragon/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Electric" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("7_lsa8r")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Electric"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Electric/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Fairy" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("8_thoit")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Fairy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Fairy/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Fighting" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("9_auih4")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Fighting"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Fighting/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Fire" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("10_ngsye")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Fire"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Fire/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Flying" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("11_3wlb1")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Flying"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Flying/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Ghost" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("12_bwd7p")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Ghost"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Ghost/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Grass" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("13_w0vts")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Grass"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Grass/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Ground" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("14_5nlno")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Ground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Ground/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Ice" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("15_5plea")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Ice"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Ice/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Normal" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("16_8ojww")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Normal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Normal/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Poison" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("17_gqc4v")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Poison"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Poison/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Psychic" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("18_rrqjq")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Psychic"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Psychic/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Rock" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("19_dur6f")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Rock"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Rock/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Steel" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("20_he6ic")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Steel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.3334
+offset_top = 33.3333
+offset_right = 53.6666
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Steel/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
+
+[node name="Water" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("21_q2cj7")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background/TypeContainer/Water"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 33.3333
+offset_right = 53.5
+offset_bottom = 73.3333
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("6_7k2up")
+texture_progress = ExtResource("7_1qra1")
+
+[node name="Label" type="Label" parent="Background/TypeContainer/Water/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 1"
+label_settings = SubResource("LabelSettings_rk0yy")
