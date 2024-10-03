@@ -10,6 +10,7 @@ class_name Quest
 @export var goal: int = 0  # Número de itens ou ações necessárias para completar a quest
 @export var progress: int = 0  # Progresso atual da quest
 
+
 # Método para adicionar progresso
 func add_progress(amount: int) -> void:
 	progress += amount
@@ -42,3 +43,8 @@ func _give_rewards() -> void:
 		print("Recompensa: ", reward, " Quantidade: ", amount)
 		
 	SQL.update_database("inventario", reward, "increase", amount)
+	
+	var quest_info: Array = []
+	quest_info.append([quest_name, reward, amount])
+	
+	QuestUpdate.notify_quest_rewards(quest_info)

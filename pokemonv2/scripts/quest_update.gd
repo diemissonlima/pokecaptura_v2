@@ -6,6 +6,10 @@ var quest_manager: QuestManager
 var active_quests: Array = []
 
 
+func notify_quest_rewards(quest_info: Array) -> void:
+	get_tree().call_group("screen_capture", "show_quest_rewards", quest_info)
+
+
 func start_new_quest(
 	name: String, description: String, objective, quest_type: String) -> void:
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1fbhfp67w6j0"]
+[gd_scene load_steps=13 format=3 uid="uid://1fbhfp67w6j0"]
 
 [ext_resource type="Script" path="res://scripts/screen_capture.gd" id="1_sutfu"]
 [ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="2_ld1u6"]
@@ -24,7 +24,14 @@ font_size = 12
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ScreenCapture" type="Control" node_paths=PackedStringArray("pokemon_position", "background", "options_container", "text_box", "info_captura", "button_pokeball", "pokeball_label", "button_greatball", "greatball_label", "button_ultraball", "ultraball_label", "button_repeatball", "repeatball_label", "button_heavyball", "heavyball_label", "button_masterball", "masterball_label") groups=["screen_capture"]]
+[sub_resource type="LabelSettings" id="LabelSettings_4bg1u"]
+line_spacing = 0.0
+font = ExtResource("3_01mhj")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ScreenCapture" type="Control" node_paths=PackedStringArray("pokemon_position", "background", "options_container", "text_box", "info_captura", "rewards_info", "button_pokeball", "pokeball_label", "button_greatball", "greatball_label", "button_ultraball", "ultraball_label", "button_repeatball", "repeatball_label", "button_heavyball", "heavyball_label", "button_masterball", "masterball_label") groups=["screen_capture"]]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -38,6 +45,7 @@ background = NodePath("Background")
 options_container = NodePath("Background/OptionsContainer")
 text_box = NodePath("Background/TextBox")
 info_captura = NodePath("Background/TextBox/InfoCaptura")
+rewards_info = NodePath("RewardsInfo")
 button_pokeball = NodePath("Background/OptionsContainer/Pokeball")
 pokeball_label = NodePath("Background/OptionsContainer/LabelPokeball")
 button_greatball = NodePath("Background/OptionsContainer/Greatball")
@@ -68,9 +76,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -134.0
+offset_left = -173.5
 offset_top = 61.0
-offset_right = 408.0
+offset_right = 479.5
 offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -214,6 +222,24 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_01mhj")
 theme_override_font_sizes/font_size = 12
 text = "Não"
+
+[node name="RewardsInfo" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -31.0
+offset_right = 147.0
+offset_bottom = 8.0
+grow_vertical = 2
+text = "Quest \"\" Completada!
+Recompensa: 250 Créditos"
+label_settings = SubResource("LabelSettings_4bg1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="Background/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Background/Sim" to="." method="_on_try_again_sim_pressed"]

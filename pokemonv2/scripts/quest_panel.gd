@@ -18,8 +18,9 @@ var quest_description: String
 var quest_objective
 
 var quest_progress: int = 0
-var quest_reward_amount: int = 0
 var quest_type: String = ""
+
+var quest_reward_amount: int = 0
 var quest_reward: String = ""
 
 var available_quests: Array = []
@@ -55,7 +56,7 @@ func _process(_delta: float) -> void:
 		elif QuestUpdate.active_quests.size() == 0:
 			$Background/QuestToAccept.show()
 			$Background/Quests.hide()
-
+			
 
 func generate_quest() -> void:
 	var aux_available_quests: Array = []
@@ -125,7 +126,7 @@ func generate_quest() -> void:
 	
 	quest_name = name_list[type].pick_random()
 	
-	quest_objective = randi_range(1, 5)
+	quest_objective = randi_range(1, 1)
 	quest_type = type
 	
 	quest_description = "Capture " + str(quest_objective) + " Pokémon do tipo " + quest_type.capitalize()

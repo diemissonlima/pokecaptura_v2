@@ -7,6 +7,7 @@ class_name ScreenCapture
 @export var options_container: HBoxContainer
 @export var text_box: TextureRect
 @export var info_captura: Label
+@export var rewards_info: Label
 
 @export_category("Pokeballs")
 @export var button_pokeball: TextureButton
@@ -100,10 +101,20 @@ func update_label_pokeball() -> void:
 	masterball_label.text = str(SQL.verify_item_amount_on_inventory("Masterball"))
 
 
+func show_quest_rewards(quest_info: Array) -> void:
+	var quest_name = quest_info[0][0]
+	var quest_item = quest_info[0][1]
+	var quest_amount = quest_info[0][2]
+	
+	rewards_info.text = "Quest " + quest_name + " Completada! Recompensa: " + str(quest_amount) + " " + quest_item + "!" 
+	rewards_info.show()
+
+
 func _on_quit_pressed() -> void:
 	$Background/TryAgain.hide()
 	$Background/Sim.hide()
 	$Background/Nao.hide()
+	rewards_info.hide()
 	text_box.hide()
 	options_container.show()
 	pokemon_captured.queue_free()
