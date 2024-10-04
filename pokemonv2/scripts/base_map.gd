@@ -30,10 +30,10 @@ func _ready() -> void:
 	get_tree().call_group("screen_capture", "get_texture_path", path_background)
 	spawn_legendary()
 	
-	set_map_progress()
+	update_map_progress()
 
 
-func set_map_progress() -> void:
+func update_map_progress() -> void:
 	var progress_map = SQL.verify_map_progress(map_name)
 	
 	progress_map_bar.max_value = progress_map[0]
