@@ -5,7 +5,8 @@ extends Control
 
 
 var achievement_level_dict: Dictionary = {
-	"1": 1, "2": 5, "3": 10, "4": 15, "5": 20
+	"1": 5, "2": 10, "3": 15, "4": 20, "5": 25,
+	"6": 30, "7": 35, "8": 40, "9": 45, "10": 50
 }
 
 
@@ -22,6 +23,11 @@ func _ready() -> void:
 		progress_bar_label.text = str(achievement_info[0]) + " / " + str(achievement_level_dict[str(achievement_info[1])])
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("achievement"):
+		visible = not visible
+
+
 func update_achievement(type: String) -> void:
 	for j in type_container.get_children():
 		if type == j.name:
@@ -29,16 +35,24 @@ func update_achievement(type: String) -> void:
 			var progress_bar_label = progress_bar.get_node("Label")
 			var achievement_info = SQL.verify_achievement(type)
 			
-			achievement_info[0] += 1
-			progress_bar.value = achievement_info[0]
+			var amount = achievement_info[0]
+			var current_level = achievement_info[1]
 			
-			if achievement_info[0] == achievement_level_dict[str(achievement_info[1])]:
-				achievement_level_up()
-				print("Aumentar o nivel da conquista")
+			amount += 1
+			progress_bar.value = amount
 			
-			progress_bar_label.text = str(progress_bar.value) + " / " + str(achievement_level_dict[str(achievement_info[1])])
+			SQL.update_achievement(type, "amount", amount)
+			
+			if amount == achievement_level_dict[str(current_level)]:
+				current_level += 1
+				progress_bar.max_value = achievement_level_dict[str(current_level)]
+				
+				achievement_level_up(type, current_level)
+			
+			progress_bar_label.text = str(progress_bar.value) + " / " + str(achievement_level_dict[str(current_level)])
 
 
-func achievement_level_up() -> void:
-	#update database
-	pass
+func achievement_level_up(type: String, current_level: int) -> void:
+	SQL.update_achievement(type, "current_level", current_level)
+	
+	get_tree().call_group("screen_capture", "notify_achievement_levelup", type)

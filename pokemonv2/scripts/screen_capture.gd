@@ -61,7 +61,12 @@ func set_capture(_pokeball_used: String) -> void:
 		else:
 			SQL.update_pokemon(pokemon_captured.id_dex, "capturado")
 		
-		get_tree().call_group("achievements", "update_achievement", pokemon_captured.primary_type)
+		if pokemon_captured.secondary_type == pokemon_captured.primary_type:
+			get_tree().call_group("achievements", "update_achievement", pokemon_captured.primary_type)
+		else:
+			get_tree().call_group("achievements", "update_achievement", pokemon_captured.primary_type)
+			get_tree().call_group("achievements", "update_achievement", pokemon_captured.secondary_type)
+		
 		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado")
 		
 		info_captura.text = "Pokemon Capturado!\nDrop: " + str(pokemon_captured.dropped_credit) + " Créditos"
@@ -123,8 +128,8 @@ func show_pokeball_button() -> void:
 		button_repeatball.hide()
 		repeatball_label.hide()
 	else:
-		button_masterball.show()
-		masterball_label.show()
+		button_repeatball.show()
+		repeatball_label.show()
 		
 	if int(heavyball_label.text) <= 0:
 		button_heavyball.hide()
@@ -149,6 +154,11 @@ func show_quest_rewards(quest_info: Array) -> void:
 	var quest_amount = quest_info[0][2]
 	
 	rewards_info.text = "Quest " + quest_name + " Completada! Recompensa: " + str(quest_amount) + " " + quest_item + "!" 
+	rewards_info.show()
+
+
+func notify_achievement_levelup(type: String) -> void:
+	rewards_info.text = "Conquista do tipo " + type + " subiu de nível!"
 	rewards_info.show()
 
 

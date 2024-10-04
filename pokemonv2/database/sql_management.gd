@@ -178,6 +178,31 @@ func verify_achievement(type: String) -> Array:
 	return achievement_info
 
 
+func update_achievement(type: String, column: String, value) -> void:
+	db.update_rows("conquistas", "name = '" + type + "'", {column: value})
+
+
+func verify_map_progress(map_name: String) -> Array:
+	var amount_in_map: int
+	var amount_captured_in_map: int
+	var progress_map: Array = []
+	
+	db.query(
+		"SELECT COUNT(*) FROM pokemon WHERE mapa = '" + map_name + "'"
+	)
+	amount_in_map = db.query_result[0]["COUNT(*)"]
+	
+	db.query(
+		"SELECT COUNT(*) FROM pokemon WHERE mapa = '" + map_name + "'" + "AND status_pokedex = 2"
+	)
+	amount_captured_in_map = db.query_result[0]["COUNT(*)"]
+
+	progress_map.append(amount_in_map)
+	progress_map.append(amount_captured_in_map)
+	
+	return progress_map
+
+
 func info_pokedex(id: String) -> Dictionary:
 	var query = db.select_rows(
 		"pokemon",

@@ -12,8 +12,11 @@ class_name BaseMap
 @export var info: Label
 @export var info2: Label
 @export var spawn_lendario: Label
+@export var map_name_label: Label
+@export var progress_map_bar: ProgressBar
 
 @export_category("Variaveis")
+@export var map_name: String
 @export var pokemon_list: Array[PackedScene]
 @export var pokemon_legendary_list: Array[PackedScene]
 @export var path_background: String
@@ -22,8 +25,19 @@ var pokemon_spawned
 
 
 func _ready() -> void:
+	map_name_label.text = "Mapa " + map_name
+	
 	get_tree().call_group("screen_capture", "get_texture_path", path_background)
 	spawn_legendary()
+	
+	set_map_progress()
+
+
+func set_map_progress() -> void:
+	var progress_map = SQL.verify_map_progress(map_name)
+	
+	progress_map_bar.max_value = progress_map[0]
+	progress_map_bar.value = progress_map[1]
 
 
 func spawn_legendary() -> void:
