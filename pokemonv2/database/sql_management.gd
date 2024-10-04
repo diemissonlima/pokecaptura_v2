@@ -161,16 +161,21 @@ func verify_pokemon_captured(id: String) -> int:
 	return 0
 
 
-func verify_statistics(item_name: String) -> int:
+func verify_achievement(type: String) -> Array:
 	var query = db.select_rows(
-		"estatisticas",
-		"name = '" + item_name + "'",
+		"conquistas",
+		"name = '" + type + "'",
 		["*"]
 	)
+	var achievement_info: Array = []
 	
 	var amount: int = query[0]["amount"]
+	var current_level: int = query[0]["current_level"]
 	
-	return amount
+	achievement_info.append(amount)
+	achievement_info.append(current_level)
+	
+	return achievement_info
 
 
 func info_pokedex(id: String) -> Dictionary:

@@ -60,8 +60,8 @@ func set_capture(_pokeball_used: String) -> void:
 			SQL.update_pokemon(pokemon_captured.id_dex, "shiny_capturado")
 		else:
 			SQL.update_pokemon(pokemon_captured.id_dex, "capturado")
-			
-		# SQL.update_database("estatisticas", "pokemon_capturado", "increase", 1)
+		
+		get_tree().call_group("achievements", "update_achievement", pokemon_captured.primary_type)
 		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado")
 		
 		info_captura.text = "Pokemon Capturado!\nDrop: " + str(pokemon_captured.dropped_credit) + " Créditos"
@@ -78,7 +78,6 @@ func set_capture(_pokeball_used: String) -> void:
 					QuestUpdate.on_item_collected(quest.quest_name)
 		
 	else:
-		# SQL.update_database("estatisticas", "pokemon_perdido", "increase", 1)
 		
 		info_captura.text = "Pokemon Escapou!!! Tentar Captura Novamente?"
 		$Background/Sim.show()

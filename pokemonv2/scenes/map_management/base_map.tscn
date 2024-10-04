@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=34 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c61lnf7vpv3bf" path="res://scenes/pokemon/gen3/rayquaza.tscn" id="20_wmw3a"]
 [ext_resource type="PackedScene" uid="uid://b3ssitmgh4uoc" path="res://scenes/pokemon/gen3/jirachi.tscn" id="21_uhv7v"]
 [ext_resource type="PackedScene" uid="uid://cygef5pvqr3sd" path="res://scenes/pokemon/gen3/deoxys.tscn" id="22_3sg36"]
+[ext_resource type="PackedScene" uid="uid://y2o85cgbhjog" path="res://scenes/interface/achievements.tscn" id="28_r0gsr"]
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
 [ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
@@ -83,6 +84,8 @@ visible = false
 [node name="Map" parent="Interface" instance=ExtResource("156_kegge")]
 
 [node name="QuestPanel" parent="Interface" instance=ExtResource("17_csu76")]
+
+[node name="Achievements" parent="Interface" instance=ExtResource("28_r0gsr")]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
