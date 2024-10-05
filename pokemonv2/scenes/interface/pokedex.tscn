@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwwku3dl7y2yj"]
+[gd_scene load_steps=12 format=3 uid="uid://dwwku3dl7y2yj"]
 
 [ext_resource type="Texture2D" uid="uid://bg8kfj6a0gjmo" path="res://assets/prefabs/interface/background.png" id="1_3gsba"]
+[ext_resource type="Texture2D" uid="uid://bmbn6b2h26ueo" path="res://assets/prefabs/interface/background_pokedex.png" id="1_bk84a"]
 [ext_resource type="Script" path="res://scripts/pokedex.gd" id="2_opbv4"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="4_y44fa"]
 [ext_resource type="Texture2D" uid="uid://cnwktcanwvcq7" path="res://assets/prefabs/interface/summary_01.png" id="5_5u2u0"]
@@ -11,7 +12,7 @@
 line_spacing = 0.0
 font = ExtResource("4_y44fa")
 font_size = 22
-outline_size = 3
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_b6yap"]
@@ -37,6 +38,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_kanto_container", "dex_johto_container", "dex_hoenn_container", "info_pokemon", "title", "seen_title", "catch_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
 visible = false
+self_modulate = Color(1, 1, 1, 0.588235)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -49,7 +51,7 @@ offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("1_3gsba")
+texture = ExtResource("1_bk84a")
 script = ExtResource("2_opbv4")
 dex_kanto_container = NodePath("ScrollContainer/DexKantoContainer")
 dex_johto_container = NodePath("ScrollContainer/DexJohtoContainer")
