@@ -70,7 +70,7 @@ func set_capture(_pokeball_used: String) -> void:
 			get_tree().call_group("achievements", "update_achievement", pokemon_captured.secondary_type)
 		
 		get_tree().call_group("mapa", "update_map_progress")
-		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado")
+		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado", pokemon_captured.region)
 		
 		info_captura.text = "Pokemon Capturado!\nDrop: " + str(pokemon_captured.dropped_credit) + " Créditos"
 		

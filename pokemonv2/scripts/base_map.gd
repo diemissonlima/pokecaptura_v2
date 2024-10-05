@@ -102,4 +102,4 @@ func _on_spawn_timer_timeout() -> void:
 	if SQL.verify_pokemon_captured(pokemon_spawned.id_dex) == 2:
 			return
 			
-	get_tree().call_group("pokedex_info", "show_pokemon", pokemon_spawned.id_dex, "visto")
+	get_tree().call_group("pokedex_info", "show_pokemon", pokemon_spawned.id_dex, "visto", pokemon_spawned.region)

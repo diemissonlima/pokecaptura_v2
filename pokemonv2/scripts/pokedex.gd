@@ -94,30 +94,42 @@ func update_pokedex_progress() -> void:
 
 
 func show_pokemon_on_ready_scene() -> void:
-	for slot in dex_kanto_container.get_children():
-		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
-			show_pokemon(slot.slot_id, "visto", dex_kanto_container)
+	var region_dict: Dictionary = {
+		"Kanto": dex_kanto_container,
+		"Johto": dex_johto_container,
+		"Hoenn": dex_hoenn_container
+	}
+	
+	var region: String
+	
+	for slot in region_dict.values():
+		var target_slot = slot.get_children()
+		
+		for j in target_slot:
+			var new_id = int(j.slot_id)
+			if new_id <= 151:
+				region = "Kanto"
+			elif new_id > 151 and new_id <= 252:
+				region = "Johto"
+			elif new_id > 252 and new_id <= 386:
+				region = "Hoenn"
 			
-		elif SQL.verify_pokemon_captured(slot.slot_id) == 2:
-			show_pokemon(slot.slot_id, "capturado", dex_kanto_container)
-			
-	for slot in dex_johto_container.get_children():
-		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
-			show_pokemon(slot.slot_id, "visto", dex_johto_container)
+		for i in region_dict[region].get_children():
+			if SQL.verify_pokemon_captured(i.slot_id) == 1:
+				show_pokemon(i.slot_id, "visto", region)
 				
-		elif SQL.verify_pokemon_captured(slot.slot_id) == 2:
-			show_pokemon(slot.slot_id, "capturado", dex_johto_container)
-			
-	for slot in dex_hoenn_container.get_children():
-		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
-			show_pokemon(slot.slot_id, "visto", dex_hoenn_container)
-				
-		elif SQL.verify_pokemon_captured(slot.slot_id) == 2:
-			show_pokemon(slot.slot_id, "capturado", dex_hoenn_container)
+			elif SQL.verify_pokemon_captured(i.slot_id) == 2:
+				show_pokemon(i.slot_id, "capturado", region)
 
 
-func show_pokemon(id: String, status: String, pokedex: GridContainer) -> void:
-	for slot in pokedex.get_children():
+func show_pokemon(id: String, status: String, region: String) -> void:
+	var region_dict: Dictionary = {
+		"Kanto": dex_kanto_container,
+		"Johto": dex_johto_container,
+		"Hoenn": dex_hoenn_container
+	}
+	
+	for slot in region_dict[region].get_children():
 		if slot.slot_id == id:
 			slot.id_poke.show()
 			match status:
