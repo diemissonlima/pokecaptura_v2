@@ -35,8 +35,7 @@ font_size = 8
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_container", "info_pokemon", "title", "seen_title", "catch_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
-visible = false
+[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_kanto_container", "dex_johto_container", "dex_hoenn_container", "info_pokemon", "title", "seen_title", "catch_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -51,7 +50,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_3gsba")
 script = ExtResource("2_opbv4")
-dex_container = NodePath("ScrollContainer/GridContainer")
+dex_kanto_container = NodePath("ScrollContainer/DexKantoContainer")
+dex_johto_container = NodePath("ScrollContainer/DexJohtoContainer")
+dex_hoenn_container = NodePath("ScrollContainer/DexHoennContainer")
 info_pokemon = NodePath("InfoPokemon")
 title = NodePath("InfoPokemon/SummaryBG/PokeName")
 seen_title = NodePath("HBoxContainer/Seen")
@@ -68,15 +69,52 @@ seen_shiny = NodePath("InfoPokemon/SummaryBG02/VistoShiny/Amount")
 dex_description = NodePath("InfoPokemon/SummaryBG02/Descricao/TextDescricao")
 info_local = NodePath("InfoPokemon/SummaryBG02/Descricao/InfoLocal")
 
+[node name="GenButtonContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 24.0
+offset_right = 132.0
+offset_bottom = 47.0
+grow_horizontal = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 50
+
+[node name="Kanto" type="Button" parent="GenButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_y44fa")
+theme_override_font_sizes/font_size = 12
+text = "Kanto"
+
+[node name="Johto" type="Button" parent="GenButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_y44fa")
+theme_override_font_sizes/font_size = 12
+text = "Johto"
+
+[node name="Hoenn" type="Button" parent="GenButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_y44fa")
+theme_override_font_sizes/font_size = 12
+text = "Hoenn"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -138.5
-offset_top = 3.0
+offset_top = 2.0
 offset_right = 138.5
-offset_bottom = 26.0
+offset_bottom = 25.0
 grow_horizontal = 2
 theme_override_constants/separation = 30
 
@@ -93,11 +131,26 @@ label_settings = SubResource("LabelSettings_vwwee")
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 offset_left = 29.0
-offset_top = 31.0
+offset_top = 45.0
 offset_right = 434.0
-offset_bottom = 261.0
+offset_bottom = 268.0
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="DexKantoContainer" type="GridContainer" parent="ScrollContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 8
+
+[node name="DexJohtoContainer" type="GridContainer" parent="ScrollContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 8
+
+[node name="DexHoennContainer" type="GridContainer" parent="ScrollContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 5

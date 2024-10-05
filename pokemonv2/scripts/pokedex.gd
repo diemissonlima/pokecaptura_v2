@@ -1,11 +1,17 @@
 extends TextureRect
 class_name Pokedex
 
+const _POKEDEX_KANTO_SIZE: int = 151
+const _POKEDEX_JOHTO_SIZE: int = 100
+const _POKEDEX_HOENN_SIZE: int = 135
+
 const _POKEDEX_SIZE: int = 386
 const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 
 @export_category("Objetos")
-@export var dex_container: GridContainer
+@export var dex_kanto_container: GridContainer
+@export var dex_johto_container: GridContainer
+@export var dex_hoenn_container: GridContainer
 @export var info_pokemon: TextureRect
 
 @export_category("Obejtos InfoPokedex")
@@ -31,17 +37,14 @@ var _slot_id: String = ""
 
 func _ready() -> void:
 	spawn_slot()
+	show_pokemon_on_ready_scene()
 	
-	for slot in dex_container.get_children():
-		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
-			show_pokemon(slot.slot_id, "visto")
-			
-		elif SQL.verify_pokemon_captured(slot.slot_id) == 2:
-			show_pokemon(slot.slot_id, "capturado")
-			
 	for slot in get_tree().get_nodes_in_group("slot"): # for pra conectar o sinal de mouse entered/exited no slot
 		slot.mouse_entered.connect(on_mouse_entered.bind(slot.slot_id)) # sinal conectado com base no ID do slot
 		slot.mouse_exited.connect(on_mouse_exited.bind(slot.slot_id))
+		
+	for button in $GenButtonContainer.get_children():
+		button.pressed.connect(switch_dex_button_pressed.bind(button.name))
 
 
 func _process(_delta: float) -> void:
@@ -57,9 +60,10 @@ func _process(_delta: float) -> void:
 
 func spawn_slot() -> void:
 	var index: int = 0
-	for j in _POKEDEX_SIZE:
+	for j in _POKEDEX_KANTO_SIZE:
 		index += 1
 		var slot = _POKEDEX_SLOT.instantiate()
+		
 		if index <= 9:
 			slot.slot_id = "00" + str(index)
 		elif index >= 10 and index <= 99:
@@ -67,7 +71,21 @@ func spawn_slot() -> void:
 		elif index >= 100:
 			slot.slot_id = str(index)
 			
-		dex_container.add_child(slot)
+		dex_kanto_container.add_child(slot)
+	
+	for j in _POKEDEX_JOHTO_SIZE:
+		index += 1
+		var slot = _POKEDEX_SLOT.instantiate()
+		slot.slot_id = str(index)
+		
+		dex_johto_container.add_child(slot)
+		
+	for j in _POKEDEX_HOENN_SIZE:
+		index += 1
+		var slot = _POKEDEX_SLOT.instantiate()
+		slot.slot_id = str(index)
+		
+		dex_hoenn_container.add_child(slot)
 
 
 func update_pokedex_progress() -> void:
@@ -75,8 +93,31 @@ func update_pokedex_progress() -> void:
 	catch_title.text = "Capturado: " + str(SQL.return_pokedex_progress()[1])
 
 
-func show_pokemon(id: String, status: String) -> void:
-	for slot in dex_container.get_children():
+func show_pokemon_on_ready_scene() -> void:
+	for slot in dex_kanto_container.get_children():
+		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
+			show_pokemon(slot.slot_id, "visto", dex_kanto_container)
+			
+		elif SQL.verify_pokemon_captured(slot.slot_id) == 2:
+			show_pokemon(slot.slot_id, "capturado", dex_kanto_container)
+			
+	for slot in dex_johto_container.get_children():
+		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
+			show_pokemon(slot.slot_id, "visto", dex_johto_container)
+				
+		elif SQL.verify_pokemon_captured(slot.slot_id) == 2:
+			show_pokemon(slot.slot_id, "capturado", dex_johto_container)
+			
+	for slot in dex_hoenn_container.get_children():
+		if SQL.verify_pokemon_captured(slot.slot_id) == 1:
+			show_pokemon(slot.slot_id, "visto", dex_hoenn_container)
+				
+		elif SQL.verify_pokemon_captured(slot.slot_id) == 2:
+			show_pokemon(slot.slot_id, "capturado", dex_hoenn_container)
+
+
+func show_pokemon(id: String, status: String, pokedex: GridContainer) -> void:
+	for slot in pokedex.get_children():
 		if slot.slot_id == id:
 			slot.id_poke.show()
 			match status:
@@ -149,6 +190,24 @@ func on_mouse_entered(slot_id: String) -> void:
 func on_mouse_exited(_slot_id: String) -> void:
 	slot_can_click = false
 	_slot_id = ""
+
+
+func switch_dex_button_pressed(button_name: String) -> void:
+	match button_name:
+		"Kanto":
+			$ScrollContainer/DexKantoContainer.show()
+			$ScrollContainer/DexJohtoContainer.hide()
+			$ScrollContainer/DexHoennContainer.hide()
+			
+		"Johto":
+			$ScrollContainer/DexKantoContainer.hide()
+			$ScrollContainer/DexJohtoContainer.show()
+			$ScrollContainer/DexHoennContainer.hide()
+			
+		"Hoenn":
+			$ScrollContainer/DexKantoContainer.hide()
+			$ScrollContainer/DexJohtoContainer.hide()
+			$ScrollContainer/DexHoennContainer.show()
 
 
 func _on_button_pressed() -> void:
