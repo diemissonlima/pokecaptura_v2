@@ -48,9 +48,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	update_pokedex_progress()
-	
 	if Input.is_action_just_pressed("pokedex_info"):
+		update_pokedex_progress()
 		visible = not visible
 		info_pokemon.hide()
 		
