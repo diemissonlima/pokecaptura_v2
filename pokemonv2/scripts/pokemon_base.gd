@@ -65,7 +65,6 @@ func is_shiny() -> void:
 		is_shiny_label.show()
 
 
-
 func alter_characteristics() -> void:
 	var multiplier: float
 	
