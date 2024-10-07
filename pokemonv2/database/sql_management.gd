@@ -38,9 +38,9 @@ func create_database() -> void:
 func insert_data() -> void:
 	var row_array: Array = []
 	var row_dict: Dictionary = {}
-	var index: int = 252
+	var index: int = 387
 	for poke in data.data_management.values():
-		while index <= 386:
+		while index <= 493:
 			
 			if index <= 9:
 				row_array.append(poke["00" + str(index)])

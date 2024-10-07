@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c75cke0y43c2c"]
+[gd_scene load_steps=26 format=3 uid="uid://c75cke0y43c2c"]
 
 [ext_resource type="PackedScene" uid="uid://bhcv3qhvbuahj" path="res://scenes/map_management/base_map.tscn" id="1_tcxil"]
 [ext_resource type="Texture2D" uid="uid://bjp7nval7bah1" path="res://assets/prefabs/background_map/background_1.png" id="2_b0y4m"]
@@ -21,22 +21,26 @@
 [ext_resource type="PackedScene" uid="uid://51xmcvpbqn5i" path="res://scenes/pokemon/gen3/makuhita.tscn" id="18_65537"]
 [ext_resource type="PackedScene" uid="uid://dr65kw82fegr3" path="res://scenes/pokemon/gen3/dusclops.tscn" id="19_vb7p3"]
 [ext_resource type="PackedScene" uid="uid://83gtcdhbgyd8" path="res://scenes/pokemon/gen3/luvdisc.tscn" id="20_riup0"]
+[ext_resource type="PackedScene" uid="uid://dk8uajex64per" path="res://scenes/pokemon/gen4/torterra.tscn" id="21_peemd"]
+[ext_resource type="PackedScene" uid="uid://dxaju0h2gea2m" path="res://scenes/pokemon/gen4/electivire.tscn" id="22_2kos4"]
+[ext_resource type="PackedScene" uid="uid://n76n3kp0w1sr" path="res://scenes/pokemon/gen4/drifblim.tscn" id="23_g6fia"]
+[ext_resource type="PackedScene" uid="uid://d3qtoh0o0txs1" path="res://scenes/pokemon/gen4/weavile.tscn" id="24_fikjd"]
 
 [node name="Mapa01" instance=ExtResource("1_tcxil")]
-pokemon_list = Array[PackedScene]([ExtResource("2_b1ank"), ExtResource("3_jjimf"), ExtResource("4_owson"), ExtResource("5_n0svn"), ExtResource("6_e5x0t"), ExtResource("7_lekk4"), ExtResource("8_3o2q1"), ExtResource("9_l5e41"), ExtResource("10_g72g6"), ExtResource("11_s2if3"), ExtResource("12_fehb0"), ExtResource("13_6dpy0"), ExtResource("14_n6nu8"), ExtResource("15_ecurh"), ExtResource("16_ggbqh"), ExtResource("17_gncpv"), ExtResource("18_65537"), ExtResource("19_vb7p3"), ExtResource("20_riup0")])
+pokemon_list = Array[PackedScene]([ExtResource("2_b1ank"), ExtResource("3_jjimf"), ExtResource("4_owson"), ExtResource("5_n0svn"), ExtResource("6_e5x0t"), ExtResource("7_lekk4"), ExtResource("8_3o2q1"), ExtResource("9_l5e41"), ExtResource("10_g72g6"), ExtResource("11_s2if3"), ExtResource("12_fehb0"), ExtResource("13_6dpy0"), ExtResource("14_n6nu8"), ExtResource("15_ecurh"), ExtResource("16_ggbqh"), ExtResource("17_gncpv"), ExtResource("18_65537"), ExtResource("19_vb7p3"), ExtResource("20_riup0"), ExtResource("21_peemd"), ExtResource("22_2kos4"), ExtResource("23_g6fia"), ExtResource("24_fikjd")])
 path_background = "res://assets/prefabs/background_map/background_1.png"
 
 [node name="Background" parent="." index="1"]
 texture = ExtResource("2_b0y4m")
 
-[node name="SpawnPosition" parent="Background" index="2"]
+[node name="SpawnPosition" parent="Background" index="3"]
 position = Vector2(278, 139)
 
-[node name="OptionsContainer" parent="Background" index="5"]
+[node name="OptionsContainer" parent="Background" index="6"]
 offset_top = -59.0
 offset_bottom = -19.0
 
-[node name="StartHunting" parent="Background" index="6"]
+[node name="StartHunting" parent="Background" index="7"]
 offset_top = -49.0
 offset_bottom = -24.0
 

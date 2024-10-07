@@ -4,14 +4,16 @@ class_name Pokedex
 const _POKEDEX_KANTO_SIZE: int = 151
 const _POKEDEX_JOHTO_SIZE: int = 100
 const _POKEDEX_HOENN_SIZE: int = 135
+const _POKEDEX_SINNOH_SIZE: int = 107
 
-const _POKEDEX_SIZE: int = 386
+const _POKEDEX_SIZE: int = 493
 const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 
 @export_category("Objetos")
 @export var dex_kanto_container: GridContainer
 @export var dex_johto_container: GridContainer
 @export var dex_hoenn_container: GridContainer
+@export var dex_sinnoh_container: GridContainer
 @export var info_pokemon: TextureRect
 
 @export_category("Obejtos InfoPokedex")
@@ -85,6 +87,13 @@ func spawn_slot() -> void:
 		slot.slot_id = str(index)
 		
 		dex_hoenn_container.add_child(slot)
+	
+	for j in _POKEDEX_SINNOH_SIZE:
+		index += 1
+		var slot = _POKEDEX_SLOT.instantiate()
+		slot.slot_id = str(index)
+		
+		dex_sinnoh_container.add_child(slot)
 
 
 func update_pokedex_progress() -> void:
@@ -96,7 +105,8 @@ func show_pokemon_on_ready_scene() -> void:
 	var region_dict: Dictionary = {
 		"Kanto": dex_kanto_container,
 		"Johto": dex_johto_container,
-		"Hoenn": dex_hoenn_container
+		"Hoenn": dex_hoenn_container,
+		"Sinnoh": dex_sinnoh_container
 	}
 	
 	var region: String
@@ -112,6 +122,8 @@ func show_pokemon_on_ready_scene() -> void:
 				region = "Johto"
 			elif new_id > 252 and new_id <= 386:
 				region = "Hoenn"
+			elif new_id > 386 and new_id <= 493:
+				region = "Sinnoh"
 			
 		for i in region_dict[region].get_children():
 			if SQL.verify_pokemon_captured(i.slot_id) == 1:
@@ -125,7 +137,8 @@ func show_pokemon(id: String, status: String, region: String) -> void:
 	var region_dict: Dictionary = {
 		"Kanto": dex_kanto_container,
 		"Johto": dex_johto_container,
-		"Hoenn": dex_hoenn_container
+		"Hoenn": dex_hoenn_container,
+		"Sinnoh": dex_sinnoh_container
 	}
 	
 	for slot in region_dict[region].get_children():
@@ -187,6 +200,8 @@ func load_sprite(slot_id: String) -> String:
 		gen = "gen2"
 	elif new_slot_id > 251 and new_slot_id <= 386:
 		gen = "gen3"
+	elif new_slot_id > 386 and new_slot_id <= 493:
+		gen = "gen4"
 
 	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + slot_id + ".png"
 
@@ -209,16 +224,25 @@ func switch_dex_button_pressed(button_name: String) -> void:
 			$ScrollContainer/DexKantoContainer.show()
 			$ScrollContainer/DexJohtoContainer.hide()
 			$ScrollContainer/DexHoennContainer.hide()
+			$ScrollContainer/DexSinnohContainer.hide()
 			
 		"Johto":
 			$ScrollContainer/DexKantoContainer.hide()
 			$ScrollContainer/DexJohtoContainer.show()
 			$ScrollContainer/DexHoennContainer.hide()
+			$ScrollContainer/DexSinnohContainer.hide()
 			
 		"Hoenn":
 			$ScrollContainer/DexKantoContainer.hide()
 			$ScrollContainer/DexJohtoContainer.hide()
 			$ScrollContainer/DexHoennContainer.show()
+			$ScrollContainer/DexSinnohContainer.hide()
+			
+		"Sinnoh":
+			$ScrollContainer/DexKantoContainer.hide()
+			$ScrollContainer/DexJohtoContainer.hide()
+			$ScrollContainer/DexHoennContainer.hide()
+			$ScrollContainer/DexSinnohContainer.show()
 
 
 func _on_button_pressed() -> void:
