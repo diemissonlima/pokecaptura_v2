@@ -1,6 +1,5 @@
 extends Node
 
-
 var data_management: Dictionary = {
 	"pokemon": {
 		'001': {'id': '001', 'nome': 'Bulbasaur', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0},
