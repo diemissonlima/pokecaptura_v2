@@ -13,6 +13,6 @@ func _process(_delta: float) -> void:
 
 
 func on_button_pressed(button_name: String) -> void:
-	visible = false
+	var new_map: String = "res://scenes/map_management/" + button_name.to_lower() + ".tscn"
 	
-	get_tree().change_scene_to_file("res://scenes/map_management/" + button_name.to_lower() + ".tscn")
+	transition_manager.fade_to_scene(new_map)

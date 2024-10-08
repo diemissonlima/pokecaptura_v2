@@ -20,6 +20,7 @@ const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 @export var title: Label
 @export var seen_title: Label
 @export var catch_title: Label
+@export var all_title: Label
 @export var sprite: TextureRect
 @export var primary_type: TextureRect
 @export var secondary_type: TextureRect
@@ -51,7 +52,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pokedex_info"):
-		update_pokedex_progress()
+		update_pokedex_progress("Kanto")
 		visible = not visible
 		info_pokemon.hide()
 		
@@ -96,9 +97,10 @@ func spawn_slot() -> void:
 		dex_sinnoh_container.add_child(slot)
 
 
-func update_pokedex_progress() -> void:
-	seen_title.text = "Visto: " + str(SQL.return_pokedex_progress()[0])
-	catch_title.text = "Capturado: " + str(SQL.return_pokedex_progress()[1])
+func update_pokedex_progress(region: String) -> void:
+	seen_title.text = "Visto: " + str(SQL.return_pokedex_progress(region)[0])
+	catch_title.text = "Capturado: " + str(SQL.return_pokedex_progress(region)[1])
+	all_title.text = "Total: " + str(SQL.return_pokedex_progress(region)[2])
 
 
 func show_pokemon_on_ready_scene() -> void:
@@ -219,6 +221,7 @@ func on_mouse_exited(_slot_id: String) -> void:
 
 
 func switch_dex_button_pressed(button_name: String) -> void:
+	update_pokedex_progress(button_name)
 	match button_name:
 		"Kanto":
 			$ScrollContainer/DexKantoContainer.show()

@@ -36,7 +36,7 @@ font_size = 8
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_kanto_container", "dex_johto_container", "dex_hoenn_container", "dex_sinnoh_container", "info_pokemon", "title", "seen_title", "catch_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
+[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_kanto_container", "dex_johto_container", "dex_hoenn_container", "dex_sinnoh_container", "info_pokemon", "title", "seen_title", "catch_title", "all_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
 visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 anchors_preset = 8
@@ -61,6 +61,7 @@ info_pokemon = NodePath("InfoPokemon")
 title = NodePath("InfoPokemon/SummaryBG/PokeName")
 seen_title = NodePath("HBoxContainer/Seen")
 catch_title = NodePath("HBoxContainer/Catch")
+all_title = NodePath("HBoxContainer/All")
 sprite = NodePath("InfoPokemon/SummaryBG/Sprite")
 primary_type = NodePath("InfoPokemon/SummaryBG/TypeContainer/PrimaryType")
 secondary_type = NodePath("InfoPokemon/SummaryBG/TypeContainer/SecondaryType")
@@ -138,6 +139,11 @@ label_settings = SubResource("LabelSettings_vwwee")
 [node name="Catch" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Capturado: 52"
+label_settings = SubResource("LabelSettings_vwwee")
+
+[node name="All" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Total: 151"
 label_settings = SubResource("LabelSettings_vwwee")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

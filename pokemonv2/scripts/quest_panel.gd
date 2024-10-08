@@ -124,7 +124,7 @@ func generate_quest() -> void:
 	
 	quest_name = name_list[type].pick_random()
 	
-	quest_objective = randi_range(1, 5)
+	quest_objective = randi_range(2, 5)
 	quest_type = type
 	
 	quest_description = "Capture " + str(quest_objective) + " Pokémon do tipo " + quest_type.capitalize()

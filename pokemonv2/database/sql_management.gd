@@ -63,21 +63,28 @@ func insert_data() -> void:
 		db.insert_row("pokemon", row_dict)
 
 
-func return_pokedex_progress() -> Array:
+func return_pokedex_progress(region: String) -> Array:
 	var pokedex_progress: Array = []
 	db.query(
-		"SELECT COUNT(*) FROM pokemon WHERE status_pokedex > 0"
+		"SELECT COUNT(*) FROM pokemon WHERE status_pokedex > 0 AND region = '" + region + "'"
 	)
 	
 	var amount_visto: int = db.query_result[0]["COUNT(*)"]
 	pokedex_progress.append(amount_visto)
 	
 	db.query(
-		"SELECT COUNT(DISTINCT numero_dex) FROM banco_pokemon"
+		"SELECT COUNT(*) FROM pokemon WHERE status_pokedex = 2 AND region = '" + region + "'"
 	)
 	
-	var amount_capturado: int = db.query_result[0]["COUNT(DISTINCT numero_dex)"]
+	var amount_capturado: int = db.query_result[0]["COUNT(*)"]
 	pokedex_progress.append(amount_capturado)
+	
+	db.query(
+		"SELECT COUNT(*) FROM pokemon WHERE region = '" + region + "'"
+	)
+	
+	var all_pokemon: int = db.query_result[0]["COUNT(*)"]
+	pokedex_progress.append(all_pokemon)
 	
 	return pokedex_progress
 
