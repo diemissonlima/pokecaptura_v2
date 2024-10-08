@@ -1,7 +1,8 @@
-[gd_scene load_steps=51 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=52 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
+[ext_resource type="PackedScene" uid="uid://cpso0bxxaytxo" path="res://scenes/pokemon/gen3/absol.tscn" id="2_piq5a"]
 [ext_resource type="PackedScene" uid="uid://bntgjwgly2d8k" path="res://scenes/pokemon/gen1/articuno.tscn" id="2_uu6u3"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="3_a26c1"]
 [ext_resource type="PackedScene" uid="uid://caytunxghrl0p" path="res://scenes/interface/shop.tscn" id="3_h25u6"]
@@ -94,6 +95,7 @@ spawn_lendario = NodePath("Background/SpawnLendario")
 map_name_label = NodePath("Background/MapName")
 progress_map_bar = NodePath("Background/MapProgress")
 map_name = "01"
+pokemon_list = Array[PackedScene]([ExtResource("2_piq5a")])
 pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c"), ExtResource("13_4tejs"), ExtResource("14_loiwo"), ExtResource("15_23uya"), ExtResource("16_aod8q"), ExtResource("17_gl66w"), ExtResource("18_egxjy"), ExtResource("19_fn0rc"), ExtResource("20_wmw3a"), ExtResource("21_uhv7v"), ExtResource("22_3sg36"), ExtResource("23_ei4qb"), ExtResource("24_67o8b"), ExtResource("25_yv1no"), ExtResource("26_qa4ej"), ExtResource("27_yuepa"), ExtResource("28_0hqco"), ExtResource("29_tqefq"), ExtResource("30_0gadb"), ExtResource("31_uap65"), ExtResource("32_mn7i6"), ExtResource("33_85oiq"), ExtResource("34_3mex6"), ExtResource("35_4sp70")])
 
 [node name="Interface" type="CanvasLayer" parent="."]

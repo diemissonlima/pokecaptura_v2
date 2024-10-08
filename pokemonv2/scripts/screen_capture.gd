@@ -160,9 +160,13 @@ func show_quest_rewards(quest_info: Array) -> void:
 	rewards_info.show()
 
 
-func notify_achievement_levelup(type: String) -> void:
-	rewards_info.text = "Conquista do tipo " + type + " subiu de nível!"
+func notify_achievement_levelup(type: String, rewards: Array) -> void:
+	rewards_info.text = "Marco do tipo " + type + " subiu de nível!\nRecompensa:\n" + str(rewards[1]) + " " + rewards[0]
 	rewards_info.show()
+	
+	SQL.update_database("inventario", rewards[0], "increase", rewards[1])
+	
+	update_label_pokeball()
 
 
 func _on_quit_pressed() -> void:

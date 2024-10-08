@@ -17,6 +17,7 @@ class_name PokemonBase
 	"Kanto", "Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar"
 ) var region: String
 @export var nature: String
+@export var hability: String
 @export var evolution: String
 @export var legendary: bool
 @export var shiny: bool

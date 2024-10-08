@@ -16,7 +16,7 @@ const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 @export var dex_sinnoh_container: GridContainer
 @export var info_pokemon: TextureRect
 
-@export_category("Obejtos InfoPokedex")
+@export_category("Objetos InfoPokedex")
 @export var title: Label
 @export var seen_title: Label
 @export var catch_title: Label
