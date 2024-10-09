@@ -35,9 +35,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	$Background/QuestInProgress.text = "Quests Ativas: " + str(QuestUpdate.active_quests.size()) + " / 3"
-	
-	if QuestUpdate.active_quests.size() != 0:
-		update_progress_quest_label()
+
+	update_progress_quest_label()
+
 
 
 func update_map_progress() -> void:
@@ -114,6 +114,11 @@ func _on_spawn_timer_timeout() -> void:
 
 func update_progress_quest_label() -> void:
 	var quest_list: Array = QuestUpdate.active_quests.duplicate()
+	
+	if quest_list.size() == 0:
+		$Background/VBoxContainer/Quest1.text = "" 
+		$Background/VBoxContainer/Quest2.text = ""
+		$Background/VBoxContainer/Quest3.text = ""
 	
 	if quest_list.size() == 1:
 		$Background/VBoxContainer/Quest1.text = "- " + quest_list[0]["name"] + "
