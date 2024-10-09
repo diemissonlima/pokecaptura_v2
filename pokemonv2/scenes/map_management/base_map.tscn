@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=55 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://bdxlee5hqcw68" path="res://assets/prefabs/interface/Background Bar.png" id="33_i434h"]
 [ext_resource type="PackedScene" uid="uid://v3blpc8w8lld" path="res://scenes/pokemon/gen4/shaymin.tscn" id="34_3mex6"]
 [ext_resource type="PackedScene" uid="uid://d1kn352toww3d" path="res://scenes/pokemon/gen4/arceus.tscn" id="35_4sp70"]
+[ext_resource type="Texture2D" uid="uid://mm66l04dyxrc" path="res://assets/prefabs/interface/indicador.png" id="47_tfj72"]
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
 [ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
@@ -72,6 +73,20 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_do8c8"]
 font = ExtResource("3_a26c1")
 font_size = 10
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_78fjy"]
+line_spacing = 0.0
+font = ExtResource("3_a26c1")
+font_size = 8
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_woo1w"]
+line_spacing = 0.0
+font = ExtResource("3_a26c1")
+font_size = 8
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
@@ -253,6 +268,50 @@ theme_override_fonts/font = ExtResource("3_a26c1")
 theme_override_font_sizes/font_size = 16
 text = "Iniciar Busca"
 
+[node name="Expand" type="TextureButton" parent="Background"]
+layout_mode = 2
+offset_left = 33.0
+offset_top = 78.0
+offset_right = 48.0
+offset_bottom = 95.0
+pivot_offset = Vector2(7.5, 8.5)
+texture_normal = ExtResource("47_tfj72")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="QuestInProgress" type="Label" parent="Background"]
+layout_mode = 2
+offset_left = 51.0
+offset_top = 81.5
+offset_right = 128.0
+offset_bottom = 90.5
+text = "Quests Ativas: 0 / 3"
+label_settings = SubResource("LabelSettings_78fjy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 103.0
+offset_right = 160.0
+offset_bottom = 192.0
+theme_override_constants/separation = 10
+
+[node name="Quest1" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_woo1w")
+horizontal_alignment = 1
+
+[node name="Quest2" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_woo1w")
+horizontal_alignment = 1
+
+[node name="Quest3" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_woo1w")
+horizontal_alignment = 1
+
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -260,4 +319,5 @@ one_shot = true
 [connection signal="pressed" from="Background/OptionsContainer/Sim" to="." method="_on_sim_pressed"]
 [connection signal="pressed" from="Background/OptionsContainer/Nao" to="." method="_on_nao_pressed"]
 [connection signal="pressed" from="Background/StartHunting" to="." method="_on_start_hunting_pressed"]
+[connection signal="pressed" from="Background/Expand" to="." method="_on_expand_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
