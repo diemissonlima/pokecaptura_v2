@@ -81,9 +81,11 @@ func set_capture(_pokeball_used: String) -> void:
 			var tipo_1 = pokemon_captured.primary_type
 			var tipo_2 = pokemon_captured.secondary_type
 			
-			for quest in QuestUpdate.active_quests:
-				if tipo_1 == quest.quest_type.capitalize() or tipo_2 == quest.quest_type.capitalize():
-					QuestUpdate.on_item_collected(quest.quest_name)
+			if QuestUpdate.active_quests.size() != 0:
+				QuestUpdate.on_item_collected(
+					pokemon_captured.primary_type,
+					pokemon_captured.secondary_type
+				)
 		
 	else:
 		

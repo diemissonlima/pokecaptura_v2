@@ -1,37 +1,35 @@
 extends Node
 
-var quest_manager: QuestManager
-# ao trocar de cena a quest é perdida e aparece pra selecionar uma nova
-
 var active_quests: Array = []
 
 
-func notify_quest_rewards(quest_info: Array) -> void:
-	get_tree().call_group("screen_capture", "show_quest_rewards", quest_info)
-	
-	quest_is_complete()
-
-
-func start_new_quest(
-	name: String, description: String, objective, quest_type: String) -> void:
+func on_item_collected(type_1: String, type_2: String) -> void:
+	for quest in active_quests:
+		if type_1.to_lower() == quest["type"] or type_2.to_lower() == quest["type"]:
+			quest["progress"] += 1
 		
-	quest_manager = QuestManager.new()
+			if quest["progress"] == quest["objective"]:
+				give_rewards(quest["name"], quest["objective"])
+				active_quests.erase(quest)
+
+
+func give_rewards(quest_name: String, value: int) -> void:
+	# Implementar lógica para dar recompensas (ex: itens, XP)
+	var quest_info: Array = []
+	var amount: int
+	var rewards_list: Array = [
+		"Pokeball", "Greatball", "Ultraball", "Repeatball", "Heavyball", "Credito"
+	]
+	var reward = rewards_list.pick_random()
+
+	if reward == "Credito":
+		amount = value * 150
+		
+	else:
+		amount = randi_range(2, 5)
+		
+	SQL.update_database("inventario", reward, "increase", amount)
 	
-	var quest = Quest.new()
-	quest.quest_name = name
-	quest.description = description
-	quest.goal = objective
-	quest.quest_type = quest_type
+	quest_info.append([quest_name, reward, amount])
 	
-	quest_manager.add_quest(quest)
-
-
-func on_item_collected(quest_name: String) -> void:
-	quest_manager.update_quest_progress(quest_name, 1)
-
-	get_tree().call_group("quest_panel", "update_quest_progress", 1)
-
-
-func quest_is_complete() -> void:
-	if active_quests.size() == 0:
-		get_tree().call_group("quest_panel", "generate_quest")
+	get_tree().call_group("screen_capture", "show_quest_rewards", quest_info)
