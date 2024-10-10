@@ -213,7 +213,7 @@ func load_sprite(slot_id: String) -> String:
 func on_mouse_entered(slot_id: String) -> void:
 	slot_can_click = true # booleano pra determinado quando o slot pode ser clicado
 	_slot_id = slot_id # slot ID enviado pelo for e atribui a uma variavel global
-	
+
 
 func on_mouse_exited(_slot_id: String) -> void:
 	slot_can_click = false
@@ -222,6 +222,7 @@ func on_mouse_exited(_slot_id: String) -> void:
 
 func switch_dex_button_pressed(button_name: String) -> void:
 	update_pokedex_progress(button_name)
+	
 	match button_name:
 		"Kanto":
 			$ScrollContainer/DexKantoContainer.show()

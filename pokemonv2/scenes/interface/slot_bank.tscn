@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://vngaw5ikvcgm"]
+
+[ext_resource type="Texture2D" uid="uid://b4vfx38y41m3l" path="res://assets/prefabs/interface/type_1.png" id="1_c2m3a"]
+[ext_resource type="Script" path="res://scripts/slot_bank.gd" id="1_q8a5m"]
+
+[node name="SlotBank" type="Control" node_paths=PackedStringArray("background", "sprite") groups=["slot_bank"]]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q8a5m")
+background = NodePath("Background")
+sprite = NodePath("Sprite")
+background_list = ["res://assets/prefabs/interface/type_1.png", "res://assets/prefabs/interface/type_2.png", "res://assets/prefabs/interface/type_3.png"]
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_c2m3a")
+stretch_mode = 5
+
+[node name="Sprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -31.0
+offset_right = 15.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 1

@@ -221,6 +221,16 @@ func info_pokedex(id: String) -> Dictionary:
 	return pokemon_info
 
 
+func info_bank() -> Array:
+	db.query(
+		"SELECT * FROM banco_pokemon"
+	)
+	
+	var pokemon_on_bank: Array = db.query_result
+	
+	return pokemon_on_bank
+
+
 func add_pokemon_to_bank(pokemon: CharacterBody2D):
 	var current_time = Time.get_datetime_dict_from_system()
 	var formatted_date = "%02d/%02d/%04d" % [current_time.day, current_time.month, current_time.year]

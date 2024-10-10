@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=57 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://v3blpc8w8lld" path="res://scenes/pokemon/gen4/shaymin.tscn" id="34_3mex6"]
 [ext_resource type="PackedScene" uid="uid://d1kn352toww3d" path="res://scenes/pokemon/gen4/arceus.tscn" id="35_4sp70"]
 [ext_resource type="Texture2D" uid="uid://mm66l04dyxrc" path="res://assets/prefabs/interface/indicador.png" id="47_tfj72"]
+[ext_resource type="PackedScene" uid="uid://bul7kua1vw8jj" path="res://scenes/interface/party_slot.tscn" id="48_6thqy"]
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
 [ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
@@ -87,6 +88,13 @@ outline_color = Color(0, 0, 0, 1)
 line_spacing = 0.0
 font = ExtResource("3_a26c1")
 font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5mw6"]
+line_spacing = 0.0
+font = ExtResource("3_a26c1")
+font_size = 12
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
@@ -311,6 +319,42 @@ horizontal_alignment = 1
 layout_mode = 2
 label_settings = SubResource("LabelSettings_woo1w")
 horizontal_alignment = 1
+
+[node name="Party" type="Label" parent="Background"]
+visible = false
+layout_mode = 2
+offset_left = 438.0
+offset_top = 234.0
+offset_right = 473.0
+offset_bottom = 247.0
+text = "Party"
+label_settings = SubResource("LabelSettings_r5mw6")
+horizontal_alignment = 1
+
+[node name="PartyContainer" type="HBoxContainer" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -48.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="PartySlot" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
+layout_mode = 2
+
+[node name="PartySlot2" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
+layout_mode = 2
+
+[node name="PartySlot3" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
+layout_mode = 2
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
