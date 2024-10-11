@@ -1,9 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://n05wc6dwj7x7"]
+[gd_scene load_steps=13 format=3 uid="uid://n05wc6dwj7x7"]
 
-[ext_resource type="Texture2D" uid="uid://cp34lcd7l3yi0" path="res://assets/prefabs/interface/background_sliding.PNG" id="1_0mfno"]
 [ext_resource type="Script" path="res://scripts/pokemon_bank.gd" id="1_pr82w"]
+[ext_resource type="Texture2D" uid="uid://2b7pb6k4y71x" path="res://assets/prefabs/interface/example_top.PNG" id="1_x6bbo"]
+[ext_resource type="Texture2D" uid="uid://b5rm2gl3rwwy5" path="res://assets/prefabs/interface/info.png" id="3_kxrik"]
+[ext_resource type="Texture2D" uid="uid://byifhmwxe6bfy" path="res://assets/prefabs/interface/pokedexEntry.PNG" id="4_8sfwl"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="5_d6n07"]
+[ext_resource type="Texture2D" uid="uid://b54adakvs7gym" path="res://assets/pokemon_sprite/gen1/normal/006.png" id="5_sra3h"]
+[ext_resource type="Texture2D" uid="uid://b5o53ggo35yeh" path="res://assets/prefabs/pokemon_type/fire.png" id="7_upnrv"]
+[ext_resource type="Texture2D" uid="uid://bp5oaicqn25cg" path="res://assets/prefabs/pokemon_type/flying.png" id="8_pt6uw"]
+[ext_resource type="Texture2D" uid="uid://b7w2ktihoeb5h" path="res://assets/prefabs/interface/IconB05.png" id="9_vlune"]
 
-[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container") groups=["pokemon_bank"]]
+[sub_resource type="LabelSettings" id="LabelSettings_3xqpa"]
+line_spacing = 0.0
+font = ExtResource("5_d6n07")
+font_size = 20
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8log7"]
+line_spacing = 0.0
+font = ExtResource("5_d6n07")
+font_size = 20
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4wfl"]
+line_spacing = 0.0
+font = ExtResource("5_d6n07")
+font_size = 20
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "sprite2", "sprite3", "dex_number", "pokemon_name", "nature", "primary_type", "secondary_type", "weight", "data_captura") groups=["pokemon_bank"]]
 visible = false
 custom_minimum_size = Vector2(460, 268)
 anchors_preset = 8
@@ -17,10 +45,20 @@ offset_right = 253.0
 offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_0mfno")
+texture = ExtResource("1_x6bbo")
 expand_mode = 1
 script = ExtResource("1_pr82w")
 bank_container = NodePath("ScrollContainer/GridContainer")
+sprite = NodePath("Background/Sprite")
+sprite2 = NodePath("PokemonEntry/Sprite")
+sprite3 = NodePath("PokemonEntry/Sprite2")
+dex_number = NodePath("PokemonEntry/DexNumber")
+pokemon_name = NodePath("PokemonEntry/PokemonName")
+nature = NodePath("PokemonEntry/Nature")
+primary_type = NodePath("PokemonEntry/TypeContainer/PrimaryType")
+secondary_type = NodePath("PokemonEntry/TypeContainer/SecondaryType")
+weight = NodePath("PokemonEntry/Weight")
+data_captura = NodePath("PokemonEntry/DataCaptura")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -30,12 +68,150 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -289.0
-offset_top = -103.5
+offset_top = -87.0
 offset_right = -16.0
-offset_bottom = 119.5
+offset_bottom = 87.0
 grow_horizontal = 0
 grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 columns = 6
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 193.0
+offset_bottom = 233.0
+texture = ExtResource("3_kxrik")
+
+[node name="Sprite" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -83.5
+offset_right = 67.5
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="PokemonEntry" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(506, 268)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = -134.0
+offset_right = 253.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8sfwl")
+expand_mode = 1
+
+[node name="Sprite" type="TextureRect" parent="PokemonEntry"]
+custom_minimum_size = Vector2(135, 151)
+layout_mode = 0
+offset_left = 39.0
+offset_top = 20.0
+offset_right = 484.0
+offset_bottom = 464.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_sra3h")
+
+[node name="Sprite2" type="TextureRect" parent="PokemonEntry"]
+custom_minimum_size = Vector2(135, 151)
+layout_mode = 0
+offset_left = 216.0
+offset_top = 68.0
+offset_right = 367.0
+offset_bottom = 219.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_sra3h")
+
+[node name="DexNumber" type="Label" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 18.0
+offset_right = 303.0
+offset_bottom = 39.0
+text = "006"
+label_settings = SubResource("LabelSettings_3xqpa")
+
+[node name="PokemonName" type="Label" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 18.0
+offset_right = 484.0
+offset_bottom = 39.0
+text = "Charizard"
+label_settings = SubResource("LabelSettings_8log7")
+
+[node name="TypeContainer" type="HBoxContainer" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 78.0
+offset_right = 749.0
+offset_bottom = 122.0
+scale = Vector2(0.35, 0.35)
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PrimaryType" type="TextureRect" parent="PokemonEntry/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("7_upnrv")
+
+[node name="SecondaryType" type="TextureRect" parent="PokemonEntry/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("8_pt6uw")
+
+[node name="Nature" type="Label" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 41.0
+offset_right = 488.0
+offset_bottom = 62.0
+text = "Nature: Jolly"
+label_settings = SubResource("LabelSettings_3xqpa")
+horizontal_alignment = 1
+
+[node name="Weight" type="Label" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 106.0
+offset_right = 488.0
+offset_bottom = 127.0
+text = "Peso: 90.5 Kg"
+label_settings = SubResource("LabelSettings_3xqpa")
+horizontal_alignment = 1
+
+[node name="DataCaptura" type="Label" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 127.0
+offset_right = 488.0
+offset_bottom = 148.0
+text = "Captura: 11/10/24 11:55:59"
+label_settings = SubResource("LabelSettings_a4wfl")
+
+[node name="Quit" type="TextureButton" parent="PokemonEntry"]
+modulate = Color(0.886275, 0, 0, 1)
+layout_mode = 0
+offset_left = 443.0
+offset_top = 237.0
+offset_right = 485.0
+offset_bottom = 279.0
+scale = Vector2(0.65, 0.65)
+texture_normal = ExtResource("9_vlune")
+
+[connection signal="pressed" from="PokemonEntry/Quit" to="." method="_on_quit_pressed"]

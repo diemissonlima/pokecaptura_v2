@@ -164,7 +164,7 @@ func verify_pokemon_captured(id: String) -> int:
 		return 1
 	elif query[0]["status_pokedex"] == 2:
 		return 2
-	
+
 	return 0
 
 
@@ -266,10 +266,13 @@ func add_pokemon_to_bank(pokemon: CharacterBody2D):
 	row_array.append(pokemon.nature)
 	row_dict["nature"] = row_array[7]
 	
+	row_array.append(pokemon.weight)
+	row_dict["weight"] = row_array[8]
+	
 	row_array.append(pokemon.legendary)
-	row_dict["legendary"] = row_array[8]
+	row_dict["legendary"] = row_array[9]
 	
 	row_array.append(pokemon.shiny)
-	row_dict["shiny"] = row_array[9]
+	row_dict["shiny"] = row_array[10]
 	
 	db.insert_row("banco_pokemon", row_dict)

@@ -14,6 +14,7 @@ extends Control
 @export var secondary_type: String
 @export var region: String
 @export var nature: String
+@export var weight: float
 @export var shiny: bool = false
 @export var background_list: Array
 
