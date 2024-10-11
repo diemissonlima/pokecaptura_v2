@@ -75,6 +75,8 @@ func set_capture(_pokeball_used: String) -> void:
 		info_captura.text = "Pokemon Capturado!\nDrop: " + str(pokemon_captured.dropped_credit) + " Créditos"
 		
 		SQL.add_pokemon_to_bank(pokemon_captured)
+		get_tree().call_group("pokemon_bank", "add_pokemon_to_bank")
+		
 		drop(pokemon_captured.dropped_credit)
 		
 		if QuestUpdate.active_quests.size() > 0:

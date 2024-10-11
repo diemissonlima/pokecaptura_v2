@@ -1,21 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://n05wc6dwj7x7"]
 
+[ext_resource type="Texture2D" uid="uid://cp34lcd7l3yi0" path="res://assets/prefabs/interface/background_sliding.PNG" id="1_0mfno"]
 [ext_resource type="Script" path="res://scripts/pokemon_bank.gd" id="1_pr82w"]
-[ext_resource type="PackedScene" uid="uid://vngaw5ikvcgm" path="res://scenes/interface/slot_bank.tscn" id="1_y86qq"]
 
-[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container")]
+[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container") groups=["pokemon_bank"]]
+visible = false
 custom_minimum_size = Vector2(460, 268)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.0
+offset_left = -253.0
 offset_top = -134.0
-offset_right = 230.0
+offset_right = 253.0
 offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_0mfno")
+expand_mode = 1
 script = ExtResource("1_pr82w")
 bank_container = NodePath("ScrollContainer/GridContainer")
 
@@ -36,102 +39,3 @@ grow_vertical = 2
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 columns = 6
-
-[node name="SlotBank" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank2" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank3" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank4" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank5" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank6" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank7" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank8" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank9" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank10" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank11" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank12" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank13" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank14" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank15" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank16" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank17" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank18" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank19" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank20" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank21" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank22" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank23" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank24" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank25" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank26" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank27" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank28" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank29" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank30" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank31" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank32" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
-
-[node name="SlotBank33" parent="ScrollContainer/GridContainer" instance=ExtResource("1_y86qq")]
-layout_mode = 2
