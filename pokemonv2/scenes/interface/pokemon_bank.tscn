@@ -207,11 +207,23 @@ label_settings = SubResource("LabelSettings_a4wfl")
 [node name="Quit" type="TextureButton" parent="PokemonEntry"]
 modulate = Color(0.886275, 0, 0, 1)
 layout_mode = 0
-offset_left = 443.0
+offset_left = 471.0
 offset_top = 237.0
-offset_right = 485.0
+offset_right = 513.0
 offset_bottom = 279.0
 scale = Vector2(0.65, 0.65)
 texture_normal = ExtResource("9_vlune")
 
+[node name="AddParty" type="Button" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 239.0
+offset_right = 462.0
+offset_bottom = 260.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_d6n07")
+theme_override_font_sizes/font_size = 12
+text = "Add Party"
+
 [connection signal="pressed" from="PokemonEntry/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PokemonEntry/AddParty" to="." method="_on_add_party_pressed"]

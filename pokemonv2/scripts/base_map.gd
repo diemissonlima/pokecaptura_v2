@@ -15,6 +15,9 @@ class_name BaseMap
 @export var map_name_label: Label
 @export var progress_map_bar: ProgressBar
 
+@export_category("Objetos Party Container")
+@export var party_container: HBoxContainer
+
 @export_category("Variaveis")
 @export var map_name: String
 @export var pokemon_list: Array[PackedScene]
@@ -146,6 +149,34 @@ func update_progress_quest_label() -> void:
 		$Background/VBoxContainer/Quest3.text = "- " + quest_list[2]["name"] + "
 		Capture " + str(quest_list[2]["objective"]) + " Pokémon do tipo " + quest_list[2]["type"].to_upper() + "
 		" + str(quest_list[2]["progress"]) + " / " + str(quest_list[2]["objective"])
+
+
+func add_party(poke_info: Dictionary) -> void:
+	for slot in party_container.get_children():
+		if slot.sprite.texture == null:
+			slot.sprite.texture = load(load_sprite(poke_info["numero_dex"]))
+			
+			break
+
+
+func load_sprite(dex_number: String) -> String:
+	var new_slot_id: int
+	var sprite_path: String
+	var gen: String
+	
+	new_slot_id = int(dex_number)
+	
+	if new_slot_id <= 151:
+		gen = "gen1"
+	elif new_slot_id > 151 and new_slot_id <= 251:
+		gen = "gen2"
+	elif new_slot_id > 251 and new_slot_id <= 386:
+		gen = "gen3"
+	elif new_slot_id > 386 and new_slot_id <= 493:
+		gen = "gen4"
+	
+	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
+	return sprite_path
 
 
 func _on_expand_pressed() -> void:

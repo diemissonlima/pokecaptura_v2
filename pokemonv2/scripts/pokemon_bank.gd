@@ -169,3 +169,7 @@ func _on_quit_pressed() -> void:
 	$PokemonEntry.hide()
 	$ScrollContainer.show()
 	$Background.show()
+
+
+func _on_add_party_pressed() -> void:
+	get_tree().call_group("mapa", "add_party", pokemon_info)
