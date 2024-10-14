@@ -275,4 +275,7 @@ func add_pokemon_to_bank(pokemon: CharacterBody2D):
 	row_array.append(pokemon.shiny)
 	row_dict["shiny"] = row_array[10]
 	
+	row_array.append(0)
+	row_dict["in_party"] = row_array[11]
+	
 	db.insert_row("banco_pokemon", row_dict)

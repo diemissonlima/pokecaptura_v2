@@ -60,6 +60,7 @@ func _ready() -> void:
 		load_pokemon_on_bank(poke)
 	
 	connect_button_signal()
+	load_pokemon_on_party()
 
 
 func set_info() -> void:
@@ -128,6 +129,18 @@ func load_sprite(dex_number: String) -> String:
 	
 	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
 	return sprite_path
+
+
+func load_pokemon_on_party() -> void:
+	var pokemon_in_party: Array = []
+	SQL.db.query(
+		"SELECT * FROM banco_pokemon WHERE in_party = 1"
+	)
+	
+	for poke in SQL.db.query_result:
+		pokemon_in_party.append(poke)
+	
+	get_tree().call_group("mapa", "add_party_onready_scene", pokemon_in_party)
 
 
 func add_pokemon_to_bank() -> void:

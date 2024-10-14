@@ -6,6 +6,9 @@ extends Control
 
 @export_category("Variaveis")
 @export var background_list: Array
+@export var id_pokemon: int
+
+var pokemon_info: Dictionary
 
 
 func _ready() -> void:

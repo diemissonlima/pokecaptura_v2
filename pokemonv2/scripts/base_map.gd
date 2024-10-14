@@ -25,6 +25,7 @@ class_name BaseMap
 @export var path_background: String
 
 var pokemon_spawned
+var party_list: Array = []
 
 
 func _ready() -> void:
@@ -40,7 +41,6 @@ func _process(_delta: float) -> void:
 	$Background/QuestInProgress.text = "Quests Ativas: " + str(QuestUpdate.active_quests.size()) + " / 3"
 
 	update_progress_quest_label()
-
 
 
 func update_map_progress() -> void:
@@ -151,12 +151,29 @@ func update_progress_quest_label() -> void:
 		" + str(quest_list[2]["progress"]) + " / " + str(quest_list[2]["objective"])
 
 
+func add_party_onready_scene(party_list: Array) -> void:
+	for poke in party_list:
+		add_party(poke)
+
+
 func add_party(poke_info: Dictionary) -> void:
 	for slot in party_container.get_children():
 		if slot.sprite.texture == null:
 			slot.sprite.texture = load(load_sprite(poke_info["numero_dex"]))
+			slot.id_pokemon = poke_info["id_pokemon"]
+			slot.pokemon_info = poke_info.duplicate()
 			
+			party_list.append(poke_info)
+			
+			SQL.db.query(
+				"UPDATE banco_pokemon SET in_party = 1 WHERE id_pokemon = " + str(poke_info["id_pokemon"])
+			)
 			break
+			
+		else:
+			for slot1 in party_container.get_children():
+				if slot1.id_pokemon == poke_info["id_pokemon"]:
+					return
 
 
 func load_sprite(dex_number: String) -> String:
