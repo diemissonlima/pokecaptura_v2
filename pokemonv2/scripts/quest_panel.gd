@@ -14,7 +14,7 @@ var available_quests: Array = []
 func _ready() -> void:
 	for button in get_tree().get_nodes_in_group("button_quest_panel"):
 		button.pressed.connect(on_button_pressed.bind(button))
-		
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quest_panel"):
@@ -27,6 +27,12 @@ func _process(_delta: float) -> void:
 
 
 func generate_quest() -> void:
+	SQL.db.query(
+		"SELECT COUNT(*) FROM quests"
+	)
+	
+	var quest_id: int = SQL.db.query_result[0]["COUNT(*)"]
+	
 	var aux_available_quests: Dictionary = {}
 	var name_list: Dictionary = {
 		"normal": [
@@ -99,6 +105,8 @@ func generate_quest() -> void:
 	
 	var quest_description: String = "Capture " + str(quest_objective) + " Pokémon do tipo " + quest_type.capitalize()
 	
+	quest_id += 1
+	aux_available_quests["id"] = quest_id
 	aux_available_quests["name"] = quest_name
 	aux_available_quests["description"] = quest_description
 	aux_available_quests["progress"] = 0
@@ -126,12 +134,15 @@ func on_button_pressed(button: Button) -> void:
 	match button.name:
 		"AcceptQuest1":
 			QuestUpdate.active_quests.append(available_quests[0])
+			SQL.quest_management(available_quests[0], "add")
 			
 		"AcceptQuest2":
 			QuestUpdate.active_quests.append(available_quests[1])
+			SQL.quest_management(available_quests[1], "add")
 			
 		"AcceptQuest3":
 			QuestUpdate.active_quests.append(available_quests[2])
+			SQL.quest_management(available_quests[2], "add")
 	
 	available_quests.clear()
 	visible = false

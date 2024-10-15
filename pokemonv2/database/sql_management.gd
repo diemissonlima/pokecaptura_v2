@@ -279,3 +279,16 @@ func add_pokemon_to_bank(pokemon: CharacterBody2D):
 	row_dict["in_party"] = row_array[11]
 	
 	db.insert_row("banco_pokemon", row_dict)
+
+
+func quest_management(quest_info: Dictionary, status: String) -> void:
+	match status:
+		"add":
+			quest_info["status"] = "in_progress"
+			db.insert_row("quests", quest_info)
+
+		"update_status":
+			db.update_rows("quests", "id = '" + str(quest_info["id"]) + "'", {"status": "complete"})
+			
+		"update_progress":
+			db.update_rows("quests", "id = '" + str(quest_info["id"]) + "'", {"progress": quest_info["progress"]})
