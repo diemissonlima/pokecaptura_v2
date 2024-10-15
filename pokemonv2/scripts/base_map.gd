@@ -17,6 +17,8 @@ class_name BaseMap
 
 @export_category("Objetos Party Container")
 @export var party_container: HBoxContainer
+@export var button_remove_party: Button
+@export var timer: Timer
 
 @export_category("Variaveis")
 @export var map_name: String
@@ -26,6 +28,9 @@ class_name BaseMap
 
 var pokemon_spawned
 var party_list: Array = []
+var party_slot_can_click: bool = false
+
+var target_slot: Control
 
 
 func _ready() -> void:
@@ -36,6 +41,10 @@ func _ready() -> void:
 	
 	update_map_progress()
 	
+	for slot in party_container.get_children():
+		slot.mouse_entered.connect(on_mouse_entered.bind(slot))
+		slot.mouse_entered.connect(on_mouse_exited.bind(slot))
+		
 
 func _process(_delta: float) -> void:
 	$Background/QuestInProgress.text = "Quests Ativas: " + str(QuestUpdate.active_quests.size()) + " / 3"
@@ -204,3 +213,31 @@ func _on_expand_pressed() -> void:
 	else:
 		$Background/Expand.set_rotation(0.0)
 		$Background/VBoxContainer.hide()
+
+
+func on_mouse_entered(slot: Control) -> void:
+	button_remove_party.show()
+	
+	party_slot_can_click = true
+	target_slot = slot
+	
+
+func on_mouse_exited(_slot: Control) -> void:
+	party_slot_can_click = false
+	
+	timer.start()
+
+
+func _on_remove_party_pressed() -> void:
+	target_slot.sprite.texture = null
+	target_slot.pokemon_info.clear()
+	
+	SQL.db.query(
+		"UPDATE banco_pokemon SET in_party = 0 WHERE id_pokemon = " + str(target_slot.id_pokemon)
+	)
+	
+	target_slot.id_pokemon = 0
+
+
+func _on_timer_timeout() -> void:
+	button_remove_party.hide()

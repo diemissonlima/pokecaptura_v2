@@ -174,7 +174,7 @@ func on_mouse_entered(id: int) -> void:
 	id_slot = id
 
 
-func on_mouse_exited(id: int) -> void:
+func on_mouse_exited(_id: int) -> void:
 	can_click = false
 
 

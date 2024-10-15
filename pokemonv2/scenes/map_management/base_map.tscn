@@ -99,7 +99,7 @@ font_size = 12
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "button_start_hunting", "info", "info2", "spawn_lendario", "map_name_label", "progress_map_bar", "party_container") groups=["mapa"]]
+[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "button_start_hunting", "info", "info2", "spawn_lendario", "map_name_label", "progress_map_bar", "party_container", "button_remove_party", "timer") groups=["mapa"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,6 +119,8 @@ spawn_lendario = NodePath("Background/SpawnLendario")
 map_name_label = NodePath("Background/MapName")
 progress_map_bar = NodePath("Background/MapProgress")
 party_container = NodePath("Background/PartyContainer")
+button_remove_party = NodePath("Background/RemoveParty")
+timer = NodePath("Timer")
 map_name = "01"
 pokemon_list = Array[PackedScene]([ExtResource("2_obnui")])
 pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c"), ExtResource("13_4tejs"), ExtResource("14_loiwo"), ExtResource("15_23uya"), ExtResource("16_aod8q"), ExtResource("17_gl66w"), ExtResource("18_egxjy"), ExtResource("19_fn0rc"), ExtResource("20_wmw3a"), ExtResource("21_uhv7v"), ExtResource("22_3sg36"), ExtResource("23_ei4qb"), ExtResource("24_67o8b"), ExtResource("25_yv1no"), ExtResource("26_qa4ej"), ExtResource("27_yuepa"), ExtResource("28_0hqco"), ExtResource("29_tqefq"), ExtResource("30_0gadb"), ExtResource("31_uap65"), ExtResource("32_mn7i6"), ExtResource("33_85oiq"), ExtResource("34_3mex6"), ExtResource("35_4sp70")])
@@ -359,12 +361,30 @@ layout_mode = 2
 [node name="PartySlot3" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
 layout_mode = 2
 
+[node name="RemoveParty" type="Button" parent="Background"]
+visible = false
+layout_mode = 0
+offset_left = 404.0
+offset_top = 227.0
+offset_right = 444.0
+offset_bottom = 244.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_a26c1")
+theme_override_font_sizes/font_size = 8
+text = "Remove"
+
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [connection signal="pressed" from="Background/OptionsContainer/Sim" to="." method="_on_sim_pressed"]
 [connection signal="pressed" from="Background/OptionsContainer/Nao" to="." method="_on_nao_pressed"]
 [connection signal="pressed" from="Background/StartHunting" to="." method="_on_start_hunting_pressed"]
 [connection signal="pressed" from="Background/Expand" to="." method="_on_expand_pressed"]
+[connection signal="pressed" from="Background/RemoveParty" to="." method="_on_remove_party_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

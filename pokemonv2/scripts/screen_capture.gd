@@ -215,29 +215,25 @@ func on_button_pressed(button_name: String) -> void:
 				pokeball_rate = 0.5
 			elif pokemon_captured.weight > 50 and pokemon_captured.weight <= 150:
 				pokeball_rate = 1.0
-			elif pokemon_captured.weight > 150 and pokemon_captured.weight <= 250:
-				pokeball_rate = 1.5
-			elif pokemon_captured.weight > 250 and pokemon_captured.weight <= 350:
+			elif pokemon_captured.weight > 150 and pokemon_captured.weight <= 300:
 				pokeball_rate = 2.0
-			elif pokemon_captured.weight > 350 and pokemon_captured.weight <= 450:
-				pokeball_rate = 2.5
-			elif pokemon_captured.weight > 450 and pokemon_captured.weight <= 550:
+			elif pokemon_captured.weight > 300 and pokemon_captured.weight <= 450:
 				pokeball_rate = 3.0
-			elif pokemon_captured.weight > 550 and pokemon_captured.weight <= 650:
-				pokeball_rate = 3.5
-			elif pokemon_captured.weight > 650 and pokemon_captured.weight <= 750:
+			elif pokemon_captured.weight > 450 and pokemon_captured.weight <= 600:
 				pokeball_rate = 4.0
-			elif pokemon_captured.weight > 750 and pokemon_captured.weight <= 850:
-				pokeball_rate = 4.5
-			elif pokemon_captured.weight > 850:
+			elif pokemon_captured.weight > 600 and pokemon_captured.weight <= 750:
 				pokeball_rate = 5.0
+			elif pokemon_captured.weight > 750 and pokemon_captured.weight <= 900:
+				pokeball_rate = 6.0
+			elif pokemon_captured.weight > 900:
+				pokeball_rate = 7.0
 			
 		"Masterball":
 			pokeball_rate = 51.0
 	
 	update_label_pokeball()
 	set_capture(button_name)
-	
+
 
 func _on_try_again_sim_pressed() -> void:
 	text_box.hide()
