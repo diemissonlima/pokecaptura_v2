@@ -128,7 +128,7 @@ func update_quest_info() -> void:
 
 
 func on_button_pressed(button: Button) -> void:
-	if QuestUpdate.active_quests.size() == 3:
+	if QuestUpdate.active_quests.size() == 5:
 		return
 		
 	match button.name:

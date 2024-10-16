@@ -47,7 +47,7 @@ func _ready() -> void:
 		
 
 func _process(_delta: float) -> void:
-	$Background/QuestInProgress.text = "Quests Ativas: " + str(QuestUpdate.active_quests.size()) + " / 3"
+	$Background/QuestInProgress.text = "Quests Ativas: " + str(QuestUpdate.active_quests.size()) + " / 5"
 
 	update_progress_quest_label()
 
@@ -131,13 +131,17 @@ func update_progress_quest_label() -> void:
 		$Background/VBoxContainer/Quest1.text = "" 
 		$Background/VBoxContainer/Quest2.text = ""
 		$Background/VBoxContainer/Quest3.text = ""
-	
+		$Background/VBoxContainer/Quest4.text = ""
+		$Background/VBoxContainer/Quest5.text = ""
+		
 	if quest_list.size() == 1:
 		$Background/VBoxContainer/Quest1.text = "- " + quest_list[0]["name"] + "
 		Capture " + str(quest_list[0]["objective"]) + " Pokémon do tipo " + quest_list[0]["type"].to_upper() + "
 		" + str(quest_list[0]["progress"]) + " / " + str(quest_list[0]["objective"])
 		$Background/VBoxContainer/Quest2.text = ""
 		$Background/VBoxContainer/Quest3.text = ""
+		$Background/VBoxContainer/Quest4.text = ""
+		$Background/VBoxContainer/Quest5.text = ""
 	
 	if quest_list.size() == 2:
 		$Background/VBoxContainer/Quest1.text = "- " + quest_list[0]["name"] + "
@@ -147,6 +151,8 @@ func update_progress_quest_label() -> void:
 		Capture " + str(quest_list[1]["objective"]) + " Pokémon do tipo " + quest_list[1]["type"].to_upper() + "
 		"  + str(quest_list[1]["progress"]) + " / " + str(quest_list[1]["objective"])
 		$Background/VBoxContainer/Quest3.text = ""
+		$Background/VBoxContainer/Quest4.text = ""
+		$Background/VBoxContainer/Quest5.text = ""
 		
 	if quest_list.size() == 3:
 		$Background/VBoxContainer/Quest1.text = "- " + quest_list[0]["name"] + "
@@ -158,6 +164,39 @@ func update_progress_quest_label() -> void:
 		$Background/VBoxContainer/Quest3.text = "- " + quest_list[2]["name"] + "
 		Capture " + str(quest_list[2]["objective"]) + " Pokémon do tipo " + quest_list[2]["type"].to_upper() + "
 		" + str(quest_list[2]["progress"]) + " / " + str(quest_list[2]["objective"])
+		$Background/VBoxContainer/Quest4.text = ""
+		$Background/VBoxContainer/Quest5.text = ""
+	
+	if quest_list.size() == 4:
+		$Background/VBoxContainer/Quest1.text = "- " + quest_list[0]["name"] + "
+		Capture " + str(quest_list[0]["objective"]) + " Pokémon do tipo " + quest_list[0]["type"].to_upper() + "
+		" + str(quest_list[0]["progress"]) + " / " + str(quest_list[0]["objective"])
+		$Background/VBoxContainer/Quest2.text = "- " + quest_list[1]["name"] + "
+		Capture " + str(quest_list[1]["objective"]) + " Pokémon do tipo " + quest_list[1]["type"].to_upper() + "
+		" + str(quest_list[1]["progress"]) + " / " + str(quest_list[1]["objective"])
+		$Background/VBoxContainer/Quest3.text = "- " + quest_list[2]["name"] + "
+		Capture " + str(quest_list[2]["objective"]) + " Pokémon do tipo " + quest_list[2]["type"].to_upper() + "
+		" + str(quest_list[2]["progress"]) + " / " + str(quest_list[2]["objective"])
+		$Background/VBoxContainer/Quest4.text = "- " + quest_list[3]["name"] + "
+		Capture " + str(quest_list[3]["objective"]) + " Pokémon do tipo " + quest_list[3]["type"].to_upper() + "
+		" + str(quest_list[3]["progress"]) + " / " + str(quest_list[3]["objective"])
+		
+	if quest_list.size() == 5:
+		$Background/VBoxContainer/Quest1.text = "- " + quest_list[0]["name"] + "
+		Capture " + str(quest_list[0]["objective"]) + " Pokémon do tipo " + quest_list[0]["type"].to_upper() + "
+		" + str(quest_list[0]["progress"]) + " / " + str(quest_list[0]["objective"])
+		$Background/VBoxContainer/Quest2.text = "- " + quest_list[1]["name"] + "
+		Capture " + str(quest_list[1]["objective"]) + " Pokémon do tipo " + quest_list[1]["type"].to_upper() + "
+		" + str(quest_list[1]["progress"]) + " / " + str(quest_list[1]["objective"])
+		$Background/VBoxContainer/Quest3.text = "- " + quest_list[2]["name"] + "
+		Capture " + str(quest_list[2]["objective"]) + " Pokémon do tipo " + quest_list[2]["type"].to_upper() + "
+		" + str(quest_list[2]["progress"]) + " / " + str(quest_list[2]["objective"])
+		$Background/VBoxContainer/Quest4.text = "- " + quest_list[3]["name"] + "
+		Capture " + str(quest_list[3]["objective"]) + " Pokémon do tipo " + quest_list[3]["type"].to_upper() + "
+		" + str(quest_list[3]["progress"]) + " / " + str(quest_list[3]["objective"])
+		$Background/VBoxContainer/Quest5.text = "- " + quest_list[4]["name"] + "
+		Capture " + str(quest_list[4]["objective"]) + " Pokémon do tipo " + quest_list[4]["type"].to_upper() + "
+		" + str(quest_list[4]["progress"]) + " / " + str(quest_list[4]["objective"])
 
 
 func add_party_onready_scene(party_list: Array) -> void:
