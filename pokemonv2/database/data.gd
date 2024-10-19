@@ -497,3 +497,23 @@ var data_management: Dictionary = {
 		'493': {'id': '493' ,'nome': 'Arceus', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0}}
 		}
 		
+
+func load_sprite(dex_number: String) -> String:
+	var new_slot_id: int
+	var sprite_path: String
+	var gen: String
+	
+	new_slot_id = int(dex_number)
+	
+	if new_slot_id <= 151:
+		gen = "gen1"
+	elif new_slot_id > 151 and new_slot_id <= 251:
+		gen = "gen2"
+	elif new_slot_id > 251 and new_slot_id <= 386:
+		gen = "gen3"
+	elif new_slot_id > 386 and new_slot_id <= 493:
+		gen = "gen4"
+	
+	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
+	
+	return sprite_path

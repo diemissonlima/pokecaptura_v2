@@ -161,19 +161,19 @@ func details_pokemon(info: Dictionary) -> void:
 		sprite.modulate = 255
 	elif info["status_pokedex"] == 2: # 2 quer dizer que pokemon foi registrado na pokedex, mostrando assim a imagem dele completa
 		sprite.modulate = -1
-		
+	
 	info_pokemon.show()
 	title.text = info["nome"].to_upper()
 	id_poke.text = info["id"]
-	primary_type.texture = load(show_type_pokemon(info["primary_type"]))
+	primary_type.texture = load("res://assets/prefabs/pokemon_type/" + info["primary_type"].to_lower() + ".png")
 	
 	if info["primary_type"] == info["secondary_type"]: # caso seja atendida significa que o pokemon nao tem um tipo secundario
 		secondary_type.hide() # entao é ocultado 
 	else:
 		secondary_type.show()
-		secondary_type.texture = load(show_type_pokemon(info["secondary_type"]))
-		
-	sprite.texture = load(load_sprite(info["id"]))
+		secondary_type.texture = load("res://assets/prefabs/pokemon_type/" + info["secondary_type"].to_lower() + ".png")
+	
+	sprite.texture = load(data.load_sprite(info["id"]))
 	
 	poke_name.text = info["nome"]
 	catch.text = str(info["capturado"])
@@ -182,32 +182,6 @@ func details_pokemon(info: Dictionary) -> void:
 	seen_shiny.text = str(info["shiny_visto"])
 	dex_description.text = info["desc_pokedex"]
 	info_local.text = "Pode ser encontrado no Mapa " + info["mapa"]
-
-
-func show_type_pokemon(type: String) -> String:
-	var type_texture_path: String = "res://assets/prefabs/pokemon_type/" + type.to_lower() + ".png"
-	return type_texture_path
-	
-	
-func load_sprite(slot_id: String) -> String:
-	var gen: String = ""
-	var new_slot_id: int
-	var sprite_path: String
-	
-	new_slot_id = int(slot_id)
-	
-	if new_slot_id <= 151:
-		gen = "gen1"
-	elif new_slot_id > 151 and new_slot_id <= 251:
-		gen = "gen2"
-	elif new_slot_id > 251 and new_slot_id <= 386:
-		gen = "gen3"
-	elif new_slot_id > 386 and new_slot_id <= 493:
-		gen = "gen4"
-
-	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + slot_id + ".png"
-
-	return sprite_path
 
 
 func on_mouse_entered(slot_id: String) -> void:
@@ -223,30 +197,18 @@ func on_mouse_exited(_slot_id: String) -> void:
 func switch_dex_button_pressed(button_name: String) -> void:
 	update_pokedex_progress(button_name)
 	
-	match button_name:
-		"Kanto":
-			$ScrollContainer/DexKantoContainer.show()
-			$ScrollContainer/DexJohtoContainer.hide()
-			$ScrollContainer/DexHoennContainer.hide()
-			$ScrollContainer/DexSinnohContainer.hide()
-			
-		"Johto":
-			$ScrollContainer/DexKantoContainer.hide()
-			$ScrollContainer/DexJohtoContainer.show()
-			$ScrollContainer/DexHoennContainer.hide()
-			$ScrollContainer/DexSinnohContainer.hide()
-			
-		"Hoenn":
-			$ScrollContainer/DexKantoContainer.hide()
-			$ScrollContainer/DexJohtoContainer.hide()
-			$ScrollContainer/DexHoennContainer.show()
-			$ScrollContainer/DexSinnohContainer.hide()
-			
-		"Sinnoh":
-			$ScrollContainer/DexKantoContainer.hide()
-			$ScrollContainer/DexJohtoContainer.hide()
-			$ScrollContainer/DexHoennContainer.hide()
-			$ScrollContainer/DexSinnohContainer.show()
+	var region: Dictionary = {
+		"Kanto": $ScrollContainer/DexKantoContainer,
+		"Johto": $ScrollContainer/DexJohtoContainer,
+		"Hoenn": $ScrollContainer/DexHoennContainer,
+		"Sinnoh": $ScrollContainer/DexSinnohContainer
+	}
+	
+	for j in region:
+		if j == button_name:
+			region[j].show()
+		else:
+			region[j].hide()
 
 
 func _on_button_pressed() -> void:

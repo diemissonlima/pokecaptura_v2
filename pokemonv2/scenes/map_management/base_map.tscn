@@ -301,6 +301,7 @@ text = "Quests Ativas: 0 / 5"
 label_settings = SubResource("LabelSettings_78fjy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+visible = false
 layout_mode = 0
 offset_left = 9.0
 offset_top = 95.0
@@ -358,22 +359,17 @@ offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="PartySlot" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
-layout_mode = 2
-
-[node name="PartySlot2" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
-layout_mode = 2
-
-[node name="PartySlot3" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
 layout_mode = 2
 
 [node name="RemoveParty" type="Button" parent="Background"]
 visible = false
 layout_mode = 0
-offset_left = 404.0
+offset_left = 432.0
 offset_top = 227.0
-offset_right = 444.0
+offset_right = 472.0
 offset_bottom = 244.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_a26c1")

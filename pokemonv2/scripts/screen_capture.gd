@@ -1,8 +1,6 @@
 extends Control
 class_name ScreenCapture
 
-# depois que capturar um pokemon, dar update no progresso do mapa
-
 @export_category("Objetos")
 @export var pokemon_position: Marker2D
 @export var background: TextureRect
@@ -103,47 +101,39 @@ func drop(value: int) -> void:
 
 
 func show_pokeball_button() -> void:
-	if int(pokeball_label.text) <= 0:
-		button_pokeball.hide()
-		pokeball_label.hide()
-	else:
-		button_pokeball.show()
-		pokeball_label.show()
+	var pokeball_list: Dictionary = {
+		"pokeball": [
+			button_pokeball, pokeball_label
+		],
+		
+		"greatball": [
+			button_greatball, greatball_label
+		],
+		
+		"ultraball": [
+			button_ultraball, ultraball_label
+		],
+		
+		"masterball": [
+			button_masterball, masterball_label
+		],
+		
+		"repeatball": [
+			button_repeatball, repeatball_label
+		],
+		
+		"heavyball": [
+			button_heavyball, heavyball_label
+		]
+	}
 	
-	if int(greatball_label.text) <= 0:
-		button_greatball.hide()
-		greatball_label.hide()
-	else:
-		button_greatball.show()
-		greatball_label.show()
-		
-	if int(ultraball_label.text) <= 0:
-		button_ultraball.hide()
-		ultraball_label.hide()
-	else:
-		button_ultraball.show()
-		ultraball_label.show()
-	
-	if int(masterball_label.text) <= 0:
-		button_masterball.hide()
-		masterball_label.hide()
-	else:
-		button_masterball.show()
-		masterball_label.show()
-		
-	if int(repeatball_label.text) <= 0:
-		button_repeatball.hide()
-		repeatball_label.hide()
-	else:
-		button_repeatball.show()
-		repeatball_label.show()
-		
-	if int(heavyball_label.text) <= 0:
-		button_heavyball.hide()
-		heavyball_label.hide()
-	else:
-		button_heavyball.show()
-		heavyball_label.show()
+	for button in pokeball_list.values():
+		if int(button[1].text) <= 0:
+			button[0].hide()
+			button[1].hide()
+		else:
+			button[0].show()
+			button[1].show()
 
 
 func update_label_pokeball() -> void:

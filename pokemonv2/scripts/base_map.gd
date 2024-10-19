@@ -207,7 +207,7 @@ func add_party_onready_scene(party_list: Array) -> void:
 func add_party(poke_info: Dictionary) -> void:
 	for slot in party_container.get_children():
 		if slot.sprite.texture == null:
-			slot.sprite.texture = load(load_sprite(poke_info["numero_dex"]))
+			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"]))
 			slot.id_pokemon = poke_info["id_pokemon"]
 			slot.pokemon_info = poke_info.duplicate()
 			
@@ -222,26 +222,6 @@ func add_party(poke_info: Dictionary) -> void:
 			for slot1 in party_container.get_children():
 				if slot1.id_pokemon == poke_info["id_pokemon"]:
 					return
-
-
-func load_sprite(dex_number: String) -> String:
-	var new_slot_id: int
-	var sprite_path: String
-	var gen: String
-	
-	new_slot_id = int(dex_number)
-	
-	if new_slot_id <= 151:
-		gen = "gen1"
-	elif new_slot_id > 151 and new_slot_id <= 251:
-		gen = "gen2"
-	elif new_slot_id > 251 and new_slot_id <= 386:
-		gen = "gen3"
-	elif new_slot_id > 386 and new_slot_id <= 493:
-		gen = "gen4"
-	
-	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
-	return sprite_path
 
 
 func _on_expand_pressed() -> void:

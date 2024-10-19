@@ -45,7 +45,6 @@ func _process(_delta: float) -> void:
 		$PokemonEntry.show()
 		
 		set_info()
-		#print(pokemon_info)
 
 
 func _ready() -> void:
@@ -64,8 +63,8 @@ func _ready() -> void:
 
 
 func set_info() -> void:
-	sprite2.texture = load(load_sprite(pokemon_info["numero_dex"]))
-	sprite3.texture = load(load_sprite(pokemon_info["numero_dex"]))
+	sprite2.texture = load(data.load_sprite(pokemon_info["numero_dex"]))
+	sprite3.texture = load(data.load_sprite(pokemon_info["numero_dex"]))
 	dex_number.text = pokemon_info["numero_dex"]
 	pokemon_name.text = pokemon_info["nome"]
 	nature.text = "Nature: " + pokemon_info["nature"]
@@ -96,7 +95,7 @@ func spawn_slot_onready_scene() -> void:
 func load_pokemon_on_bank(poke_info: Dictionary) -> void:
 	for slot in bank_container.get_children():
 		if slot.id == 0:
-			slot.sprite.texture = load(load_sprite(poke_info["numero_dex"]))
+			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"]))
 			slot.id = poke_info["id_pokemon"]
 			slot.date_capture = poke_info["data_captura"]
 			slot.time_capture = poke_info["hora_captura"]
@@ -106,29 +105,8 @@ func load_pokemon_on_bank(poke_info: Dictionary) -> void:
 			slot.secondary_type = poke_info["secondary_type"]
 			slot.region = poke_info["region"]
 			slot.nature = poke_info["nature"]
-			#slot.weight = pokemon_info["weight"]
 			
 			break
-
-
-func load_sprite(dex_number: String) -> String:
-	var new_slot_id: int
-	var sprite_path: String
-	var gen: String
-	
-	new_slot_id = int(dex_number)
-	
-	if new_slot_id <= 151:
-		gen = "gen1"
-	elif new_slot_id > 151 and new_slot_id <= 251:
-		gen = "gen2"
-	elif new_slot_id > 251 and new_slot_id <= 386:
-		gen = "gen3"
-	elif new_slot_id > 386 and new_slot_id <= 493:
-		gen = "gen4"
-	
-	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
-	return sprite_path
 
 
 func load_pokemon_on_party() -> void:
@@ -166,7 +144,7 @@ func get_slot_info() -> void:
 	)
 	
 	pokemon_info = SQL.db.query_result[0]
-	sprite.texture = load(load_sprite(pokemon_info["numero_dex"]))
+	sprite.texture = load(data.load_sprite(pokemon_info["numero_dex"]))
 
 
 func on_mouse_entered(id: int) -> void:
