@@ -173,7 +173,7 @@ func details_pokemon(info: Dictionary) -> void:
 		secondary_type.show()
 		secondary_type.texture = load("res://assets/prefabs/pokemon_type/" + info["secondary_type"].to_lower() + ".png")
 	
-	sprite.texture = load(data.load_sprite(info["id"]))
+	sprite.texture = load(data.load_sprite(info["id"], 0))
 	
 	poke_name.text = info["nome"]
 	catch.text = str(info["capturado"])

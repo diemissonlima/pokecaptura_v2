@@ -58,7 +58,7 @@ func get_nature() -> void:
 
 func is_shiny() -> void:
 	var random_number: float = randf()
-	var shiny_probability: float = 0.01
+	var shiny_probability: float = .5
 	
 	if random_number <= shiny_probability:
 		shiny = true

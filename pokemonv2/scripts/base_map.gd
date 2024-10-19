@@ -27,7 +27,6 @@ class_name BaseMap
 @export var path_background: String
 
 var pokemon_spawned
-var party_list: Array = []
 var party_slot_can_click: bool = false
 
 var target_slot: Control
@@ -207,15 +206,14 @@ func add_party_onready_scene(party_list: Array) -> void:
 func add_party(poke_info: Dictionary) -> void:
 	for slot in party_container.get_children():
 		if slot.sprite.texture == null:
-			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"]))
+			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id_pokemon = poke_info["id_pokemon"]
 			slot.pokemon_info = poke_info.duplicate()
-			
-			party_list.append(poke_info)
 			
 			SQL.db.query(
 				"UPDATE banco_pokemon SET in_party = 1 WHERE id_pokemon = " + str(poke_info["id_pokemon"])
 			)
+			
 			break
 			
 		else:

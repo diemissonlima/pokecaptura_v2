@@ -1,5 +1,7 @@
 extends Node
 
+var companion: Dictionary = {}
+
 var data_management: Dictionary = {
 	"pokemon": {
 		'001': {'id': '001', 'nome': 'Bulbasaur', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0},
@@ -498,7 +500,7 @@ var data_management: Dictionary = {
 		}
 		
 
-func load_sprite(dex_number: String) -> String:
+func load_sprite(dex_number: String, shiny: int) -> String:
 	var new_slot_id: int
 	var sprite_path: String
 	var gen: String
@@ -514,6 +516,9 @@ func load_sprite(dex_number: String) -> String:
 	elif new_slot_id > 386 and new_slot_id <= 493:
 		gen = "gen4"
 	
-	sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
+	if shiny == 1:
+		sprite_path = "res://assets/pokemon_sprite/" + gen + "/shiny/" + dex_number + ".png"
+	else:
+		sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
 	
 	return sprite_path

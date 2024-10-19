@@ -63,8 +63,8 @@ func _ready() -> void:
 
 
 func set_info() -> void:
-	sprite2.texture = load(data.load_sprite(pokemon_info["numero_dex"]))
-	sprite3.texture = load(data.load_sprite(pokemon_info["numero_dex"]))
+	sprite2.texture = load(data.load_sprite(pokemon_info["numero_dex"], pokemon_info["shiny"]))
+	sprite3.texture = load(data.load_sprite(pokemon_info["numero_dex"], pokemon_info["shiny"]))
 	dex_number.text = pokemon_info["numero_dex"]
 	pokemon_name.text = pokemon_info["nome"]
 	nature.text = "Nature: " + pokemon_info["nature"]
@@ -95,7 +95,7 @@ func spawn_slot_onready_scene() -> void:
 func load_pokemon_on_bank(poke_info: Dictionary) -> void:
 	for slot in bank_container.get_children():
 		if slot.id == 0:
-			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"]))
+			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id = poke_info["id_pokemon"]
 			slot.date_capture = poke_info["data_captura"]
 			slot.time_capture = poke_info["hora_captura"]
@@ -144,7 +144,7 @@ func get_slot_info() -> void:
 	)
 	
 	pokemon_info = SQL.db.query_result[0]
-	sprite.texture = load(data.load_sprite(pokemon_info["numero_dex"]))
+	sprite.texture = load(data.load_sprite(pokemon_info["numero_dex"], pokemon_info["shiny"]))
 
 
 func on_mouse_entered(id: int) -> void:

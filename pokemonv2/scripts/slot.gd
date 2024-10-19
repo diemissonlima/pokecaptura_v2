@@ -19,5 +19,5 @@ func _ready() -> void:
 	id_poke.text = slot_id
 	sprite.modulate = 0
 	
-	sprite_path = data.load_sprite(slot_id)
+	sprite_path = data.load_sprite(slot_id, 0)
 	sprite.texture = load(sprite_path)

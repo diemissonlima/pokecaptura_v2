@@ -33,13 +33,13 @@ func on_button_pressed(button: TextureButton) -> void:
 	
 	match button.name:
 		"Pokeball":
-			item_value = 100
-			
-		"Greatball":
 			item_value = 150
 			
-		"Ultraball":
+		"Greatball":
 			item_value = 200
+			
+		"Ultraball":
+			item_value = 250
 	
 	name_item_label.show()
 	name_item_label.text = button.name + " x" + button.get_node("Label").text
@@ -85,7 +85,7 @@ func _on_buy_button_pressed() -> void:
 	
 	alert.show()
 	alert.text = "Compra Realizada!!!"
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	alert.hide()
 	
 	SQL.update_database("inventario", "Credito", "decrease", _purchase_value) # atualiza os Creditos do jogador
