@@ -23,6 +23,7 @@ class_name ScreenCapture
 @export var button_masterball: TextureButton
 @export var masterball_label: Label
 
+var capture_attempts: int = 0
 var pokemon_captured
 var pokeball_rate: float
 
@@ -53,6 +54,7 @@ func set_capture(_pokeball_used: String) -> void:
 	var random_number: float = randf()
 	var chance_of_capture: float = (pokemon_captured.catch_rate / 255) * pokeball_rate
 	
+	capture_attempts += 1
 	await get_tree().create_timer(1.5).timeout
 	
 	if random_number <= chance_of_capture or chance_of_capture >= 1.0:
@@ -74,6 +76,8 @@ func set_capture(_pokeball_used: String) -> void:
 		
 		SQL.add_pokemon_to_bank(pokemon_captured)
 		get_tree().call_group("pokemon_bank", "add_pokemon_to_bank")
+		
+		capture_attempts = 0
 		
 		drop(pokemon_captured.dropped_credit)
 		

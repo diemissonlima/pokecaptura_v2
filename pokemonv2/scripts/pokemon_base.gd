@@ -32,6 +32,7 @@ class_name PokemonBase
 @export var type_2: Sprite2D
 @export var is_shiny_label: Label
 
+var nature_modificador: String
 var dropped_credit: int
 
 
@@ -58,7 +59,7 @@ func get_nature() -> void:
 
 func is_shiny() -> void:
 	var random_number: float = randf()
-	var shiny_probability: float = .5
+	var shiny_probability: float = 0.01
 	
 	if random_number <= shiny_probability:
 		shiny = true
@@ -93,3 +94,39 @@ func alter_characteristics() -> void:
 	else:
 		exp_base = int(exp_base * multiplier)
 		dropped_credit *= multiplier
+	
+	apply_modifier()
+
+
+func apply_modifier() -> void:
+	var nature_list: Dictionary = {
+		1: ['Timid', 'Modest', 'Relaxed', 'Hasty', 'Quirky'],
+		2: ['Rash', 'Lax', 'Calm', 'Jolly', 'Adamant'],
+		3: ['Careful', 'Serious', 'Impish', 'Sassy', 'Naive'],
+		4: ['Lonely', 'Gentle', 'Brave', 'Hardy', 'Mild'],
+		5: ['Bold', 'Docile', 'Naughty', 'Bashful', 'Quiet']
+	}
+	
+	if nature in nature_list[1]: # aumenta catch rate em 20% e diminui drop de credito em 20%
+		catch_rate = catch_rate + (catch_rate * 20 / 100)
+		dropped_credit = dropped_credit - (dropped_credit * 20 / 100)
+		nature_modificador = "+ 20% Catch Rate - 20% Drop Crédito"
+		
+	elif nature in nature_list[2]: # diminui catch rate em 20% e aumenta drop de credito em 20%
+		catch_rate = catch_rate - (catch_rate * 20 / 100)
+		dropped_credit = dropped_credit + (dropped_credit * 20 / 100)
+		nature_modificador = "- 20% Catch Rate + 20% Drop Crédito"
+
+	elif nature in nature_list[3]: # diminui catch rate em 10% e diminui drop de credito em 10%
+		catch_rate = catch_rate - (catch_rate * 10 / 100)
+		dropped_credit = dropped_credit - (dropped_credit * 10 / 100)
+		nature_modificador = "- 10% Catch Rate - 10% Drop Crédito"
+		
+	elif nature in nature_list[4]: # aumenta catch rate em 15% e aumenta drop de credito em 15%
+		catch_rate = catch_rate + (catch_rate * 15 / 100)
+		dropped_credit = dropped_credit + (dropped_credit * 15 / 100)
+		nature_modificador = "+ 15% Catch Rate + 15% Drop Crédito"
+
+	elif nature in nature_list[5]: # nao muda nada
+		nature_modificador = "Sem Modificador de Nature"
+		return

@@ -10,7 +10,7 @@ const SLOT_BANK: PackedScene = preload("res://scenes/interface/slot_bank.tscn")
 @export var sprite2: TextureRect
 @export var sprite3: TextureRect
 @export var dex_number: Label
-@export var pokemon_name: Label
+@export var pokemon_id: Label
 @export var nature: Label
 @export var primary_type: TextureRect
 @export var secondary_type: TextureRect
@@ -65,9 +65,9 @@ func _ready() -> void:
 func set_info() -> void:
 	sprite2.texture = load(data.load_sprite(pokemon_info["numero_dex"], pokemon_info["shiny"]))
 	sprite3.texture = load(data.load_sprite(pokemon_info["numero_dex"], pokemon_info["shiny"]))
-	dex_number.text = pokemon_info["numero_dex"]
-	pokemon_name.text = pokemon_info["nome"]
-	nature.text = "Nature: " + pokemon_info["nature"]
+	dex_number.text = "Dex N°: " + pokemon_info["numero_dex"]
+	pokemon_id.text = "ID: " + str(pokemon_info["id_pokemon"]) + " - " + pokemon_info["nome"]  #pokemon_info["nome"]
+	nature.text = "Nature: " + pokemon_info["nature"] + "\n" + pokemon_info["nature_modificador"]
 	primary_type.texture = load("res://assets/prefabs/pokemon_type/" + pokemon_info["primary_type"].to_lower() + ".png")
 	
 	if pokemon_info["primary_type"] == pokemon_info["secondary_type"]:

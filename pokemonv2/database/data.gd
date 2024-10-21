@@ -2,6 +2,17 @@ extends Node
 
 var companion: Dictionary = {}
 
+var nature_list: Dictionary = {
+		1: ['Timid', 'Modest', 'Relaxed', 'Hasty', 'Quirky'],
+		'description': "+ 20% Catch Rate / - 20% Drop Crédito",
+		
+		2: ['Rash', 'Lax', 'Calm', 'Jolly', 'Adamant'],
+		3: ['Careful', 'Serious', 'Impish', 'Sassy', 'Naive'],
+		4: ['Lonely', 'Gentle', 'Brave', 'Hardy', 'Mild'],
+		5: ['Bold', 'Docile', 'Naughty', 'Bashful', 'Quiet']
+	}
+
+
 var data_management: Dictionary = {
 	"pokemon": {
 		'001': {'id': '001', 'nome': 'Bulbasaur', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0},

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://n05wc6dwj7x7"]
+[gd_scene load_steps=14 format=3 uid="uid://n05wc6dwj7x7"]
 
 [ext_resource type="Script" path="res://scripts/pokemon_bank.gd" id="1_pr82w"]
 [ext_resource type="Texture2D" uid="uid://2b7pb6k4y71x" path="res://assets/prefabs/interface/example_top.PNG" id="1_x6bbo"]
@@ -10,14 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://bp5oaicqn25cg" path="res://assets/prefabs/pokemon_type/flying.png" id="8_pt6uw"]
 [ext_resource type="Texture2D" uid="uid://b7w2ktihoeb5h" path="res://assets/prefabs/interface/IconB05.png" id="9_vlune"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3xqpa"]
+[sub_resource type="LabelSettings" id="LabelSettings_n7pkj"]
+line_spacing = 0.0
+font = ExtResource("5_d6n07")
+font_size = 18
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8log7"]
 line_spacing = 0.0
 font = ExtResource("5_d6n07")
 font_size = 20
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_8log7"]
+[sub_resource type="LabelSettings" id="LabelSettings_3xqpa"]
 line_spacing = 0.0
 font = ExtResource("5_d6n07")
 font_size = 20
@@ -31,8 +38,7 @@ font_size = 20
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "sprite2", "sprite3", "dex_number", "pokemon_name", "nature", "primary_type", "secondary_type", "weight", "data_captura") groups=["pokemon_bank"]]
-visible = false
+[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "sprite2", "sprite3", "dex_number", "pokemon_id", "nature", "primary_type", "secondary_type", "weight", "data_captura") groups=["pokemon_bank"]]
 custom_minimum_size = Vector2(460, 268)
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,7 +59,7 @@ sprite = NodePath("Background/Sprite")
 sprite2 = NodePath("PokemonEntry/Sprite")
 sprite3 = NodePath("PokemonEntry/Sprite2")
 dex_number = NodePath("PokemonEntry/DexNumber")
-pokemon_name = NodePath("PokemonEntry/PokemonName")
+pokemon_id = NodePath("PokemonEntry/PokemonID")
 nature = NodePath("PokemonEntry/Nature")
 primary_type = NodePath("PokemonEntry/TypeContainer/PrimaryType")
 secondary_type = NodePath("PokemonEntry/TypeContainer/SecondaryType")
@@ -102,7 +108,6 @@ grow_vertical = 2
 expand_mode = 1
 
 [node name="PokemonEntry" type="TextureRect" parent="."]
-visible = false
 custom_minimum_size = Vector2(506, 268)
 layout_mode = 1
 anchors_preset = 8
@@ -141,28 +146,29 @@ texture = ExtResource("5_sra3h")
 
 [node name="DexNumber" type="Label" parent="PokemonEntry"]
 layout_mode = 0
-offset_left = 270.0
-offset_top = 18.0
-offset_right = 303.0
+offset_left = 323.0
+offset_top = 14.0
+offset_right = 494.0
 offset_bottom = 39.0
-text = "006"
-label_settings = SubResource("LabelSettings_3xqpa")
+text = "Dex Nº: 006"
+label_settings = SubResource("LabelSettings_n7pkj")
 
-[node name="PokemonName" type="Label" parent="PokemonEntry"]
+[node name="PokemonID" type="Label" parent="PokemonEntry"]
 layout_mode = 0
-offset_left = 338.0
-offset_top = 18.0
-offset_right = 484.0
-offset_bottom = 39.0
+offset_left = 266.0
+offset_top = 42.0
+offset_right = 482.0
+offset_bottom = 63.0
 text = "Charizard"
 label_settings = SubResource("LabelSettings_8log7")
+horizontal_alignment = 1
 
 [node name="TypeContainer" type="HBoxContainer" parent="PokemonEntry"]
 layout_mode = 0
 offset_left = 299.0
-offset_top = 78.0
+offset_top = 79.0
 offset_right = 749.0
-offset_bottom = 122.0
+offset_bottom = 123.0
 scale = Vector2(0.35, 0.35)
 theme_override_constants/separation = 50
 alignment = 1
@@ -177,13 +183,14 @@ texture = ExtResource("8_pt6uw")
 
 [node name="Nature" type="Label" parent="PokemonEntry"]
 layout_mode = 0
-offset_left = 254.0
-offset_top = 41.0
-offset_right = 488.0
-offset_bottom = 62.0
-text = "Nature: Jolly"
+offset_left = 15.0
+offset_top = 164.0
+offset_right = 205.0
+offset_bottom = 227.0
+text = "Nature: Jolly 
++ 20% Catch Rate
+- 20% Drop Crédito"
 label_settings = SubResource("LabelSettings_3xqpa")
-horizontal_alignment = 1
 
 [node name="Weight" type="Label" parent="PokemonEntry"]
 layout_mode = 0
@@ -198,9 +205,9 @@ horizontal_alignment = 1
 [node name="DataCaptura" type="Label" parent="PokemonEntry"]
 layout_mode = 0
 offset_left = 254.0
-offset_top = 127.0
+offset_top = 128.0
 offset_right = 488.0
-offset_bottom = 148.0
+offset_bottom = 149.0
 text = "Captura: 11/10/24 11:55:59"
 label_settings = SubResource("LabelSettings_a4wfl")
 
