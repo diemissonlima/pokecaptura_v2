@@ -76,6 +76,8 @@ func spawn_pokemon() -> void:
 	pokemon_spawned.global_position = spawn_position.global_position
 	pokemon_spawned.scale = Vector2(0.7, 0.7)
 	get_tree().root.call_deferred("add_child", pokemon_spawned)
+	
+	print(data.companion)
 
 
 func _on_start_hunting_pressed() -> void:
@@ -208,7 +210,8 @@ func add_party(poke_info: Dictionary) -> void:
 		if slot.sprite.texture == null:
 			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id_pokemon = poke_info["id_pokemon"]
-			slot.pokemon_info = poke_info.duplicate()
+			#slot.pokemon_info = poke_info.duplicate()
+			data.companion = poke_info.duplicate()
 			
 			SQL.db.query(
 				"UPDATE banco_pokemon SET in_party = 1 WHERE id_pokemon = " + str(poke_info["id_pokemon"])
