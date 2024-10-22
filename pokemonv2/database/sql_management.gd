@@ -266,8 +266,8 @@ func add_pokemon_to_bank(pokemon: CharacterBody2D):
 	row_array.append(pokemon.nature)
 	row_dict["nature"] = row_array[7]
 	
-	row_array.append(pokemon.nature_modificador)
-	row_dict["nature_modificador"] = row_array[8]
+	row_array.append(pokemon.nature_description)
+	row_dict["nature_description"] = row_array[8]
 	
 	row_array.append(pokemon.weight)
 	row_dict["weight"] = row_array[9]
@@ -281,6 +281,7 @@ func add_pokemon_to_bank(pokemon: CharacterBody2D):
 	row_array.append(0)
 	row_dict["in_party"] = row_array[12]
 	
+	print(row_dict)
 	db.insert_row("banco_pokemon", row_dict)
 
 

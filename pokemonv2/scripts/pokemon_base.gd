@@ -32,7 +32,7 @@ class_name PokemonBase
 @export var type_2: Sprite2D
 @export var is_shiny_label: Label
 
-var nature_modificador: String
+var nature_description: String
 var dropped_credit: int
 
 
@@ -96,6 +96,7 @@ func alter_characteristics() -> void:
 		dropped_credit *= multiplier
 	
 	apply_modifier()
+	
 
 
 func apply_modifier() -> void:
@@ -110,23 +111,30 @@ func apply_modifier() -> void:
 	if nature in nature_list[1]: # aumenta catch rate em 20% e diminui drop de credito em 20%
 		catch_rate = catch_rate + (catch_rate * 20 / 100)
 		dropped_credit = dropped_credit - (dropped_credit * 20 / 100)
-		nature_modificador = "+ 20% Catch Rate - 20% Drop Crédito"
+		nature_description = "Pokemon dessa natureza é 20% mais fácil de capturar e diminui em 20% o drop de Crédito no momento da captura."
 		
 	elif nature in nature_list[2]: # diminui catch rate em 20% e aumenta drop de credito em 20%
 		catch_rate = catch_rate - (catch_rate * 20 / 100)
 		dropped_credit = dropped_credit + (dropped_credit * 20 / 100)
-		nature_modificador = "- 20% Catch Rate + 20% Drop Crédito"
+		nature_description = "Pokemon dessa natureza é 20% mais difícil de capturar e aumenta em 20% o drop de Crédito no momento da captura."
 
 	elif nature in nature_list[3]: # diminui catch rate em 10% e diminui drop de credito em 10%
 		catch_rate = catch_rate - (catch_rate * 10 / 100)
 		dropped_credit = dropped_credit - (dropped_credit * 10 / 100)
-		nature_modificador = "- 10% Catch Rate - 10% Drop Crédito"
+		nature_description = "Pokemon dessa natureza é 10% mais difícil de capturar e diminui em 10% o drop de Crédito no momento da captura."
 		
 	elif nature in nature_list[4]: # aumenta catch rate em 15% e aumenta drop de credito em 15%
 		catch_rate = catch_rate + (catch_rate * 15 / 100)
 		dropped_credit = dropped_credit + (dropped_credit * 15 / 100)
-		nature_modificador = "+ 15% Catch Rate + 15% Drop Crédito"
+		nature_description = "Pokemon dessa natureza é 15% mais fácil de capturar e aumenta em 15% o drop de Crédito no momento da captura."
 
 	elif nature in nature_list[5]: # nao muda nada
-		nature_modificador = "Sem Modificador de Nature"
+		nature_description = "Sem modificador de Natureza."
 		return
+
+
+func get_ability() -> void:
+	var ability_list: Array = [
+		"Bargainer", "Steady Hand", "Fortune Finder", "Elemental Mastery",
+		"Charm of the Brave", "Pokéball Expert", "Conservationist", "Resourceful"
+	]

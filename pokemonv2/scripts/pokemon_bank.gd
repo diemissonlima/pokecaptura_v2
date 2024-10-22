@@ -69,7 +69,6 @@ func set_info() -> void:
 	dex_number.text = "Dex N°: " + pokemon_info["numero_dex"]
 	pokemon_id.text = "ID: " + str(pokemon_info["id_pokemon"]) + " - " + pokemon_info["nome"]
 	nature.text = "Nature: " + pokemon_info["nature"]
-	nature_description.text = pokemon_info["nature_modificador"]
 	primary_type.texture = load("res://assets/prefabs/pokemon_type/" + pokemon_info["primary_type"].to_lower() + ".png")
 	
 	if pokemon_info["primary_type"] == pokemon_info["secondary_type"]:
