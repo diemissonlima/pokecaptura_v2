@@ -17,7 +17,7 @@ class_name PokemonBase
 	"Kanto", "Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar"
 ) var region: String
 @export var nature: String
-@export var hability: String
+@export var ability: Dictionary
 @export var evolution: String
 @export var legendary: bool
 @export var shiny: bool
@@ -97,6 +97,7 @@ func alter_characteristics() -> void:
 	
 	apply_modifier()
 	
+	get_ability()
 
 
 func apply_modifier() -> void:
@@ -134,7 +135,141 @@ func apply_modifier() -> void:
 
 
 func get_ability() -> void:
-	var ability_list: Array = [
-		"Bargainer", "Steady Hand", "Fortune Finder", "Elemental Mastery",
-		"Charm of the Brave", "Pokéball Expert", "Conservationist", "Resourceful"
-	]
+	var ability_list: Dictionary = {
+		"Bargainer": {
+			"description": "Reduz o preço das Pokébolas no Shop em 10%",
+			"modifier": 0.1
+		},
+		
+		"Steady Hand (Pokeball)": {
+			"description": "Eficácia da Pokeball aumenta em 10%",
+			"modifier": 0.1
+		},
+		
+		"Steady Hand (Greatball)": {
+			"description": "Eficácia da Greatball aumenta em 10%",
+			"modifier": 0.1
+		},
+		
+		"Steady Hand (Ultraball)": {
+			"description": "Eficácia da Ultraball aumenta em 10%",
+			"modifier": 0.1
+		},
+		
+		"Fortune Finder": {
+			"description": "Aumenta em 20% o drop de Créditos",
+			"modifier": 0.2
+		},
+		
+		"Elemental Mastery (Bug)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo BUG",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Dark)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo DARK",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Dragon)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo DRAGON",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Electric)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo ELECTRIC",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Fairy)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo FAIRY",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Fighting)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo FIGHTING",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Fire)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo FIRE",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Flying)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo FLYING",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Ghost)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo GHOST",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Grass)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo GRASS",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Ground)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo GROUND",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Ice)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo ICE",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Poison)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo POISON",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Psychic)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo PSYCHIC",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Rock)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo ROCK",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Steel)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo STEEL",
+			"modifier": 0.15
+		},
+		
+		"Elemental Mastery (Water)": {
+			"description": "Aumenta em 15% a chance de captura de Pokémon do tipo WATER",
+			"modifier": 0.15
+		},
+		
+		"Pokéball Expert": {
+			"description": "Aumenta a chance de captura em 10% se usar a mesma Pokébola após falhar",
+			"modifier": 0.10
+		},
+		
+		"Conservationist": {
+			"description": "15% de chance de não gastar a Pokébola usada",
+			"modifier": 0.15
+		},
+		
+		"Resourceful": {
+			"description": "5% de chance de receber uma Pokébola aleatória ao capturar um Pokémon",
+			"modifier": 0.05
+		},
+		
+		"Shiny Hunter": {
+			"description": "Aumenta em 20% a chance de captura se o Pokémon for SHINY",
+			"modifier": 0.2
+		}
+	}
+	
+	var ability_keys = ability_list.keys()
+	var key = ability_keys.pick_random()
+	
+	ability["name"] = key
+	ability["description"] = ability_list[key]["description"]
+	ability["modifier"] = ability_list[key]["modifier"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://n05wc6dwj7x7"]
+[gd_scene load_steps=17 format=3 uid="uid://n05wc6dwj7x7"]
 
 [ext_resource type="Script" path="res://scripts/pokemon_bank.gd" id="1_pr82w"]
 [ext_resource type="Texture2D" uid="uid://2b7pb6k4y71x" path="res://assets/prefabs/interface/example_top.PNG" id="1_x6bbo"]
@@ -52,7 +52,14 @@ font_size = 14
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "sprite2", "sprite3", "dex_number", "pokemon_id", "nature", "nature_description", "primary_type", "secondary_type", "weight", "data_captura") groups=["pokemon_bank"]]
+[sub_resource type="LabelSettings" id="LabelSettings_uudu5"]
+line_spacing = 0.0
+font = ExtResource("5_d6n07")
+font_size = 14
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "sprite2", "sprite3", "dex_number", "pokemon_id", "nature", "nature_description", "primary_type", "secondary_type", "weight", "data_captura", "ability_name", "ability_description") groups=["pokemon_bank"]]
 visible = false
 custom_minimum_size = Vector2(460, 268)
 anchors_preset = 8
@@ -81,6 +88,8 @@ primary_type = NodePath("PokemonEntry/TypeContainer/PrimaryType")
 secondary_type = NodePath("PokemonEntry/TypeContainer/SecondaryType")
 weight = NodePath("PokemonEntry/Weight")
 data_captura = NodePath("PokemonEntry/DataCaptura")
+ability_name = NodePath("PokemonEntry/AbilityName")
+ability_description = NodePath("PokemonEntry/AbilityDescription")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -242,6 +251,29 @@ text = "Captura: 11/10/24 11:55:59"
 label_settings = SubResource("LabelSettings_n3720")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AbilityName" type="Label" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 165.0
+offset_right = 503.0
+offset_bottom = 179.0
+text = "Habilidade: Bargainer"
+label_settings = SubResource("LabelSettings_uudu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AbilityDescription" type="Label" parent="PokemonEntry"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 184.0
+offset_right = 416.0
+offset_bottom = 198.0
+text = "Reduz o preço das Pokébolas no Shop em 10%"
+label_settings = SubResource("LabelSettings_uudu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Quit" type="TextureButton" parent="PokemonEntry"]
 modulate = Color(0.886275, 0, 0, 1)

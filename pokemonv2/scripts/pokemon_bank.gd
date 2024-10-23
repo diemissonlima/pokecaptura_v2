@@ -17,6 +17,8 @@ const SLOT_BANK: PackedScene = preload("res://scenes/interface/slot_bank.tscn")
 @export var secondary_type: TextureRect
 @export var weight: Label
 @export var data_captura: Label
+@export var ability_name: Label
+@export var ability_description: Label
 
 var can_click: bool = false
 var poke_bank: Array = []
@@ -79,6 +81,8 @@ func set_info() -> void:
 	
 	data_captura.text = "Catch: " + pokemon_info["data_captura"] + " " + pokemon_info["hora_captura"]
 	weight.text = "Peso: " + str(pokemon_info["weight"]) + " Kg"
+	ability_name.text = "Habilidade: " + pokemon_info["ability"]
+	ability_description.text = pokemon_info["ability_description"]
 
 
 func connect_button_signal() -> void:
@@ -98,15 +102,14 @@ func load_pokemon_on_bank(poke_info: Dictionary) -> void:
 		if slot.id == 0:
 			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id = poke_info["id_pokemon"]
-			slot.date_capture = poke_info["data_captura"]
-			slot.time_capture = poke_info["hora_captura"]
-			slot.dex_number = poke_info["numero_dex"]
 			slot.name_pokemon = poke_info["nome"]
-			slot.primary_type = poke_info["primary_type"]
-			slot.secondary_type = poke_info["secondary_type"]
-			slot.region = poke_info["region"]
-			slot.nature = poke_info["nature"]
-			
+			slot.dex_number = poke_info["numero_dex"]
+			#slot.date_capture = poke_info["data_captura"]
+			#slot.time_capture = poke_info["hora_captura"]
+			#slot.primary_type = poke_info["primary_type"]
+			#slot.secondary_type = poke_info["secondary_type"]
+			#slot.region = poke_info["region"]
+			#slot.nature = poke_info["nature"]
 			break
 
 

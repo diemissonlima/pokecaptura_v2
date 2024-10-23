@@ -76,8 +76,6 @@ func spawn_pokemon() -> void:
 	pokemon_spawned.global_position = spawn_position.global_position
 	pokemon_spawned.scale = Vector2(0.7, 0.7)
 	get_tree().root.call_deferred("add_child", pokemon_spawned)
-	
-	print(data.companion)
 
 
 func _on_start_hunting_pressed() -> void:

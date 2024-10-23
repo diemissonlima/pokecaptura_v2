@@ -263,25 +263,30 @@ func add_pokemon_to_bank(pokemon: CharacterBody2D):
 	row_array.append(pokemon.region)
 	row_dict["region"] = row_array[6]
 	
+	row_array.append(pokemon.ability["name"])
+	row_dict["ability"] = row_array[7]
+	
+	row_array.append(pokemon.ability["description"])
+	row_dict["ability_description"] = row_array[8]
+	
 	row_array.append(pokemon.nature)
-	row_dict["nature"] = row_array[7]
+	row_dict["nature"] = row_array[9]
 	
 	row_array.append(pokemon.nature_description)
-	row_dict["nature_description"] = row_array[8]
+	row_dict["nature_description"] = row_array[10]
 	
 	row_array.append(pokemon.weight)
-	row_dict["weight"] = row_array[9]
+	row_dict["weight"] = row_array[11]
 	
 	row_array.append(pokemon.legendary)
-	row_dict["legendary"] = row_array[10]
+	row_dict["legendary"] = row_array[12]
 	
 	row_array.append(pokemon.shiny)
-	row_dict["shiny"] = row_array[11]
+	row_dict["shiny"] = row_array[13]
 	
 	row_array.append(0)
-	row_dict["in_party"] = row_array[12]
+	row_dict["in_party"] = row_array[14]
 	
-	print(row_dict)
 	db.insert_row("banco_pokemon", row_dict)
 
 
