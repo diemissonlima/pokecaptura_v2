@@ -46,7 +46,7 @@ func on_button_pressed(button: TextureButton) -> void:
 	amount = int(button.get_node("Label").text)
 	
 	checkout(button.name, item_value, amount)
-	
+
 
 func checkout(button_name: String, item_value: int, amount: int) -> void:
 	var new_value: int
@@ -61,6 +61,10 @@ func checkout(button_name: String, item_value: int, amount: int) -> void:
 			
 		10:
 			new_value = item_value - 50
+	
+	# verifica se o companion tem a habilidade que concede desconto nas pokebolas
+	if data.companion["ability"] == "Bargainer":
+		new_value = new_value - (new_value * 0.1)
 	
 	purchase_value = new_value * amount
 	

@@ -26,6 +26,7 @@ class_name ScreenCapture
 var capture_attempts: int = 0
 var pokemon_captured
 var pokeball_rate: float
+var latest_pokeball: String = ""
 
 
 func _ready() -> void:
@@ -51,12 +52,37 @@ func get_pokemon(_pokemon: CharacterBody2D, poke_position: Marker2D) -> void:
 
 
 func set_capture(_pokeball_used: String) -> void:
+	var pokeball_list: Array = [
+		"Pokeball", "Greatball", "Ultraball", "Heavyball", "Repeatball"
+	]
 	var random_number: float = randf()
 	var chance_of_capture: float = (pokemon_captured.catch_rate / 255) * pokeball_rate
+	
+	# verifica se o companion tem a habilidade Pokéball Expert
+	if data.companion["ability"] == "Pokéball Expert":
+		if _pokeball_used == latest_pokeball:
+			chance_of_capture = chance_of_capture + (chance_of_capture * 0.1)
+	latest_pokeball = _pokeball_used
+	
+	# verifica se o companion tem a habilidade Steady Hand
+	if _pokeball_used in pokeball_list:
+		if data.companion["ability"].begins_with("Steady Hand"):
+			chance_of_capture = chance_of_capture + (chance_of_capture * 0.1)
+	
+	# verifica se o companion tem a habilidade Synchronize
+	if data.companion["ability"] == "Synchronize":
+		if (data.companion["primary_type"] == pokemon_captured.primary_type or 
+		data.companion["primary_type"] == pokemon_captured.secondary_type):
+			chance_of_capture = chance_of_capture + (chance_of_capture * 0.15)
+			
+		elif (data.companion["secondary_type"] == pokemon_captured.primary_type or 
+		data.companion["secondary_type"] == pokemon_captured.secondary_type):
+			chance_of_capture = chance_of_capture + (chance_of_capture * 0.15)
 	
 	capture_attempts += 1
 	await get_tree().create_timer(1.5).timeout
 	
+	# se entrar nesse if o pokemon foi capturado
 	if random_number <= chance_of_capture or chance_of_capture >= 1.0:
 		if pokemon_captured.shiny:
 			SQL.update_pokemon(pokemon_captured.id_dex, "shiny_capturado")
@@ -72,14 +98,19 @@ func set_capture(_pokeball_used: String) -> void:
 		get_tree().call_group("mapa", "update_map_progress")
 		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado", pokemon_captured.region)
 		
-		info_captura.text = "Pokemon Capturado!\nDrop: " + str(pokemon_captured.dropped_credit) + " Créditos"
-		
 		SQL.add_pokemon_to_bank(pokemon_captured)
 		get_tree().call_group("pokemon_bank", "add_pokemon_to_bank")
 		
 		capture_attempts = 0
+		latest_pokeball = ""
 		
 		drop(pokemon_captured.dropped_credit)
+		
+		if data.companion["ability"] == "Resourceful":
+			if random_number <= 0.05:
+				var item: String = pokeball_list.pick_random()
+				SQL.update_database("inventario", item, "increase", 1)
+				update_label_pokeball()
 		
 		if QuestUpdate.active_quests.size() > 0:
 			var tipo_1 = pokemon_captured.primary_type
@@ -94,6 +125,7 @@ func set_capture(_pokeball_used: String) -> void:
 	else:
 		
 		info_captura.text = "Pokemon Escapou!!! Tentar Captura Novamente?"
+		latest_pokeball = ""
 		$Background/Sim.show()
 		$Background/Nao.show()
 
@@ -101,6 +133,11 @@ func set_capture(_pokeball_used: String) -> void:
 
 
 func drop(value: int) -> void:
+	# verifica se o companion tem a habilidade Fortune Finder
+	if data.companion["ability"] == "Fortune Finder":
+		value = value + (value * 0.2)
+	
+	info_captura.text = "Pokemon Capturado!\nDrop: " + str(value) + " Créditos"
 	SQL.update_database("inventario", "Credito", "increase", value)
 
 
@@ -168,6 +205,7 @@ func notify_achievement_levelup(type: String, rewards: Array) -> void:
 
 
 func _on_quit_pressed() -> void:
+	latest_pokeball = ""
 	$Background/TryAgain.hide()
 	$Background/Sim.hide()
 	$Background/Nao.hide()
@@ -186,7 +224,14 @@ func on_button_pressed(button_name: String) -> void:
 	info_captura.text = "Tentando Captura!!"
 	text_box.show()
 	
-	SQL.update_database("inventario", button_name, "decrease", 1)
+	if data.companion["ability"] == "Conservationist":
+		var random_number: float = randf()
+		if random_number <= 0.05:
+			SQL.update_database("inventario", button_name, "decrease", 0)
+			
+	else:
+		SQL.update_database("inventario", button_name, "decrease", 1)
+	
 	
 	match button_name:
 		"Pokeball":
@@ -224,7 +269,7 @@ func on_button_pressed(button_name: String) -> void:
 			
 		"Masterball":
 			pokeball_rate = 51.0
-	
+
 	update_label_pokeball()
 	set_capture(button_name)
 

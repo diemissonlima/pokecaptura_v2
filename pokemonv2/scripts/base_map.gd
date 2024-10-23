@@ -208,7 +208,6 @@ func add_party(poke_info: Dictionary) -> void:
 		if slot.sprite.texture == null:
 			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id_pokemon = poke_info["id_pokemon"]
-			#slot.pokemon_info = poke_info.duplicate()
 			data.companion = poke_info.duplicate()
 			
 			SQL.db.query(
