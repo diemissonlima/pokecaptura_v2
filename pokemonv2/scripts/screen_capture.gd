@@ -58,26 +58,27 @@ func set_capture(_pokeball_used: String) -> void:
 	var random_number: float = randf()
 	var chance_of_capture: float = (pokemon_captured.catch_rate / 255) * pokeball_rate
 	
-	# verifica se o companion tem a habilidade Pokéball Expert
-	if data.companion["ability"] == "Pokéball Expert":
-		if _pokeball_used == latest_pokeball:
-			chance_of_capture = chance_of_capture + (chance_of_capture * 0.1)
-	latest_pokeball = _pokeball_used
-	
-	# verifica se o companion tem a habilidade Steady Hand
-	if _pokeball_used in pokeball_list:
-		if data.companion["ability"].begins_with("Steady Hand"):
-			chance_of_capture = chance_of_capture + (chance_of_capture * 0.1)
-	
-	# verifica se o companion tem a habilidade Synchronize
-	if data.companion["ability"] == "Synchronize":
-		if (data.companion["primary_type"] == pokemon_captured.primary_type or 
-		data.companion["primary_type"] == pokemon_captured.secondary_type):
-			chance_of_capture = chance_of_capture + (chance_of_capture * 0.15)
-			
-		elif (data.companion["secondary_type"] == pokemon_captured.primary_type or 
-		data.companion["secondary_type"] == pokemon_captured.secondary_type):
-			chance_of_capture = chance_of_capture + (chance_of_capture * 0.15)
+	if data.companion.has("ability"):
+		# verifica se o companion tem a habilidade Pokéball Expert
+		if data.companion["ability"] == "Pokéball Expert":
+			if _pokeball_used == latest_pokeball:
+				chance_of_capture = chance_of_capture + (chance_of_capture * data.companion["ability_modifier"])
+		latest_pokeball = _pokeball_used
+		
+		# verifica se o companion tem a habilidade Steady Hand
+		if _pokeball_used in pokeball_list:
+			if data.companion["ability"].begins_with("Steady Hand"):
+				chance_of_capture = chance_of_capture + (chance_of_capture * data.companion["ability_modifier"])
+		
+		# verifica se o companion tem a habilidade Synchronize
+		if data.companion["ability"] == "Synchronize":
+			if (data.companion["primary_type"] == pokemon_captured.primary_type or 
+			data.companion["primary_type"] == pokemon_captured.secondary_type):
+				chance_of_capture = chance_of_capture + (chance_of_capture * data.companion["ability_modifier"])
+				
+			elif (data.companion["secondary_type"] == pokemon_captured.primary_type or 
+			data.companion["secondary_type"] == pokemon_captured.secondary_type):
+				chance_of_capture = chance_of_capture + (chance_of_capture * data.companion["ability_modifier"])
 	
 	capture_attempts += 1
 	await get_tree().create_timer(1.5).timeout
@@ -106,11 +107,12 @@ func set_capture(_pokeball_used: String) -> void:
 		
 		drop(pokemon_captured.dropped_credit)
 		
-		if data.companion["ability"] == "Resourceful":
-			if random_number <= 0.05:
-				var item: String = pokeball_list.pick_random()
-				SQL.update_database("inventario", item, "increase", 1)
-				update_label_pokeball()
+		if data.companion.has("ability"):
+			if data.companion["ability"] == "Resourceful":
+				if random_number <= data.companion["ability_modifier"]:
+					var item: String = pokeball_list.pick_random()
+					SQL.update_database("inventario", item, "increase", 1)
+					update_label_pokeball()
 		
 		if QuestUpdate.active_quests.size() > 0:
 			var tipo_1 = pokemon_captured.primary_type
@@ -133,9 +135,10 @@ func set_capture(_pokeball_used: String) -> void:
 
 
 func drop(value: int) -> void:
-	# verifica se o companion tem a habilidade Fortune Finder
-	if data.companion["ability"] == "Fortune Finder":
-		value = value + (value * 0.2)
+	if data.companion.has("ability"):
+		# verifica se o companion tem a habilidade Fortune Finder
+		if data.companion["ability"] == "Fortune Finder":
+			value = value + (value * data.companion["ability_modifier"])
 	
 	info_captura.text = "Pokemon Capturado!\nDrop: " + str(value) + " Créditos"
 	SQL.update_database("inventario", "Credito", "increase", value)
@@ -224,13 +227,16 @@ func on_button_pressed(button_name: String) -> void:
 	info_captura.text = "Tentando Captura!!"
 	text_box.show()
 	
-	if data.companion["ability"] == "Conservationist":
-		var random_number: float = randf()
-		if random_number <= 0.05:
-			SQL.update_database("inventario", button_name, "decrease", 0)
+	if data.companion.has("ability"):
+		if data.companion["ability"] == "Conservationist":
+			var random_number: float = randf()
+			if random_number <= data.companion["ability_modifier"]:
+				SQL.update_database("inventario", button_name, "decrease", 0)
+				
+			else:
+				SQL.update_database("inventario", button_name, "decrease", 1)
 			
-	else:
-		SQL.update_database("inventario", button_name, "decrease", 1)
+	SQL.update_database("inventario", button_name, "decrease", 1)
 	
 	
 	match button_name:

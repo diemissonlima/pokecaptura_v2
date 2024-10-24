@@ -64,7 +64,7 @@ func checkout(button_name: String, item_value: int, amount: int) -> void:
 	
 	# verifica se o companion tem a habilidade que concede desconto nas pokebolas
 	if data.companion["ability"] == "Bargainer":
-		new_value = new_value - (new_value * 0.1)
+		new_value = new_value - (new_value * data.companion["ability_modifier"])
 	
 	purchase_value = new_value * amount
 	

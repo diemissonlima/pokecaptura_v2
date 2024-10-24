@@ -92,8 +92,9 @@ func alter_characteristics() -> void:
 		exp_base = int(exp_base * 2 * multiplier)
 		dropped_credit *= multiplier * 2
 		
-		if data.companion["ability"] == "Shiny Hunter":
-			catch_rate = catch_rate + (catch_rate * 0.5)
+		if data.companion.has("ability"):
+			if data.companion["ability"] == "Shiny Hunter":
+				catch_rate = catch_rate + (catch_rate * data.companion["ability_modifier"])
 
 	else:
 		exp_base = int(exp_base * multiplier)
@@ -138,61 +139,51 @@ func apply_modifier() -> void:
 
 
 func get_ability() -> void:
-	var ability_list: Dictionary = {
-		"Bargainer": {
-			"description": "Reduz o preço das Pokébolas no Shop em 10%",
-			"modifier": 0.1
-		},
-		
-		"Steady Hand (Pokeball)": {
-			"description": "Eficácia da Pokeball aumenta em 10%",
-			"modifier": 0.1
-		},
-		
-		"Steady Hand (Greatball)": {
-			"description": "Eficácia da Greatball aumenta em 10%",
-			"modifier": 0.1
-		},
-		
-		"Steady Hand (Ultraball)": {
-			"description": "Eficácia da Ultraball aumenta em 10%",
-			"modifier": 0.1
-		},
-		
-		"Fortune Finder": {
-			"description": "Aumenta em 20% o drop de Créditos",
-			"modifier": 0.2
-		},
-		
-		"Synchronize": {
-			"description": "Aumenta em 15% a chance de captura se o Pokémon tiver o mesmo tipo",
-			"modifier": 0.15
-		},
-		
-		"Pokéball Expert": {
-			"description": "Aumenta a chance de captura em 10% se usar a mesma Pokébola após falhar",
-			"modifier": 0.10
-		},
-		
-		"Conservationist": {
-			"description": "5% de chance de não gastar a Pokébola usada",
-			"modifier": 0.05
-		},
-		
-		"Resourceful": {
-			"description": "5% de chance de receber uma Pokébola aleatória ao capturar um Pokémon",
-			"modifier": 0.05
-		},
-		
-		"Shiny Hunter": {
-			"description": "Aumenta em 50% a chance de captura se o Pokémon for SHINY",
-			"modifier": 0.5
-		}
-	}
+	var ability_list: Array = [
+		"Bargainer", "Steady Hand (Pokeball)", "Steady Hand (Greatball)",
+		"Steady Hand (Ultraball)", "Fortune Finder", "Synchronize",
+		"Synchronize", "Pokéball Expert", "Conservationist",
+		"Resourceful", "Shiny Hunter"
+	]
 	
-	var ability_keys = ability_list.keys()
-	var key = ability_keys.pick_random()
+	var ability_name = ability_list.pick_random()
+	var modificador: float = randf_range(0.01, 0.2)
+	var modificador_arredondado = round(modificador * 100) / 100.0
+	var modificador_percent = modificador_arredondado * 100
 	
-	ability["name"] = key
-	ability["description"] = ability_list[key]["description"]
-	ability["modifier"] = ability_list[key]["modifier"]
+	ability["name"] = ability_name
+	ability["modifier"] = modificador_arredondado
+	
+	match ability["name"]:
+		"Bargainer":
+			ability["description"] = "Reduz o preço das Pokébolas no Shop em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Pokeball)":
+			ability["description"] = "Chance de captura usando Pokeball aumenta em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Greatball)":
+			ability["description"] = "Chance de captura usando Greatball aumenta em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Ultraball)":
+			ability["description"] = "Chance de captura usando Ultraball aumenta em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Pokeball)":
+			ability["description"] = "Chance de captura usando Pokeball aumenta em " + str(modificador_percent) + "%"
+		
+		"Fortune Finder":
+			ability["description"] = "Aumenta em " + str(modificador_percent) + "% o drop de Créditos"
+			
+		"Synchronize":
+			ability["description"] = "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon tiver o mesmo tipo"
+			
+		"Pokéball Expert":
+			ability["description"] = "Aumenta a chance de captura em " + str(modificador_percent) + "% se usar a mesma Pokébola após falhar"
+		
+		"Conservationist":
+			ability["description"] = str(modificador_percent) + "% de chance de não gastar a Pokébola usada"
+		
+		"Resourceful":
+			ability["description"] = str(modificador_percent) + "% de chance de receber uma Pokébola aleatória ao capturar um Pokémon"
+		
+		"Shiny Hunter":
+			ability["description"] = "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon for SHINY"
