@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://vngaw5ikvcgm"]
+[gd_scene load_steps=4 format=3 uid="uid://vngaw5ikvcgm"]
 
 [ext_resource type="Texture2D" uid="uid://b4vfx38y41m3l" path="res://assets/prefabs/interface/type_1.png" id="1_c2m3a"]
 [ext_resource type="Script" path="res://scripts/slot_bank.gd" id="1_q8a5m"]
+[ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="3_xttaw"]
 
-[node name="SlotBank" type="Control" node_paths=PackedStringArray("background", "sprite") groups=["slot_bank"]]
+[node name="SlotBank" type="Control" node_paths=PackedStringArray("background", "sprite", "on_companion") groups=["slot_bank"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_q8a5m")
 background = NodePath("Background")
 sprite = NodePath("Sprite")
+on_companion = NodePath("OnCompanion")
 background_list = ["res://assets/prefabs/interface/type_1.png", "res://assets/prefabs/interface/type_2.png", "res://assets/prefabs/interface/type_3.png"]
 
 [node name="Background" type="TextureRect" parent="."]
@@ -39,4 +41,14 @@ offset_right = 15.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+expand_mode = 1
+
+[node name="OnCompanion" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = 4.0
+offset_right = 38.0
+offset_bottom = 11.0
+texture = ExtResource("3_xttaw")
 expand_mode = 1

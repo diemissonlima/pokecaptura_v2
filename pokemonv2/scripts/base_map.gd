@@ -201,6 +201,7 @@ func update_progress_quest_label() -> void:
 func add_party_onready_scene(party_list: Array) -> void:
 	for poke in party_list:
 		add_party(poke)
+		get_tree().call_group("slot_bank", "update_on_companion", poke["id_pokemon"], "add")
 
 
 func add_party(poke_info: Dictionary) -> void:
@@ -253,6 +254,7 @@ func _on_remove_party_pressed() -> void:
 		"UPDATE banco_pokemon SET in_party = 0 WHERE id_pokemon = " + str(target_slot.id_pokemon)
 	)
 	
+	get_tree().call_group("slot_bank", "update_on_companion", target_slot.id_pokemon, "remove")
 	target_slot.id_pokemon = 0
 
 

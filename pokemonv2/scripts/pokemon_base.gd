@@ -16,14 +16,13 @@ class_name PokemonBase
 @export_enum(
 	"Kanto", "Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar"
 ) var region: String
-@export var nature: String
-@export var ability: Dictionary
-@export var evolution: String
-@export var legendary: bool
-@export var shiny: bool
 @export var exp_base: int
 @export var catch_rate: float
 @export var weight: float
+@export var nature: String
+@export var ability: Dictionary
+@export var legendary: bool
+@export var shiny: bool
 
 @export_category("Objetos")
 @export var animated_sprite: AnimatedSprite2D
