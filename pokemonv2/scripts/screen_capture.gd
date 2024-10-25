@@ -227,17 +227,13 @@ func on_button_pressed(button_name: String) -> void:
 	info_captura.text = "Tentando Captura!!"
 	text_box.show()
 	
+	SQL.update_database("inventario", button_name, "decrease", 1)
+	
 	if data.companion.has("ability"):
 		if data.companion["ability"] == "Conservationist":
 			var random_number: float = randf()
 			if random_number <= data.companion["ability_modifier"]:
-				SQL.update_database("inventario", button_name, "decrease", 0)
-				
-			else:
-				SQL.update_database("inventario", button_name, "decrease", 1)
-			
-	SQL.update_database("inventario", button_name, "decrease", 1)
-	
+				SQL.update_database("inventario", button_name, "increase", 1)
 	
 	match button_name:
 		"Pokeball":

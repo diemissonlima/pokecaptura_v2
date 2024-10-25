@@ -29,15 +29,18 @@ var pokemon_info: Dictionary = {}
 
 
 func _process(_delta: float) -> void:
-	if not visible:
-		sprite.texture = null
-		pokemon_info.clear()
-		$ScrollContainer.show()
-		$Background.show()
-		$PokemonEntry.hide()
-		
 	if Input.is_action_just_pressed("bank"):
 		visible = not visible
+		
+		if not visible:
+			sprite.texture = null
+			pokemon_info.clear()
+			$ScrollContainer.show()
+			$Background.show()
+			$PokemonEntry.hide()
+			
+			for slot in bank_container.get_children():
+				slot.show()
 		
 	if Input.is_action_just_pressed("mouse_left_click") and can_click:
 		get_slot_info()
@@ -104,12 +107,8 @@ func load_pokemon_on_bank(poke_info: Dictionary) -> void:
 			slot.id = poke_info["id_pokemon"]
 			slot.name_pokemon = poke_info["nome"]
 			slot.dex_number = poke_info["numero_dex"]
-			#slot.date_capture = poke_info["data_captura"]
-			#slot.time_capture = poke_info["hora_captura"]
-			#slot.primary_type = poke_info["primary_type"]
-			#slot.secondary_type = poke_info["secondary_type"]
-			#slot.region = poke_info["region"]
-			#slot.nature = poke_info["nature"]
+			slot.ability = poke_info["ability"]
+			slot.shiny = poke_info["shiny"]
 			break
 
 
@@ -170,3 +169,23 @@ func _on_quit_pressed() -> void:
 
 func _on_add_party_pressed() -> void:
 	get_tree().call_group("mapa", "add_party", pokemon_info)
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	var option_list: Array = [
+		"Todos",
+		"Bargainer", "Steady Hand (Pokeball)", "Steady Hand (Greatball)",
+		"Steady Hand (Ultraball)", "Fortune Finder", "Synchronize",
+		"Pokéball Expert", "Conservationist", "Resourceful", "Shiny Hunter"
+	]
+	
+	if index == 0:
+		for slot in bank_container.get_children():
+			slot.show()
+			
+	else:
+		for slot in bank_container.get_children():
+			if slot.ability == option_list[index]:
+				slot.show()
+			else:
+				slot.hide()

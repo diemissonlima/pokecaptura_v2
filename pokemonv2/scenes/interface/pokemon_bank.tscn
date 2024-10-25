@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://n05wc6dwj7x7"]
+[gd_scene load_steps=19 format=3 uid="uid://n05wc6dwj7x7"]
 
 [ext_resource type="Script" path="res://scripts/pokemon_bank.gd" id="1_pr82w"]
 [ext_resource type="Texture2D" uid="uid://2b7pb6k4y71x" path="res://assets/prefabs/interface/example_top.PNG" id="1_x6bbo"]
@@ -9,6 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://b5o53ggo35yeh" path="res://assets/prefabs/pokemon_type/fire.png" id="7_upnrv"]
 [ext_resource type="Texture2D" uid="uid://bp5oaicqn25cg" path="res://assets/prefabs/pokemon_type/flying.png" id="8_pt6uw"]
 [ext_resource type="Texture2D" uid="uid://b7w2ktihoeb5h" path="res://assets/prefabs/interface/IconB05.png" id="9_vlune"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ys6w1"]
+line_spacing = 0.0
+font = ExtResource("5_d6n07")
+font_size = 12
+
+[sub_resource type="Theme" id="Theme_nymlj"]
+default_font = ExtResource("5_d6n07")
+default_font_size = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_n7pkj"]
 line_spacing = 0.0
@@ -132,7 +141,51 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
+[node name="LabelAbility" type="Label" parent="."]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 7.0
+offset_right = 315.0
+offset_bottom = 26.0
+text = "Habilidade:"
+label_settings = SubResource("LabelSettings_ys6w1")
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 9.0
+offset_right = 481.0
+offset_bottom = 29.0
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_nymlj")
+theme_override_fonts/font = ExtResource("5_d6n07")
+theme_override_font_sizes/font_size = 12
+item_count = 11
+popup/item_0/text = "Todos"
+popup/item_1/text = "Bargainer"
+popup/item_1/id = 1
+popup/item_2/text = "Steady Hand (Pokeball)"
+popup/item_2/id = 2
+popup/item_3/text = "Steady Hand (Greatball)"
+popup/item_3/id = 3
+popup/item_4/text = "Steady Hand (Ultraball)"
+popup/item_4/id = 4
+popup/item_5/text = "Fortune Finder"
+popup/item_5/id = 5
+popup/item_6/text = "Synchronize"
+popup/item_6/id = 6
+popup/item_7/text = "Pokéball Expert"
+popup/item_7/id = 7
+popup/item_8/text = "Conservationist"
+popup/item_8/id = 8
+popup/item_9/text = "Resourceful"
+popup/item_9/id = 9
+popup/item_10/text = "Shiny Hunter"
+popup/item_10/id = 10
+
 [node name="PokemonEntry" type="TextureRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(506, 268)
 layout_mode = 1
 anchors_preset = 8
@@ -296,5 +349,6 @@ theme_override_fonts/font = ExtResource("5_d6n07")
 theme_override_font_sizes/font_size = 12
 text = "Add Party"
 
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="PokemonEntry/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PokemonEntry/AddParty" to="." method="_on_add_party_pressed"]

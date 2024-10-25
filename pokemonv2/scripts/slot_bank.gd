@@ -8,13 +8,7 @@ extends Control
 @export var id: int
 @export var name_pokemon: String
 @export var dex_number: String
-@export var date_capture: String
-@export var time_capture: String
-@export var primary_type: String
-@export var secondary_type: String
-@export var region: String
-@export var nature: String
-@export var weight: float
+@export var ability: String
 @export var shiny: bool = false
 @export var background_list: Array
 
