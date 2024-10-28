@@ -36,7 +36,7 @@ font_size = 8
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_kanto_container", "dex_johto_container", "dex_hoenn_container", "dex_sinnoh_container", "info_pokemon", "title", "seen_title", "catch_title", "all_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
+[node name="Pokedex" type="TextureRect" node_paths=PackedStringArray("dex_kanto_container", "dex_johto_container", "dex_hoenn_container", "dex_sinnoh_container", "dex_unova_container", "info_pokemon", "title", "seen_title", "catch_title", "all_title", "sprite", "primary_type", "secondary_type", "id_poke", "poke_name", "catch", "seen", "catch_shiny", "seen_shiny", "dex_description", "info_local") groups=["pokedex_info"]]
 visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 anchors_preset = 8
@@ -57,6 +57,7 @@ dex_kanto_container = NodePath("ScrollContainer/DexKantoContainer")
 dex_johto_container = NodePath("ScrollContainer/DexJohtoContainer")
 dex_hoenn_container = NodePath("ScrollContainer/DexHoennContainer")
 dex_sinnoh_container = NodePath("ScrollContainer/DexSinnohContainer")
+dex_unova_container = NodePath("ScrollContainer/DexUnovaContainer")
 info_pokemon = NodePath("InfoPokemon")
 title = NodePath("InfoPokemon/SummaryBG/PokeName")
 seen_title = NodePath("HBoxContainer/Seen")
@@ -79,9 +80,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
+offset_left = -174.0
 offset_top = 24.0
-offset_right = 132.0
+offset_right = 260.0
 offset_bottom = 47.0
 grow_horizontal = 2
 scale = Vector2(0.75, 0.75)
@@ -118,6 +119,14 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_y44fa")
 theme_override_font_sizes/font_size = 12
 text = "Sinnoh"
+
+[node name="Unova" type="Button" parent="GenButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_y44fa")
+theme_override_font_sizes/font_size = 12
+text = "Unova"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -174,6 +183,13 @@ theme_override_constants/v_separation = 5
 columns = 8
 
 [node name="DexSinnohContainer" type="GridContainer" parent="ScrollContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 8
+
+[node name="DexUnovaContainer" type="GridContainer" parent="ScrollContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 10

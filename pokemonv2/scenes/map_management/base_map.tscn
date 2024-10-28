@@ -1,9 +1,9 @@
-[gd_scene load_steps=58 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=71 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
-[ext_resource type="PackedScene" uid="uid://b83rwk548jl4b" path="res://scenes/pokemon/gen5/ferroseed.tscn" id="2_t8nmu"]
 [ext_resource type="PackedScene" uid="uid://bntgjwgly2d8k" path="res://scenes/pokemon/gen1/articuno.tscn" id="2_uu6u3"]
+[ext_resource type="PackedScene" uid="uid://b6gsy7p7hnamm" path="res://scenes/pokemon/gen3/lotad.tscn" id="2_y42ic"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="3_a26c1"]
 [ext_resource type="PackedScene" uid="uid://caytunxghrl0p" path="res://scenes/interface/shop.tscn" id="3_h25u6"]
 [ext_resource type="PackedScene" uid="uid://05o7lqiqqyy3" path="res://scenes/pokemon/gen1/zapdos.tscn" id="3_ox3qn"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ciflx65hxtdpa" path="res://scenes/pokemon/gen3/latios.tscn" id="17_gl66w"]
 [ext_resource type="PackedScene" uid="uid://d0vqt872db4tl" path="res://scenes/pokemon/gen3/kyogre.tscn" id="18_egxjy"]
 [ext_resource type="PackedScene" uid="uid://be674isg7hhjy" path="res://scenes/pokemon/gen3/groudon.tscn" id="19_fn0rc"]
+[ext_resource type="PackedScene" uid="uid://ddw6mfqko5pnh" path="res://scenes/pokemon/gen5/cobalion.tscn" id="20_8rckm"]
 [ext_resource type="PackedScene" uid="uid://c61lnf7vpv3bf" path="res://scenes/pokemon/gen3/rayquaza.tscn" id="20_wmw3a"]
 [ext_resource type="PackedScene" uid="uid://b3ssitmgh4uoc" path="res://scenes/pokemon/gen3/jirachi.tscn" id="21_uhv7v"]
 [ext_resource type="PackedScene" uid="uid://cygef5pvqr3sd" path="res://scenes/pokemon/gen3/deoxys.tscn" id="22_3sg36"]
@@ -47,6 +48,18 @@
 [ext_resource type="PackedScene" uid="uid://n05wc6dwj7x7" path="res://scenes/interface/pokemon_bank.tscn" id="43_6el84"]
 [ext_resource type="Texture2D" uid="uid://mm66l04dyxrc" path="res://assets/prefabs/interface/indicador.png" id="47_tfj72"]
 [ext_resource type="PackedScene" uid="uid://bul7kua1vw8jj" path="res://scenes/interface/party_slot.tscn" id="48_6thqy"]
+[ext_resource type="PackedScene" uid="uid://c2ta4frekveei" path="res://scenes/pokemon/gen5/genesect.tscn" id="52_yj2dd"]
+[ext_resource type="PackedScene" uid="uid://dsh7x4kic4xss" path="res://scenes/pokemon/gen5/keldeo.tscn" id="67_whj8o"]
+[ext_resource type="PackedScene" uid="uid://bw615otuu3qa0" path="res://scenes/pokemon/gen5/kyurem.tscn" id="73_8odse"]
+[ext_resource type="PackedScene" uid="uid://v4ey1r7ary10" path="res://scenes/pokemon/gen5/landorus.tscn" id="75_3ghcg"]
+[ext_resource type="PackedScene" uid="uid://drk6j2na1p3b4" path="res://scenes/pokemon/gen5/meloetta.tscn" id="84_7itqx"]
+[ext_resource type="PackedScene" uid="uid://cl5u54bttqfdu" path="res://scenes/pokemon/gen5/reshiram.tscn" id="102_jrk47"]
+[ext_resource type="PackedScene" uid="uid://dps2y8h7rpqvn" path="res://scenes/pokemon/gen5/terrakion.tscn" id="129_ww0dv"]
+[ext_resource type="PackedScene" uid="uid://caso7jgpr1232" path="res://scenes/pokemon/gen5/thundurus.tscn" id="131_2op5n"]
+[ext_resource type="PackedScene" uid="uid://bk8inbcl5refu" path="res://scenes/pokemon/gen5/tornadus.tscn" id="134_ieceb"]
+[ext_resource type="PackedScene" uid="uid://5ej8kyg2p1ku" path="res://scenes/pokemon/gen5/victini.tscn" id="144_6wqjb"]
+[ext_resource type="PackedScene" uid="uid://dtr6nmlvcuq44" path="res://scenes/pokemon/gen5/virizion.tscn" id="145_r3l6q"]
+[ext_resource type="PackedScene" uid="uid://20wj16556qja" path="res://scenes/pokemon/gen5/zekrom.tscn" id="154_hcb74"]
 [ext_resource type="PackedScene" uid="uid://dwwku3dl7y2yj" path="res://scenes/interface/pokedex.tscn" id="154_nlgg3"]
 [ext_resource type="PackedScene" uid="uid://cxhi4ktidw6b3" path="res://scenes/interface/map.tscn" id="156_kegge"]
 
@@ -122,8 +135,8 @@ party_container = NodePath("Background/PartyContainer")
 button_remove_party = NodePath("Background/RemoveParty")
 timer = NodePath("Timer")
 map_name = "01"
-pokemon_list = Array[PackedScene]([ExtResource("2_t8nmu")])
-pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c"), ExtResource("13_4tejs"), ExtResource("14_loiwo"), ExtResource("15_23uya"), ExtResource("16_aod8q"), ExtResource("17_gl66w"), ExtResource("18_egxjy"), ExtResource("19_fn0rc"), ExtResource("20_wmw3a"), ExtResource("21_uhv7v"), ExtResource("22_3sg36"), ExtResource("23_ei4qb"), ExtResource("24_67o8b"), ExtResource("25_yv1no"), ExtResource("26_qa4ej"), ExtResource("27_yuepa"), ExtResource("28_0hqco"), ExtResource("29_tqefq"), ExtResource("30_0gadb"), ExtResource("31_uap65"), ExtResource("32_mn7i6"), ExtResource("33_85oiq"), ExtResource("34_3mex6"), ExtResource("35_4sp70")])
+pokemon_list = Array[PackedScene]([ExtResource("2_y42ic")])
+pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c"), ExtResource("13_4tejs"), ExtResource("14_loiwo"), ExtResource("15_23uya"), ExtResource("16_aod8q"), ExtResource("17_gl66w"), ExtResource("18_egxjy"), ExtResource("19_fn0rc"), ExtResource("20_wmw3a"), ExtResource("21_uhv7v"), ExtResource("22_3sg36"), ExtResource("23_ei4qb"), ExtResource("24_67o8b"), ExtResource("25_yv1no"), ExtResource("26_qa4ej"), ExtResource("27_yuepa"), ExtResource("28_0hqco"), ExtResource("29_tqefq"), ExtResource("30_0gadb"), ExtResource("31_uap65"), ExtResource("32_mn7i6"), ExtResource("33_85oiq"), ExtResource("34_3mex6"), ExtResource("35_4sp70"), ExtResource("144_6wqjb"), ExtResource("20_8rckm"), ExtResource("129_ww0dv"), ExtResource("145_r3l6q"), ExtResource("134_ieceb"), ExtResource("131_2op5n"), ExtResource("102_jrk47"), ExtResource("154_hcb74"), ExtResource("75_3ghcg"), ExtResource("73_8odse"), ExtResource("67_whj8o"), ExtResource("84_7itqx"), ExtResource("52_yj2dd")])
 metadata/_edit_vertical_guides_ = [-126.0]
 
 [node name="Interface" type="CanvasLayer" parent="."]

@@ -5,8 +5,9 @@ const _POKEDEX_KANTO_SIZE: int = 151
 const _POKEDEX_JOHTO_SIZE: int = 100
 const _POKEDEX_HOENN_SIZE: int = 135
 const _POKEDEX_SINNOH_SIZE: int = 107
+const _POKEDEX_UNOVA_SIZE: int = 156
 
-const _POKEDEX_SIZE: int = 493
+const _POKEDEX_SIZE: int = 649
 const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 
 @export_category("Objetos")
@@ -14,6 +15,7 @@ const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 @export var dex_johto_container: GridContainer
 @export var dex_hoenn_container: GridContainer
 @export var dex_sinnoh_container: GridContainer
+@export var dex_unova_container: GridContainer
 @export var info_pokemon: TextureRect
 
 @export_category("Objetos InfoPokedex")
@@ -96,6 +98,13 @@ func spawn_slot() -> void:
 		
 		dex_sinnoh_container.add_child(slot)
 
+	for j in _POKEDEX_UNOVA_SIZE:
+		index += 1
+		var slot = _POKEDEX_SLOT.instantiate()
+		slot.slot_id = str(index)
+		
+		dex_unova_container.add_child(slot)
+
 
 func update_pokedex_progress(region: String) -> void:
 	seen_title.text = "Visto: " + str(SQL.return_pokedex_progress(region)[0])
@@ -108,7 +117,8 @@ func show_pokemon_on_ready_scene() -> void:
 		"Kanto": dex_kanto_container,
 		"Johto": dex_johto_container,
 		"Hoenn": dex_hoenn_container,
-		"Sinnoh": dex_sinnoh_container
+		"Sinnoh": dex_sinnoh_container,
+		"Unova": dex_unova_container
 	}
 	
 	var region: String
@@ -126,6 +136,8 @@ func show_pokemon_on_ready_scene() -> void:
 				region = "Hoenn"
 			elif new_id > 386 and new_id <= 493:
 				region = "Sinnoh"
+			elif new_id > 493 and new_id <= 649:
+				region = "Unova"
 			
 		for i in region_dict[region].get_children():
 			if SQL.verify_pokemon_captured(i.slot_id) == 1:
@@ -140,7 +152,8 @@ func show_pokemon(id: String, status: String, region: String) -> void:
 		"Kanto": dex_kanto_container,
 		"Johto": dex_johto_container,
 		"Hoenn": dex_hoenn_container,
-		"Sinnoh": dex_sinnoh_container
+		"Sinnoh": dex_sinnoh_container,
+		"Unova": dex_unova_container
 	}
 	
 	for slot in region_dict[region].get_children():
@@ -198,10 +211,11 @@ func switch_dex_button_pressed(button_name: String) -> void:
 	update_pokedex_progress(button_name)
 	
 	var region: Dictionary = {
-		"Kanto": $ScrollContainer/DexKantoContainer,
-		"Johto": $ScrollContainer/DexJohtoContainer,
-		"Hoenn": $ScrollContainer/DexHoennContainer,
-		"Sinnoh": $ScrollContainer/DexSinnohContainer
+		"Kanto": dex_kanto_container,
+		"Johto": dex_johto_container,
+		"Hoenn": dex_hoenn_container,
+		"Sinnoh": dex_sinnoh_container,
+		"Unova": dex_unova_container
 	}
 	
 	for j in region:

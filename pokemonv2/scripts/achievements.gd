@@ -69,9 +69,9 @@ func give_rewards(current_level: int) -> Array:
 		"2": ["Pokeball", [2, 5]],
 		"3": ["Greatball", [2, 5]],
 		"4": ["Ultraball", [2, 5]],
-		"5": ["Masterball", [1, 1]],
-		"6": ["Repeatball", [2, 5]],
-		"7": ["Heavyball", [1, 1]]
+		"5": ["Repeatball", [2, 5]],
+		"6": ["Heavyball", [2, 5]],
+		"7": ["Masterball", [1, 1]]
 	}
 
 	var dict_key: String = str(current_level)
