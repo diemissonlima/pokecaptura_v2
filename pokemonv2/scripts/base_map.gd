@@ -43,7 +43,7 @@ func _ready() -> void:
 	for slot in party_container.get_children():
 		slot.mouse_entered.connect(on_mouse_entered.bind(slot))
 		slot.mouse_entered.connect(on_mouse_exited.bind(slot))
-		
+
 
 func _process(_delta: float) -> void:
 	$Background/QuestInProgress.text = "Quests Ativas: " + str(QuestUpdate.active_quests.size()) + " / 5"
@@ -209,6 +209,7 @@ func add_party(poke_info: Dictionary) -> void:
 		if slot.sprite.texture == null:
 			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id_pokemon = poke_info["id_pokemon"]
+			get_info_companion(poke_info["level"])
 			data.companion = poke_info.duplicate()
 			
 			SQL.db.query(
@@ -221,6 +222,11 @@ func add_party(poke_info: Dictionary) -> void:
 			for slot1 in party_container.get_children():
 				if slot1.id_pokemon == poke_info["id_pokemon"]:
 					return
+
+
+func get_info_companion(level: int) -> void:
+	for slot in party_container.get_children():
+		slot.get_node("Background/LevelLabel").text = "Lvl " + str(level)
 
 
 func _on_expand_pressed() -> void:
@@ -249,6 +255,7 @@ func on_mouse_exited(_slot: Control) -> void:
 func _on_remove_party_pressed() -> void:
 	target_slot.sprite.texture = null
 	target_slot.pokemon_info.clear()
+	target_slot.get_node("Background/LevelLabel").text = ""
 	
 	SQL.db.query(
 		"UPDATE banco_pokemon SET in_party = 0 WHERE id_pokemon = " + str(target_slot.id_pokemon)

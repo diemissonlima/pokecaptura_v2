@@ -124,6 +124,9 @@ func set_capture(_pokeball_used: String) -> void:
 					pokemon_captured.secondary_type
 				)
 		
+		if not data.companion.is_empty():
+			data.update_exp(pokemon_captured.exp_base)
+		
 	else:
 		
 		info_captura.text = "Pokemon Escapou!!! Tentar Captura Novamente?"

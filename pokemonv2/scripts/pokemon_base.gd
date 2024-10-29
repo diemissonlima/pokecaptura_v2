@@ -145,11 +145,12 @@ func get_ability() -> void:
 	]
 	
 	var ability_name = ability_list.pick_random()
-	var modificador: float = randf_range(0.01, 0.2)
+	var modificador: float = randf_range(0.01, 0.05)
 	var modificador_arredondado = round(modificador * 100) / 100.0
 	var modificador_percent = modificador_arredondado * 100
 	
 	ability["name"] = ability_name
+	ability["modifier"] = modificador_arredondado
 	
 	match ability["name"]:
 		"Bargainer":
@@ -177,18 +178,10 @@ func get_ability() -> void:
 			ability["description"] = "Aumenta a chance de captura em " + str(modificador_percent) + "% se usar a mesma Pokébola após falhar"
 		
 		"Conservationist":
-			modificador = randf_range(0.01, 0.1)
-			modificador_arredondado = round(modificador * 100) / 100.0
-			modificador_percent = modificador_arredondado * 100
 			ability["description"] = str(modificador_percent) + "% de chance de não gastar a Pokébola usada"
 		
 		"Resourceful":
-			modificador = randf_range(0.01, 0.1)
-			modificador_arredondado = round(modificador * 100) / 100.0
-			modificador_percent = modificador_arredondado * 100
 			ability["description"] = str(modificador_percent) + "% de chance de receber uma Pokébola aleatória ao capturar um Pokémon"
 		
 		"Shiny Hunter":
 			ability["description"] = "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon for SHINY"
-	
-	ability["modifier"] = modificador_arredondado

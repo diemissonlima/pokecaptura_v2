@@ -10,6 +10,5 @@ extends Control
 
 var pokemon_info: Dictionary
 
-
 func _ready() -> void:
 	background.texture = load(background_list.pick_random())

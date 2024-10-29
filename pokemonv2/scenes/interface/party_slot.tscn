@@ -1,25 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://bul7kua1vw8jj"]
+[gd_scene load_steps=4 format=3 uid="uid://bul7kua1vw8jj"]
 
 [ext_resource type="Script" path="res://scripts/party_slot.gd" id="1_k15ih"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="2_s8iyd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8b20x"]
+font = ExtResource("2_s8iyd")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PartySlot" type="Control" node_paths=PackedStringArray("sprite", "background")]
-custom_minimum_size = Vector2(50, 40)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 50.0
-offset_bottom = 40.0
+offset_bottom = 50.0
 script = ExtResource("1_k15ih")
 sprite = NodePath("Sprite")
 background = NodePath("Background")
 background_list = ["res://assets/prefabs/interface/type_1.png", "res://assets/prefabs/interface/type_2.png", "res://assets/prefabs/interface/type_3.png"]
 
 [node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="LevelLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -9.0
+offset_right = 25.0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_8b20x")
 
 [node name="Sprite" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 expand_mode = 1

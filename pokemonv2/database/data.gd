@@ -2,6 +2,18 @@ extends Node
 
 var companion: Dictionary = {}
 
+var level_dict: Dictionary = {
+	'1': 400, '2': 440, '3': 484, '4': 532, '5': 585, '6': 644, '7': 708, 
+	'8': 779, '9': 857, '10': 943, '11': 1037, '12': 1141, '13': 1255, 
+	'14': 1380, '15': 1518, '16': 1670, '17': 1837, '18': 2021, '19': 2223, 
+	'20': 2446, '21': 2690, '22': 2960, '23': 3256, '24': 3581, '25': 3993, 
+	'26': 4392, '27': 4831, '28': 5314, '29': 5846, '30': 6430, '31': 7073, 
+	'32': 7780, '33': 8558, '34': 9414, '35': 10355, '36': 11390, '37': 12529,
+	'38': 13782, '39': 15161, '40': 16677, '41': 18344, '42': 20179, 
+	'43': 22197, '44': 24416, '45': 26858, '46': 29544, '47': 32498, 
+	'48': 35748, '49': 39323, '50': 43256
+}
+
 var data_management: Dictionary = {
 	"pokemon": {
 		'001': {'id': '001', 'nome': 'Bulbasaur', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0},
@@ -911,6 +923,14 @@ var data_management: Dictionary = {
 		'905': {'id': '905', 'nome': 'Enamorus-Incarnate', 'visto': 0, 'capturado': 0, 'shiny_visto': 0, 'shiny_capturado': 0, 'status_pokedex': 0}},
 	}
 
+
+func _ready() -> void:
+	await get_tree().create_timer(0.1).timeout
+	
+	if not companion.is_empty():
+		get_tree().call_group("mapa", "get_info_companion", companion["level"])
+
+
 func load_sprite(dex_number: String, shiny: int) -> String:
 	var new_slot_id: int
 	var sprite_path: String
@@ -935,3 +955,85 @@ func load_sprite(dex_number: String, shiny: int) -> String:
 		sprite_path = "res://assets/pokemon_sprite/" + gen + "/normal/" + dex_number + ".png"
 	
 	return sprite_path
+
+
+func update_exp(exp: int) -> void:
+	companion.current_exp += exp
+	
+	if companion["current_exp"] >= level_dict[str(companion["level"])] and companion["level"] < 50:
+		var leftover = companion["current_exp"] - level_dict[str(companion["level"])]
+		companion["current_exp"] = leftover
+		on_level_up()
+
+	elif companion["current_exp"] >= level_dict[str(companion["level"])] and companion["level"] == 50:
+		companion["current_exp"] = level_dict[str(companion["level"])]
+
+	SQL.db.update_rows(
+		"banco_pokemon", "id_pokemon = '" + str(companion["id_pokemon"]) + "'", {"current_exp": companion["current_exp"]}
+		)
+
+
+func on_level_up() -> void:
+	companion["level"] += 1
+	
+	if companion["shiny"]:
+		companion["ability_modifier"] += 0.02
+	else:
+		companion["ability_modifier"] += 0.01
+		
+	get_tree().call_group("mapa", "get_info_companion", companion["level"])
+	
+	companion["ability_description"] = update_ability_description(companion["ability"])
+	
+	SQL.db.update_rows(
+		"banco_pokemon", "id_pokemon = '" + str(companion["id_pokemon"]) + "'", {"level": companion["level"]}
+	)
+	
+	SQL.db.update_rows(
+		"banco_pokemon", "id_pokemon = '" + str(companion["id_pokemon"]) + "'", {"ability_modifier": companion["ability_modifier"]}
+	)
+	
+	SQL.db.update_rows(
+		"banco_pokemon", "id_pokemon = '" + str(companion["id_pokemon"]) + "'", {"ability_description": companion["ability_description"]}
+	)
+
+
+func update_ability_description(ability: String) -> String:
+	var modificador_arredondado = round(companion["ability_modifier"] * 100) / 100.0
+	var modificador_percent = modificador_arredondado * 100
+	
+	match ability:
+		"Bargainer":
+			return "Reduz o preço das Pokébolas no Shop em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Pokeball)":
+			return "Chance de captura usando Pokeball aumenta em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Greatball)":
+			return "Chance de captura usando Greatball aumenta em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Ultraball)":
+			return "Chance de captura usando Ultraball aumenta em " + str(modificador_percent) + "%"
+		
+		"Steady Hand (Pokeball)":
+			return "Chance de captura usando Pokeball aumenta em " + str(modificador_percent) + "%"
+		
+		"Fortune Finder":
+			return "Aumenta em " + str(modificador_percent) + "% o drop de Créditos"
+			
+		"Synchronize":
+			return "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon tiver o mesmo tipo"
+			
+		"Pokéball Expert":
+			return "Aumenta a chance de captura em " + str(modificador_percent) + "% se usar a mesma Pokébola após falhar"
+		
+		"Conservationist":
+			return str(modificador_percent) + "% de chance de não gastar a Pokébola usada"
+		
+		"Resourceful":
+			return str(modificador_percent) + "% de chance de receber uma Pokébola aleatória ao capturar um Pokémon"
+		
+		"Shiny Hunter":
+			return "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon for SHINY"
+	
+	return ""

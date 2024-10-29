@@ -68,7 +68,7 @@ font_size = 14
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "sprite2", "sprite3", "dex_number", "pokemon_id", "nature", "nature_description", "primary_type", "secondary_type", "weight", "data_captura", "ability_name", "ability_description") groups=["pokemon_bank"]]
+[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "option_button", "sprite2", "sprite3", "dex_number", "pokemon_id", "nature", "nature_description", "primary_type", "secondary_type", "weight", "data_captura", "ability_name", "ability_description") groups=["pokemon_bank"]]
 visible = false
 custom_minimum_size = Vector2(460, 268)
 anchors_preset = 8
@@ -87,6 +87,7 @@ expand_mode = 1
 script = ExtResource("1_pr82w")
 bank_container = NodePath("ScrollContainer/GridContainer")
 sprite = NodePath("Background/Sprite")
+option_button = NodePath("OptionButton")
 sprite2 = NodePath("PokemonEntry/Sprite")
 sprite3 = NodePath("PokemonEntry/Sprite2")
 dex_number = NodePath("PokemonEntry/DexNumber")

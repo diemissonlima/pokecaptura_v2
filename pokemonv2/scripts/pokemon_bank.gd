@@ -5,6 +5,7 @@ const SLOT_BANK: PackedScene = preload("res://scenes/interface/slot_bank.tscn")
 @export_category("Objetos")
 @export var bank_container: GridContainer
 @export var sprite: TextureRect
+@export var option_button: OptionButton
 
 @export_category("Variaveis")
 @export var sprite2: TextureRect
@@ -35,6 +36,7 @@ func _process(_delta: float) -> void:
 		if not visible:
 			sprite.texture = null
 			pokemon_info.clear()
+			option_button.select(-1)
 			$ScrollContainer.show()
 			$Background.show()
 			$PokemonEntry.hide()
