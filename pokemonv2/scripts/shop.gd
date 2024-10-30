@@ -22,9 +22,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("open_shop"):
-		current_money_label.text = "Créditos: " + str(SQL.verify_item_amount_on_inventory("Credito"))
-		visible = not visible
+	if Input.is_action_just_pressed("exit") and visible:
+		visible = false
 
 
 func on_button_pressed(button: TextureButton) -> void:
@@ -63,8 +62,9 @@ func checkout(button_name: String, item_value: int, amount: int) -> void:
 			new_value = item_value - 50
 	
 	# verifica se o companion tem a habilidade que concede desconto nas pokebolas
-	if data.companion["ability"] == "Bargainer":
-		new_value = new_value - (new_value * data.companion["ability_modifier"])
+	if data.companion.has("ability"):
+		if data.companion["ability"] == "Bargainer":
+			new_value = new_value - (new_value * data.companion["ability_modifier"])
 	
 	purchase_value = new_value * amount
 	

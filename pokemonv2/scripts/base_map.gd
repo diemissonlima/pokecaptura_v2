@@ -8,6 +8,7 @@ class_name BaseMap
 @export var screen_capture: Control
 @export var background: TextureRect
 @export var options_container: HBoxContainer
+@export var options_container2: GridContainer
 @export var button_start_hunting: Button
 @export var info: Label
 @export var info2: Label
@@ -19,6 +20,13 @@ class_name BaseMap
 @export var party_container: HBoxContainer
 @export var button_remove_party: Button
 @export var timer: Timer
+
+@export_category("Objetos Interface")
+@export var pokedex: TextureRect
+@export var pokemon_bank: TextureRect
+@export var achievements: Control
+@export var quest_panel: Control
+@export var pokemon_shop: Control
 
 @export_category("Variaveis")
 @export var map_name: String
@@ -43,6 +51,9 @@ func _ready() -> void:
 	for slot in party_container.get_children():
 		slot.mouse_entered.connect(on_mouse_entered.bind(slot))
 		slot.mouse_entered.connect(on_mouse_exited.bind(slot))
+		
+	for button in options_container2.get_children():
+		button.pressed.connect(on_button_pressed.bind(button.name))
 
 
 func _process(_delta: float) -> void:
@@ -226,7 +237,7 @@ func add_party(poke_info: Dictionary) -> void:
 
 func get_info_companion(level: int) -> void:
 	for slot in party_container.get_children():
-		slot.get_node("Background/LevelLabel").text = "Lvl " + str(level)
+		slot.get_node("Background/LevelLabel").text = "Level " + str(level)
 
 
 func _on_expand_pressed() -> void:
@@ -237,6 +248,36 @@ func _on_expand_pressed() -> void:
 	else:
 		$Background/Expand.set_rotation(0.0)
 		$Background/VBoxContainer.hide()
+
+
+func on_button_pressed(button_name: String):
+	match button_name:
+		"BtnPokedex":
+			if not pokedex.visible:
+				pokedex.update_pokedex_progress("Kanto")
+				pokedex.visible = true
+		
+		"BtnBank":
+			if not pokemon_bank.visible:
+				pokemon_bank.visible = true
+		
+		"BtnAchievements":
+			if not achievements.visible:
+				achievements.visible = true
+				
+		"BtnQuests":
+			if not quest_panel.visible:
+				if quest_panel.available_quests.size() == 0:
+					for j in range(3):
+						quest_panel.generate_quest()
+						
+					quest_panel.update_quest_info()
+				
+				quest_panel.visible = true
+				
+		"BtnShop":
+			if not pokemon_shop.visible:
+				pokemon_shop.visible = true
 
 
 func on_mouse_entered(slot: Control) -> void:

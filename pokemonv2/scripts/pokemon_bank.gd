@@ -30,19 +30,18 @@ var pokemon_info: Dictionary = {}
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("bank"):
-		visible = not visible
+	if Input.is_action_just_pressed("exit") and visible:
+		sprite.texture = null
+		pokemon_info.clear()
+		option_button.select(-1)
+		$ScrollContainer.show()
+		$Background.show()
+		$PokemonEntry.hide()
 		
-		if not visible:
-			sprite.texture = null
-			pokemon_info.clear()
-			option_button.select(-1)
-			$ScrollContainer.show()
-			$Background.show()
-			$PokemonEntry.hide()
+		for slot in bank_container.get_children():
+			slot.show()
 			
-			for slot in bank_container.get_children():
-				slot.show()
+		visible = false
 		
 	if Input.is_action_just_pressed("mouse_left_click") and can_click:
 		get_slot_info()

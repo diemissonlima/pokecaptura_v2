@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bhcv3qhvbuahj"]
+[gd_scene load_steps=73 format=3 uid="uid://bhcv3qhvbuahj"]
 
 [ext_resource type="Script" path="res://scripts/base_map.gd" id="1_d4akg"]
 [ext_resource type="PackedScene" uid="uid://1fbhfp67w6j0" path="res://scenes/interface/screen_capture.tscn" id="1_n6ccm"]
@@ -49,6 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://mm66l04dyxrc" path="res://assets/prefabs/interface/indicador.png" id="47_tfj72"]
 [ext_resource type="PackedScene" uid="uid://bul7kua1vw8jj" path="res://scenes/interface/party_slot.tscn" id="48_6thqy"]
 [ext_resource type="PackedScene" uid="uid://c2ta4frekveei" path="res://scenes/pokemon/gen5/genesect.tscn" id="52_yj2dd"]
+[ext_resource type="Texture2D" uid="uid://ctue1djlmon05" path="res://assets/prefabs/interface/title_background.png" id="63_055f7"]
 [ext_resource type="PackedScene" uid="uid://dsh7x4kic4xss" path="res://scenes/pokemon/gen5/keldeo.tscn" id="67_whj8o"]
 [ext_resource type="PackedScene" uid="uid://bw615otuu3qa0" path="res://scenes/pokemon/gen5/kyurem.tscn" id="73_8odse"]
 [ext_resource type="PackedScene" uid="uid://v4ey1r7ary10" path="res://scenes/pokemon/gen5/landorus.tscn" id="75_3ghcg"]
@@ -112,7 +113,14 @@ font_size = 12
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "button_start_hunting", "info", "info2", "spawn_lendario", "map_name_label", "progress_map_bar", "party_container", "button_remove_party", "timer") groups=["mapa"]]
+[sub_resource type="LabelSettings" id="LabelSettings_gjkg4"]
+font = ExtResource("3_a26c1")
+font_size = 8
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "options_container2", "button_start_hunting", "info", "info2", "spawn_lendario", "map_name_label", "progress_map_bar", "party_container", "button_remove_party", "timer", "pokedex", "pokemon_bank", "achievements", "quest_panel", "pokemon_shop") groups=["mapa"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,6 +133,7 @@ spawn_timer = NodePath("SpawnTimer")
 screen_capture = NodePath("Interface/ScreenCapture")
 background = NodePath("Background")
 options_container = NodePath("Background/OptionsContainer")
+options_container2 = NodePath("Background/OptionsContainer2")
 button_start_hunting = NodePath("Background/StartHunting")
 info = NodePath("Background/Info")
 info2 = NodePath("Background/Info2")
@@ -134,6 +143,11 @@ progress_map_bar = NodePath("Background/MapProgress")
 party_container = NodePath("Background/PartyContainer")
 button_remove_party = NodePath("Background/RemoveParty")
 timer = NodePath("Timer")
+pokedex = NodePath("Interface/Pokedex")
+pokemon_bank = NodePath("Interface/PokemonBank")
+achievements = NodePath("Interface/Achievements")
+quest_panel = NodePath("Interface/QuestPanel")
+pokemon_shop = NodePath("Interface/Shop")
 map_name = "01"
 pokemon_list = Array[PackedScene]([ExtResource("2_y42ic")])
 pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c"), ExtResource("13_4tejs"), ExtResource("14_loiwo"), ExtResource("15_23uya"), ExtResource("16_aod8q"), ExtResource("17_gl66w"), ExtResource("18_egxjy"), ExtResource("19_fn0rc"), ExtResource("20_wmw3a"), ExtResource("21_uhv7v"), ExtResource("22_3sg36"), ExtResource("23_ei4qb"), ExtResource("24_67o8b"), ExtResource("25_yv1no"), ExtResource("26_qa4ej"), ExtResource("27_yuepa"), ExtResource("28_0hqco"), ExtResource("29_tqefq"), ExtResource("30_0gadb"), ExtResource("31_uap65"), ExtResource("32_mn7i6"), ExtResource("33_85oiq"), ExtResource("34_3mex6"), ExtResource("35_4sp70"), ExtResource("144_6wqjb"), ExtResource("20_8rckm"), ExtResource("129_ww0dv"), ExtResource("145_r3l6q"), ExtResource("134_ieceb"), ExtResource("131_2op5n"), ExtResource("102_jrk47"), ExtResource("154_hcb74"), ExtResource("75_3ghcg"), ExtResource("73_8odse"), ExtResource("67_whj8o"), ExtResource("84_7itqx"), ExtResource("52_yj2dd")])
@@ -367,10 +381,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -58.0
-offset_top = -58.0
-offset_right = -8.0
-offset_bottom = -8.0
+offset_left = -252.0
+offset_top = -212.0
+offset_right = -192.0
+offset_bottom = -152.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 1
@@ -389,6 +403,160 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_a26c1")
 theme_override_font_sizes/font_size = 8
 text = "Remove"
+
+[node name="OptionsContainer2" type="GridContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -50.0
+offset_right = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/v_separation = -10
+columns = 3
+
+[node name="BtnPokedex" type="TextureButton" parent="Background/OptionsContainer2"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+texture_normal = ExtResource("63_055f7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/OptionsContainer2/BtnPokedex"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -4.5
+offset_right = 17.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pokedex"
+label_settings = SubResource("LabelSettings_gjkg4")
+
+[node name="BtnBank" type="TextureButton" parent="Background/OptionsContainer2"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+texture_normal = ExtResource("63_055f7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/OptionsContainer2/BtnBank"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -4.5
+offset_right = 11.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bank"
+label_settings = SubResource("LabelSettings_gjkg4")
+
+[node name="BtnAchievements" type="TextureButton" parent="Background/OptionsContainer2"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+texture_normal = ExtResource("63_055f7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/OptionsContainer2/BtnAchievements"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -4.5
+offset_right = 11.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Marks"
+label_settings = SubResource("LabelSettings_gjkg4")
+
+[node name="BtnQuests" type="TextureButton" parent="Background/OptionsContainer2"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+texture_normal = ExtResource("63_055f7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/OptionsContainer2/BtnQuests"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -4.5
+offset_right = 11.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quests"
+label_settings = SubResource("LabelSettings_gjkg4")
+
+[node name="BtnShop" type="TextureButton" parent="Background/OptionsContainer2"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+texture_normal = ExtResource("63_055f7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/OptionsContainer2/BtnShop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -4.5
+offset_right = 11.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shop"
+label_settings = SubResource("LabelSettings_gjkg4")
+
+[node name="BtnCompanion" type="TextureButton" parent="Background/OptionsContainer2"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+texture_normal = ExtResource("63_055f7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/OptionsContainer2/BtnCompanion"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -4.5
+offset_right = 11.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Partner"
+label_settings = SubResource("LabelSettings_gjkg4")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0

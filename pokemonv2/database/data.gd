@@ -1,5 +1,12 @@
 extends Node
 
+#nome
+#numero dex
+#id
+#nature
+#region
+#met
+
 var companion: Dictionary = {}
 
 var level_dict: Dictionary = {

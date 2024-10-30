@@ -1,43 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://bul7kua1vw8jj"]
+[gd_scene load_steps=8 format=3 uid="uid://bul7kua1vw8jj"]
 
 [ext_resource type="Script" path="res://scripts/party_slot.gd" id="1_k15ih"]
+[ext_resource type="Texture2D" uid="uid://cnwktcanwvcq7" path="res://assets/prefabs/interface/summary_01.png" id="2_2fgcg"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="2_s8iyd"]
+[ext_resource type="Texture2D" uid="uid://cefnl4m4le5u3" path="res://assets/prefabs/pokemon_type/dragon.png" id="3_xhp2t"]
+[ext_resource type="Texture2D" uid="uid://bcb026odl3w0r" path="res://assets/prefabs/interface/sumary_companion.png" id="4_k8q80"]
+[ext_resource type="Texture2D" uid="uid://bp5oaicqn25cg" path="res://assets/prefabs/pokemon_type/flying.png" id="4_siqpe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8b20x"]
 font = ExtResource("2_s8iyd")
-font_size = 8
-outline_size = 4
+font_size = 12
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [node name="PartySlot" type="Control" node_paths=PackedStringArray("sprite", "background")]
+visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 50.0
 offset_bottom = 50.0
 script = ExtResource("1_k15ih")
-sprite = NodePath("Sprite")
+sprite = NodePath("Background/Sprite")
 background = NodePath("Background")
-background_list = ["res://assets/prefabs/interface/type_1.png", "res://assets/prefabs/interface/type_2.png", "res://assets/prefabs/interface/type_3.png"]
 
 [node name="Background" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_right = 123.0
+offset_bottom = 88.0
+texture = ExtResource("2_2fgcg")
+expand_mode = 1
 
 [node name="LevelLabel" type="Label" parent="Background"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -9.0
-offset_right = 25.0
+offset_top = -85.0
+offset_right = 119.0
+offset_bottom = -72.0
 grow_vertical = 0
+text = "level"
 label_settings = SubResource("LabelSettings_8b20x")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="."]
+[node name="Sprite" type="TextureRect" parent="Background"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -52,3 +61,30 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
+
+[node name="TypeContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 69.0
+offset_right = 448.0
+offset_bottom = 113.0
+scale = Vector2(0.2, 0.2)
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="PrimaryType" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("3_xhp2t")
+stretch_mode = 4
+
+[node name="SecondaryType" type="TextureRect" parent="Background/TypeContainer"]
+layout_mode = 2
+texture = ExtResource("4_siqpe")
+stretch_mode = 4
+
+[node name="Background2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("4_k8q80")

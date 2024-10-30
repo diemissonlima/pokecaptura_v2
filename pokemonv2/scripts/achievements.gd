@@ -26,8 +26,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("achievement"):
-		visible = not visible
+	if Input.is_action_just_pressed("exit") and visible:
+		visible = false
 
 
 func update_achievement(type: String) -> void:

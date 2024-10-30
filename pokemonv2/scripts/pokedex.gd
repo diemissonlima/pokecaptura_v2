@@ -53,11 +53,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pokedex_info"):
-		update_pokedex_progress("Kanto")
-		visible = not visible
+	if Input.is_action_just_pressed("exit") and visible:
 		info_pokemon.hide()
-		
+		visible = false
+
 	if Input.is_action_just_pressed("mouse_left_click") and slot_can_click: # verifica e habilita para o slot ser clicado
 		details_pokemon(SQL.info_pokedex(_slot_id)) # envia o Slot ID para a função que vai mostrar os dados do pokemon na pokedex
 

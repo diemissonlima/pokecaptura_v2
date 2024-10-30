@@ -17,13 +17,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("quest_panel"):
-		visible = not visible
-		if available_quests.size() == 0:
-			for j in range(3):
-				generate_quest()
-		
-			update_quest_info()
+	if Input.is_action_just_pressed("exit") and visible:
+		visible = false
 
 
 func generate_quest() -> void:
