@@ -99,6 +99,7 @@ func set_capture(_pokeball_used: String) -> void:
 		get_tree().call_group("mapa", "update_map_progress")
 		get_tree().call_group("pokedex_info", "show_pokemon", pokemon_captured.id_dex, "capturado", pokemon_captured.region)
 		
+		pokemon_captured.pokeball_used = _pokeball_used
 		SQL.add_pokemon_to_bank(pokemon_captured)
 		get_tree().call_group("pokemon_bank", "add_pokemon_to_bank")
 		
@@ -126,8 +127,6 @@ func set_capture(_pokeball_used: String) -> void:
 		
 		if not data.companion.is_empty():
 			data.update_exp(pokemon_captured.exp_base)
-			
-		pokemon_captured.pokeball_used = _pokeball_used
 		
 	else:
 		
