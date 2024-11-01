@@ -1,52 +1,40 @@
 [gd_scene load_steps=8 format=3 uid="uid://bul7kua1vw8jj"]
 
 [ext_resource type="Script" path="res://scripts/party_slot.gd" id="1_k15ih"]
-[ext_resource type="Texture2D" uid="uid://cnwktcanwvcq7" path="res://assets/prefabs/interface/summary_01.png" id="2_2fgcg"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="2_s8iyd"]
 [ext_resource type="Texture2D" uid="uid://cefnl4m4le5u3" path="res://assets/prefabs/pokemon_type/dragon.png" id="3_xhp2t"]
-[ext_resource type="Texture2D" uid="uid://bcb026odl3w0r" path="res://assets/prefabs/interface/sumary_companion.png" id="4_k8q80"]
 [ext_resource type="Texture2D" uid="uid://bp5oaicqn25cg" path="res://assets/prefabs/pokemon_type/flying.png" id="4_siqpe"]
+[ext_resource type="Texture2D" uid="uid://d0l7kwd0kdgmj" path="res://assets/prefabs/interface/bg_companion.png" id="5_o6qau"]
+[ext_resource type="Texture2D" uid="uid://byy2c6vkoo27w" path="res://assets/prefabs/interface/Background Static.png" id="7_ajiib"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8b20x"]
 font = ExtResource("2_s8iyd")
-font_size = 12
+font_size = 10
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PartySlot" type="Control" node_paths=PackedStringArray("sprite", "background")]
+[node name="PartySlot" type="Control" node_paths=PackedStringArray("sprite")]
 visible = false
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(218, 168)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_right = 218.0
+offset_bottom = 168.0
 script = ExtResource("1_k15ih")
-sprite = NodePath("Background/Sprite")
-background = NodePath("Background")
+sprite = NodePath("Sprite")
 
 [node name="Background" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 0
-offset_right = 123.0
-offset_bottom = 88.0
-texture = ExtResource("2_2fgcg")
+custom_minimum_size = Vector2(218, 168)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_o6qau")
 expand_mode = 1
 
-[node name="LevelLabel" type="Label" parent="Background"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -85.0
-offset_right = 119.0
-offset_bottom = -72.0
-grow_vertical = 0
-text = "level"
-label_settings = SubResource("LabelSettings_8b20x")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sprite" type="TextureRect" parent="Background"]
+[node name="Sprite" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -54,37 +42,213 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -79.5
+offset_top = -65.0
+offset_right = -29.5
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
+stretch_mode = 5
 
-[node name="TypeContainer" type="HBoxContainer" parent="Background"]
+[node name="Pokeball" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 69.0
-offset_right = 448.0
-offset_bottom = 113.0
+offset_left = 6.0
+offset_top = 20.0
+offset_right = 16.0
+offset_bottom = 30.0
+expand_mode = 1
+
+[node name="LevelContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 109.0
+offset_bottom = 15.0
+theme_override_constants/separation = 10
+
+[node name="LevelLabel" type="Label" parent="LevelContainer"]
+layout_mode = 2
+text = "Lvl 15"
+label_settings = SubResource("LabelSettings_8b20x")
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="LevelContainer"]
+layout_mode = 2
+text = "Charizard"
+label_settings = SubResource("LabelSettings_8b20x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TypeContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 71.0
+offset_right = 442.0
+offset_bottom = 115.0
 scale = Vector2(0.2, 0.2)
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="PrimaryType" type="TextureRect" parent="Background/TypeContainer"]
+[node name="PrimaryType" type="TextureRect" parent="TypeContainer"]
 layout_mode = 2
 texture = ExtResource("3_xhp2t")
 stretch_mode = 4
 
-[node name="SecondaryType" type="TextureRect" parent="Background/TypeContainer"]
+[node name="SecondaryType" type="TextureRect" parent="TypeContainer"]
 layout_mode = 2
 texture = ExtResource("4_siqpe")
 stretch_mode = 4
 
-[node name="Background2" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(60, 60)
+[node name="InfoContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 50.0
-texture = ExtResource("4_k8q80")
+offset_left = 112.0
+offset_top = 2.0
+offset_right = 216.0
+offset_bottom = 88.0
+theme_override_constants/separation = 14
+
+[node name="ID" type="TextureRect" parent="InfoContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+custom_minimum_size = Vector2(80, 11)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="IDContainer" type="HBoxContainer" parent="InfoContainer/ID"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -5.5
+offset_right = 41.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="IDLabel" type="Label" parent="InfoContainer/ID/IDContainer"]
+layout_mode = 2
+text = "ID: 15"
+label_settings = SubResource("LabelSettings_8b20x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DexLabel" type="Label" parent="InfoContainer/ID/IDContainer"]
+layout_mode = 2
+text = "Dex: 006"
+label_settings = SubResource("LabelSettings_8b20x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nature" type="TextureRect" parent="InfoContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+custom_minimum_size = Vector2(80, 11)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NatureLabel" type="Label" parent="InfoContainer/Nature"]
+layout_mode = 2
+offset_left = 7.0
+offset_right = 97.0
+offset_bottom = 11.0
+text = "Nature: Adamant"
+label_settings = SubResource("LabelSettings_8b20x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Region" type="TextureRect" parent="InfoContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+custom_minimum_size = Vector2(80, 11)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RegionLabel" type="Label" parent="InfoContainer/Region"]
+layout_mode = 2
+offset_left = 17.0
+offset_right = 87.0
+offset_bottom = 11.0
+text = "Region: Kanto"
+label_settings = SubResource("LabelSettings_8b20x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exp" type="TextureRect" parent="InfoContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+custom_minimum_size = Vector2(80, 11)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ExpLabel" type="Label" parent="InfoContainer/Exp"]
+layout_mode = 2
+offset_left = 15.5
+offset_right = 88.5
+offset_bottom = 11.0
+text = "Exp: 1500 / 2500"
+label_settings = SubResource("LabelSettings_8b20x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ability" type="Label" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 94.0
+offset_right = 189.0
+offset_bottom = 105.0
+text = "Habilidade: Steady Hand (Pokeball)"
+label_settings = SubResource("LabelSettings_8b20x")
+vertical_alignment = 1
+
+[node name="AbilityDescription" type="Label" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 109.0
+offset_right = 216.0
+offset_bottom = 144.0
+text = "Descrição: Chance de captura usando Pokeball aumenta em 20%\""
+label_settings = SubResource("LabelSettings_8b20x")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ChangePet" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -17.0
+offset_right = 38.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("7_ajiib")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ChangePet"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -7.5
+offset_right = 27.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Trocar Pet"
+label_settings = SubResource("LabelSettings_8b20x")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="ChangePet" to="." method="_on_change_pet_pressed"]

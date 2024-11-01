@@ -120,7 +120,7 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "options_container2", "button_start_hunting", "info", "info2", "spawn_lendario", "map_name_label", "progress_map_bar", "party_container", "button_remove_party", "timer", "pokedex", "pokemon_bank", "achievements", "quest_panel", "pokemon_shop") groups=["mapa"]]
+[node name="BaseMap" type="Control" node_paths=PackedStringArray("spawn_position", "spawn_timer", "screen_capture", "background", "options_container", "options_container2", "button_start_hunting", "info", "info2", "spawn_lendario", "map_name_label", "progress_map_bar", "party_container", "timer", "pokedex", "pokemon_bank", "achievements", "quest_panel", "pokemon_shop", "companion") groups=["mapa"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,13 +141,13 @@ spawn_lendario = NodePath("Background/SpawnLendario")
 map_name_label = NodePath("Background/MapName")
 progress_map_bar = NodePath("Background/MapProgress")
 party_container = NodePath("Background/PartyContainer")
-button_remove_party = NodePath("Background/RemoveParty")
-timer = NodePath("Timer")
+timer = NodePath("")
 pokedex = NodePath("Interface/Pokedex")
 pokemon_bank = NodePath("Interface/PokemonBank")
 achievements = NodePath("Interface/Achievements")
 quest_panel = NodePath("Interface/QuestPanel")
 pokemon_shop = NodePath("Interface/Shop")
+companion = NodePath("Background/PartyContainer/PartySlot")
 map_name = "01"
 pokemon_list = Array[PackedScene]([ExtResource("2_y42ic")])
 pokemon_legendary_list = Array[PackedScene]([ExtResource("2_uu6u3"), ExtResource("3_ox3qn"), ExtResource("4_55rk3"), ExtResource("5_407qi"), ExtResource("6_q7q16"), ExtResource("7_78ihx"), ExtResource("8_secvh"), ExtResource("9_w86nl"), ExtResource("10_hkum5"), ExtResource("11_3rsnu"), ExtResource("12_c8i4c"), ExtResource("13_4tejs"), ExtResource("14_loiwo"), ExtResource("15_23uya"), ExtResource("16_aod8q"), ExtResource("17_gl66w"), ExtResource("18_egxjy"), ExtResource("19_fn0rc"), ExtResource("20_wmw3a"), ExtResource("21_uhv7v"), ExtResource("22_3sg36"), ExtResource("23_ei4qb"), ExtResource("24_67o8b"), ExtResource("25_yv1no"), ExtResource("26_qa4ej"), ExtResource("27_yuepa"), ExtResource("28_0hqco"), ExtResource("29_tqefq"), ExtResource("30_0gadb"), ExtResource("31_uap65"), ExtResource("32_mn7i6"), ExtResource("33_85oiq"), ExtResource("34_3mex6"), ExtResource("35_4sp70"), ExtResource("144_6wqjb"), ExtResource("20_8rckm"), ExtResource("129_ww0dv"), ExtResource("145_r3l6q"), ExtResource("134_ieceb"), ExtResource("131_2op5n"), ExtResource("102_jrk47"), ExtResource("154_hcb74"), ExtResource("75_3ghcg"), ExtResource("73_8odse"), ExtResource("67_whj8o"), ExtResource("84_7itqx"), ExtResource("52_yj2dd")])
@@ -381,28 +381,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -252.0
-offset_top = -212.0
+offset_left = -385.0
+offset_top = -262.0
 offset_right = -192.0
-offset_bottom = -152.0
+offset_bottom = -104.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 1
 
 [node name="PartySlot" parent="Background/PartyContainer" instance=ExtResource("48_6thqy")]
 layout_mode = 2
-
-[node name="RemoveParty" type="Button" parent="Background"]
-visible = false
-layout_mode = 0
-offset_left = 432.0
-offset_top = 227.0
-offset_right = 472.0
-offset_bottom = 244.0
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("3_a26c1")
-theme_override_font_sizes/font_size = 8
-text = "Remove"
 
 [node name="OptionsContainer2" type="GridContainer" parent="Background"]
 layout_mode = 1
@@ -562,14 +550,8 @@ label_settings = SubResource("LabelSettings_gjkg4")
 wait_time = 2.0
 one_shot = true
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [connection signal="pressed" from="Background/OptionsContainer/Sim" to="." method="_on_sim_pressed"]
 [connection signal="pressed" from="Background/OptionsContainer/Nao" to="." method="_on_nao_pressed"]
 [connection signal="pressed" from="Background/StartHunting" to="." method="_on_start_hunting_pressed"]
 [connection signal="pressed" from="Background/Expand" to="." method="_on_expand_pressed"]
-[connection signal="pressed" from="Background/RemoveParty" to="." method="_on_remove_party_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -149,8 +149,7 @@ func get_slot_info() -> void:
 	
 	pokemon_info = SQL.db.query_result[0]
 	sprite.texture = load(data.load_sprite(pokemon_info["numero_dex"], pokemon_info["shiny"]))
-	
-	
+
 
 func on_mouse_entered(id: int) -> void:
 	can_click = true

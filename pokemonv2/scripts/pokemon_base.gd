@@ -33,6 +33,7 @@ class_name PokemonBase
 
 var nature_description: String
 var dropped_credit: int
+var pokeball_used: String
 
 
 func _ready() -> void:
@@ -164,18 +165,15 @@ func get_ability() -> void:
 		
 		"Steady Hand (Ultraball)":
 			ability["description"] = "Chance de captura usando Ultraball aumenta em " + str(modificador_percent) + "%"
-		
-		"Steady Hand (Pokeball)":
-			ability["description"] = "Chance de captura usando Pokeball aumenta em " + str(modificador_percent) + "%"
-		
+
 		"Fortune Finder":
 			ability["description"] = "Aumenta em " + str(modificador_percent) + "% o drop de Créditos"
 			
 		"Synchronize":
-			ability["description"] = "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon tiver o mesmo tipo"
+			ability["description"] = "+" + str(modificador_percent) + "% de captura se o Pokémon tiver o mesmo tipo"
 			
 		"Pokéball Expert":
-			ability["description"] = "Aumenta a chance de captura em " + str(modificador_percent) + "% se usar a mesma Pokébola após falhar"
+			ability["description"] = "+" + str(modificador_percent) + "% de captura se usar a mesma Pokébola após falhar"
 		
 		"Conservationist":
 			ability["description"] = str(modificador_percent) + "% de chance de não gastar a Pokébola usada"

@@ -27,6 +27,7 @@ class_name BaseMap
 @export var achievements: Control
 @export var quest_panel: Control
 @export var pokemon_shop: Control
+@export var companion: Control
 
 @export_category("Variaveis")
 @export var map_name: String
@@ -220,7 +221,8 @@ func add_party(poke_info: Dictionary) -> void:
 		if slot.sprite.texture == null:
 			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id_pokemon = poke_info["id_pokemon"]
-			get_info_companion(poke_info["level"])
+			
+			
 			data.companion = poke_info.duplicate()
 			
 			SQL.db.query(
@@ -233,11 +235,6 @@ func add_party(poke_info: Dictionary) -> void:
 			for slot1 in party_container.get_children():
 				if slot1.id_pokemon == poke_info["id_pokemon"]:
 					return
-
-
-func get_info_companion(level: int) -> void:
-	for slot in party_container.get_children():
-		slot.get_node("Background/LevelLabel").text = "Level " + str(level)
 
 
 func _on_expand_pressed() -> void:
@@ -278,19 +275,22 @@ func on_button_pressed(button_name: String):
 		"BtnShop":
 			if not pokemon_shop.visible:
 				pokemon_shop.visible = true
+				
+		"BtnCompanion":
+			if data.companion.size() == 0:
+				return
+				
+			if not companion.visible:
+				companion.visible = true
 
 
 func on_mouse_entered(slot: Control) -> void:
-	button_remove_party.show()
-	
 	party_slot_can_click = true
 	target_slot = slot
 	
 
 func on_mouse_exited(_slot: Control) -> void:
 	party_slot_can_click = false
-	
-	timer.start()
 
 
 func _on_remove_party_pressed() -> void:
@@ -304,7 +304,3 @@ func _on_remove_party_pressed() -> void:
 	
 	get_tree().call_group("slot_bank", "update_on_companion", target_slot.id_pokemon, "remove")
 	target_slot.id_pokemon = 0
-
-
-func _on_timer_timeout() -> void:
-	button_remove_party.hide()

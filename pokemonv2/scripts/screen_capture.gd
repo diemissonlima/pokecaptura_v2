@@ -126,6 +126,8 @@ func set_capture(_pokeball_used: String) -> void:
 		
 		if not data.companion.is_empty():
 			data.update_exp(pokemon_captured.exp_base)
+			
+		pokemon_captured.pokeball_used = _pokeball_used
 		
 	else:
 		
