@@ -18,8 +18,6 @@ class_name BaseMap
 
 @export_category("Objetos Party Container")
 @export var party_container: HBoxContainer
-@export var button_remove_party: Button
-@export var timer: Timer
 
 @export_category("Objetos Interface")
 @export var pokedex: TextureRect

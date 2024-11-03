@@ -6,8 +6,9 @@ const _POKEDEX_JOHTO_SIZE: int = 100
 const _POKEDEX_HOENN_SIZE: int = 135
 const _POKEDEX_SINNOH_SIZE: int = 107
 const _POKEDEX_UNOVA_SIZE: int = 156
+const _POKEDEX_KALOS_SIZE: int = 72
 
-const _POKEDEX_SIZE: int = 649
+const _POKEDEX_SIZE: int = 721
 const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 
 @export_category("Objetos")
@@ -16,6 +17,7 @@ const _POKEDEX_SLOT: PackedScene = preload("res://scenes/interface/slot.tscn")
 @export var dex_hoenn_container: GridContainer
 @export var dex_sinnoh_container: GridContainer
 @export var dex_unova_container: GridContainer
+@export var dex_kalos_container: GridContainer
 @export var info_pokemon: TextureRect
 
 @export_category("Objetos InfoPokedex")
@@ -103,6 +105,13 @@ func spawn_slot() -> void:
 		slot.slot_id = str(index)
 		
 		dex_unova_container.add_child(slot)
+	
+	for j in _POKEDEX_KALOS_SIZE:
+		index += 1
+		var slot = _POKEDEX_SLOT.instantiate()
+		slot.slot_id = str(index)
+		
+		dex_kalos_container.add_child(slot)
 
 
 func update_pokedex_progress(region: String) -> void:
@@ -117,7 +126,8 @@ func show_pokemon_on_ready_scene() -> void:
 		"Johto": dex_johto_container,
 		"Hoenn": dex_hoenn_container,
 		"Sinnoh": dex_sinnoh_container,
-		"Unova": dex_unova_container
+		"Unova": dex_unova_container,
+		"Kalos": dex_kalos_container
 	}
 	
 	var region: String
@@ -137,6 +147,8 @@ func show_pokemon_on_ready_scene() -> void:
 				region = "Sinnoh"
 			elif new_id > 493 and new_id <= 649:
 				region = "Unova"
+			elif new_id > 649 and new_id <= 721:
+				region = "Kalos"
 			
 		for i in region_dict[region].get_children():
 			if SQL.verify_pokemon_captured(i.slot_id) == 1:
@@ -152,7 +164,8 @@ func show_pokemon(id: String, status: String, region: String) -> void:
 		"Johto": dex_johto_container,
 		"Hoenn": dex_hoenn_container,
 		"Sinnoh": dex_sinnoh_container,
-		"Unova": dex_unova_container
+		"Unova": dex_unova_container,
+		"Kalos": dex_kalos_container
 	}
 	
 	for slot in region_dict[region].get_children():
@@ -214,7 +227,8 @@ func switch_dex_button_pressed(button_name: String) -> void:
 		"Johto": dex_johto_container,
 		"Hoenn": dex_hoenn_container,
 		"Sinnoh": dex_sinnoh_container,
-		"Unova": dex_unova_container
+		"Unova": dex_unova_container,
+		"Kalos": dex_kalos_container
 	}
 	
 	for j in region:

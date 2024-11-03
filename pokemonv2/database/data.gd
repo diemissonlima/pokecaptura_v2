@@ -1,12 +1,5 @@
 extends Node
 
-#nome
-#numero dex
-#id
-#nature
-#region
-#met
-
 var companion: Dictionary = {}
 
 var level_dict: Dictionary = {
@@ -955,6 +948,8 @@ func load_sprite(dex_number: String, shiny: int) -> String:
 		gen = "gen4"
 	elif new_slot_id > 493 and new_slot_id <= 649:
 		gen = "gen5"
+	elif new_slot_id > 649 and new_slot_id <= 721:
+		gen = "gen6"
 	
 	if shiny == 1:
 		sprite_path = "res://assets/pokemon_sprite/" + gen + "/shiny/" + dex_number + ".png"
