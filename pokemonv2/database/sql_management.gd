@@ -5,6 +5,7 @@ var db: SQLite
 
 func _ready() -> void:
 	create_database()
+	#reset_database()
 	#insert_data()
 
 
@@ -62,6 +63,17 @@ func insert_data() -> void:
 		
 		db.insert_row("pokemon", row_dict)
 
+
+func reset_database() -> void:
+	db.query("DELETE FROM banco_pokemon")
+	db.query("UPDATE conquistas SET amount = 0, current_level = 1")
+	db.query("UPDATE inventario SET amount = 0")
+	db.query("UPDATE inventario SET amount = 25 WHERE name = 'Pokeball'")
+	db.query("UPDATE pokemon SET visto = 0, capturado = 0, shiny_visto = 0, shiny_capturado = 0, status_pokedex = 0")
+	db.query("DELETE FROM quests")
+	db.query("UPDATE sqlite_sequence SET seq = 0")
+	db.query("UPDATE misc SET value = 'mapa_01' WHERE name = 'current_map'")
+	
 
 func return_pokedex_progress(region: String) -> Array:
 	var pokedex_progress: Array = []

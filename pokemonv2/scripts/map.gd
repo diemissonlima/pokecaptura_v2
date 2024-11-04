@@ -16,5 +16,6 @@ func _process(_delta: float) -> void:
 
 func on_button_pressed(button_name: String) -> void:
 	var new_map: String = "res://scenes/map_management/" + button_name.to_lower() + ".tscn"
+	SQL.db.update_rows("misc", "name = 'current_map'", {"value": button_name.to_lower()})
 	
 	transition_manager.fade_to_scene(new_map)

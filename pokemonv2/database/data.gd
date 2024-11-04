@@ -3,15 +3,9 @@ extends Node
 var companion: Dictionary = {}
 
 var level_dict: Dictionary = {
-	'1': 400, '2': 440, '3': 484, '4': 532, '5': 585, '6': 644, '7': 708, 
-	'8': 779, '9': 857, '10': 943, '11': 1037, '12': 1141, '13': 1255, 
-	'14': 1380, '15': 1518, '16': 1670, '17': 1837, '18': 2021, '19': 2223, 
-	'20': 2446, '21': 2690, '22': 2960, '23': 3256, '24': 3581, '25': 3993, 
-	'26': 4392, '27': 4831, '28': 5314, '29': 5846, '30': 6430, '31': 7073, 
-	'32': 7780, '33': 8558, '34': 9414, '35': 10355, '36': 11390, '37': 12529,
-	'38': 13782, '39': 15161, '40': 16677, '41': 18344, '42': 20179, 
-	'43': 22197, '44': 24416, '45': 26858, '46': 29544, '47': 32498, 
-	'48': 35748, '49': 39323, '50': 43256
+	'1': 500, '2': 625, '3': 781, '4': 977, '5': 1221, '6': 1526, '7': 1907, 
+	'8': 2384, '9': 2980, '10': 3725, '11': 4657, '12': 5821, '13': 7276, '14': 9095, 
+	'15': 11367, '16': 14209, '17': 17761, '18': 22201, '19': 27751, '20': 34689
 }
 
 var data_management: Dictionary = {
@@ -1036,6 +1030,6 @@ func update_ability_description(ability: String) -> String:
 			return str(modificador_percent) + "% de chance de receber uma Pokébola aleatória ao capturar um Pokémon"
 		
 		"Shiny Hunter":
-			return "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon for SHINY"
+			return "Aumenta em " + str(modificador_percent) + "% a chance de o Pokémon selvagem ser SHINY"
 	
 	return ""

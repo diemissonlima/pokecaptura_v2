@@ -61,6 +61,10 @@ func is_shiny() -> void:
 	var random_number: float = randf()
 	var shiny_probability: float = 0.01
 	
+	if data.companion.has("ability"):
+		if data.companion["ability"] == "Shiny Hunter":
+			shiny_probability += data.companion["ability_modifier"]
+	
 	if random_number <= shiny_probability:
 		shiny = true
 		animated_sprite.play("shiny")
@@ -91,10 +95,6 @@ func alter_characteristics() -> void:
 		catch_rate = catch_rate - (catch_rate * 25 / 100)
 		exp_base = int(exp_base * 2 * multiplier)
 		dropped_credit *= multiplier * 2
-		
-		if data.companion.has("ability"):
-			if data.companion["ability"] == "Shiny Hunter":
-				catch_rate = catch_rate + (catch_rate * data.companion["ability_modifier"])
 
 	else:
 		exp_base = int(exp_base * multiplier)
@@ -182,4 +182,4 @@ func get_ability() -> void:
 			ability["description"] = str(modificador_percent) + "% de chance de receber uma Pokébola aleatória ao capturar um Pokémon"
 		
 		"Shiny Hunter":
-			ability["description"] = "Aumenta em " + str(modificador_percent) + "% a chance de captura se o Pokémon for SHINY"
+			ability["description"] = "Aumenta em " + str(modificador_percent) + "% a chance de o Pokémon selvagem ser SHINY"

@@ -189,6 +189,7 @@ func update_progress_quest_label() -> void:
 		$Background/VBoxContainer/Quest4.text = "- " + quest_list[3]["name"] + "
 		Capture " + str(quest_list[3]["objective"]) + " Pokémon do tipo " + quest_list[3]["type"].to_upper() + "
 		" + str(quest_list[3]["progress"]) + " / " + str(quest_list[3]["objective"])
+		$Background/VBoxContainer/Quest5.text = ""
 		
 	if quest_list.size() == 5:
 		$Background/VBoxContainer/Quest1.text = "- " + quest_list[0]["name"] + "
@@ -219,8 +220,6 @@ func add_party(poke_info: Dictionary) -> void:
 		if slot.sprite.texture == null:
 			slot.sprite.texture = load(data.load_sprite(poke_info["numero_dex"], poke_info["shiny"]))
 			slot.id_pokemon = poke_info["id_pokemon"]
-			
-			
 			data.companion = poke_info.duplicate()
 			
 			SQL.db.query(

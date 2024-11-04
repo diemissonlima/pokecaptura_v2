@@ -15,13 +15,13 @@ var _amount: int
 
 
 func _ready() -> void:
-	current_money_label.text = "Créditos: " + str(SQL.verify_item_amount_on_inventory("Credito"))
-	
 	for button in get_tree().get_nodes_in_group("button_shop"):
 		button.pressed.connect(on_button_pressed.bind(button))
 
 
 func _process(_delta: float) -> void:
+	current_money_label.text = "Créditos: " + str(SQL.verify_item_amount_on_inventory("Credito"))
+	
 	if Input.is_action_just_pressed("exit") and visible:
 		visible = false
 
