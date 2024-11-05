@@ -1,14 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://n05wc6dwj7x7"]
+[gd_scene load_steps=21 format=3 uid="uid://n05wc6dwj7x7"]
 
 [ext_resource type="Script" path="res://scripts/pokemon_bank.gd" id="1_pr82w"]
 [ext_resource type="Texture2D" uid="uid://2b7pb6k4y71x" path="res://assets/prefabs/interface/example_top.PNG" id="1_x6bbo"]
 [ext_resource type="Texture2D" uid="uid://b5rm2gl3rwwy5" path="res://assets/prefabs/interface/info.png" id="3_kxrik"]
 [ext_resource type="Texture2D" uid="uid://byifhmwxe6bfy" path="res://assets/prefabs/interface/pokedexEntry.PNG" id="4_8sfwl"]
+[ext_resource type="Texture2D" uid="uid://cjoxet56rr484" path="res://assets/prefabs/interface/star.png" id="5_3dt8r"]
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="5_d6n07"]
 [ext_resource type="Texture2D" uid="uid://b54adakvs7gym" path="res://assets/pokemon_sprite/gen1/normal/006.png" id="5_sra3h"]
 [ext_resource type="Texture2D" uid="uid://b5o53ggo35yeh" path="res://assets/prefabs/pokemon_type/fire.png" id="7_upnrv"]
 [ext_resource type="Texture2D" uid="uid://bp5oaicqn25cg" path="res://assets/prefabs/pokemon_type/flying.png" id="8_pt6uw"]
 [ext_resource type="Texture2D" uid="uid://b7w2ktihoeb5h" path="res://assets/prefabs/interface/IconB05.png" id="9_vlune"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_illly"]
+font = ExtResource("5_d6n07")
+font_size = 18
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ys6w1"]
 line_spacing = 0.0
@@ -68,7 +75,7 @@ font_size = 14
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "option_button", "sprite2", "sprite3", "dex_number", "pokemon_id", "nature", "nature_description", "primary_type", "secondary_type", "weight", "data_captura", "ability_name", "ability_description") groups=["pokemon_bank"]]
+[node name="PokemonBank" type="TextureRect" node_paths=PackedStringArray("bank_container", "sprite", "pokemon_name", "option_button", "sprite2", "sprite3", "dex_number", "pokemon_id", "nature", "nature_description", "primary_type", "secondary_type", "weight", "data_captura", "ability_name", "ability_description") groups=["pokemon_bank"]]
 visible = false
 custom_minimum_size = Vector2(460, 268)
 anchors_preset = 8
@@ -87,6 +94,7 @@ expand_mode = 1
 script = ExtResource("1_pr82w")
 bank_container = NodePath("ScrollContainer/GridContainer")
 sprite = NodePath("Background/Sprite")
+pokemon_name = NodePath("Background/PokemonName")
 option_button = NodePath("OptionButton")
 sprite2 = NodePath("PokemonEntry/Sprite")
 sprite3 = NodePath("PokemonEntry/Sprite2")
@@ -140,6 +148,33 @@ offset_right = 67.5
 offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
+
+[node name="PokemonName" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.5
+offset_top = -54.0
+offset_right = 89.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_illly")
+horizontal_alignment = 1
+
+[node name="IsShiny" type="TextureRect" parent="Background"]
+visible = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 137.0
+offset_top = 17.0
+offset_right = 167.0
+offset_bottom = 47.0
+texture = ExtResource("5_3dt8r")
 expand_mode = 1
 
 [node name="LabelAbility" type="Label" parent="."]

@@ -94,6 +94,14 @@ func generate_quest() -> void:
 	
 	var type: String = type_list.pick_random()
 	
+	for quest in QuestUpdate.active_quests:
+		while type == quest["type"]:
+			#print("Quest é igual!")
+			#print("Type antes: ", type)
+			type = type_list.pick_random()
+			#print("Type depois: ", type)
+	
+	
 	var quest_name = name_list[type].pick_random()
 	var quest_objective = randi_range(2, 5)
 	var quest_type = type
@@ -123,7 +131,7 @@ func update_quest_info() -> void:
 
 
 func on_button_pressed(button: Button) -> void:
-	if QuestUpdate.active_quests.size() == 5:
+	if QuestUpdate.active_quests.size() == 3:
 		return
 		
 	match button.name:

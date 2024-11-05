@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqfltesy73m1g"]
+[gd_scene load_steps=10 format=3 uid="uid://dqfltesy73m1g"]
 
 [ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="1_djocj"]
 [ext_resource type="Script" path="res://scripts/pokemon_base.gd" id="1_kh0jm"]
 [ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="2_j03lw"]
+[ext_resource type="Texture2D" uid="uid://pi6ydyyf2l8j" path="res://assets/prefabs/interface/spritesheet_shiny.png" id="4_ig7au"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aod4h"]
 animations = [{
@@ -24,9 +25,117 @@ font_size = 14
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j8ec"]
+[sub_resource type="Animation" id="Animation_nlswt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ig7au")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[node name="pokemon_base" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "info_catch", "type_1", "type_2", "is_shiny_label")]
+[sub_resource type="Animation" id="Animation_vejpj"]
+resource_name = "animation_shiny"
+length = 3.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ig7au")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvk4s"]
+_data = {
+"RESET": SubResource("Animation_nlswt"),
+"animation_shiny": SubResource("Animation_vejpj")
+}
+
+[node name="pokemon_base" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "info_catch", "type_1", "type_2", "is_shiny_label", "animation")]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_kh0jm")
 animated_sprite = NodePath("anim_sprite")
@@ -34,6 +143,7 @@ info_catch = NodePath("catch")
 type_1 = NodePath("type_1")
 type_2 = NodePath("type_2")
 is_shiny_label = NodePath("is_shiny")
+animation = NodePath("Animation")
 
 [node name="anim_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aod4h")
@@ -73,6 +183,17 @@ region_rect = Rect2(-84.75, 417.25, 4, 5)
 position = Vector2(65, -52)
 scale = Vector2(0.25, 0.25)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2j8ec")
-disabled = true
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hvk4s")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.375, -43.3572)
+scale = Vector2(1.70265, 1.56579)
+texture = ExtResource("4_ig7au")
+hframes = 6
+vframes = 6
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]

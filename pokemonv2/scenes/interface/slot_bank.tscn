@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://vngaw5ikvcgm"]
+[gd_scene load_steps=6 format=3 uid="uid://vngaw5ikvcgm"]
 
 [ext_resource type="Texture2D" uid="uid://b4vfx38y41m3l" path="res://assets/prefabs/interface/type_1.png" id="1_c2m3a"]
 [ext_resource type="Script" path="res://scripts/slot_bank.gd" id="1_q8a5m"]
 [ext_resource type="Texture2D" uid="uid://ct5ygbhymoqjq" path="res://assets/prefabs/pokeball/pokeball.png" id="3_xttaw"]
+[ext_resource type="FontFile" uid="uid://te4s31qddkik" path="res://assets/font/njo_14.ttf" id="4_rj4ps"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_47hlv"]
+line_spacing = 0.0
+font = ExtResource("4_rj4ps")
+font_size = 8
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="SlotBank" type="Control" node_paths=PackedStringArray("background", "sprite", "on_companion") groups=["slot_bank"]]
 custom_minimum_size = Vector2(40, 40)
@@ -52,3 +60,11 @@ offset_right = 38.0
 offset_bottom = 11.0
 texture = ExtResource("3_xttaw")
 expand_mode = 1
+
+[node name="ID" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 10.0
+label_settings = SubResource("LabelSettings_47hlv")

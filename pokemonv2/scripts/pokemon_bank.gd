@@ -5,6 +5,7 @@ const SLOT_BANK: PackedScene = preload("res://scenes/interface/slot_bank.tscn")
 @export_category("Objetos")
 @export var bank_container: GridContainer
 @export var sprite: TextureRect
+@export var pokemon_name: Label
 @export var option_button: OptionButton
 
 @export_category("Variaveis")
@@ -32,6 +33,7 @@ var pokemon_info: Dictionary = {}
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("exit") and visible:
 		sprite.texture = null
+		pokemon_name.text = ""
 		pokemon_info.clear()
 		option_button.select(-1)
 		$ScrollContainer.show()
@@ -148,7 +150,14 @@ func get_slot_info() -> void:
 	)
 	
 	pokemon_info = SQL.db.query_result[0]
+	
+	pokemon_name.text = pokemon_info["nome"]
 	sprite.texture = load(data.load_sprite(pokemon_info["numero_dex"], pokemon_info["shiny"]))
+	
+	if pokemon_info["shiny"]:
+		$Background/IsShiny.show()
+	else:
+		$Background/IsShiny.hide()
 
 
 func on_mouse_entered(id: int) -> void:

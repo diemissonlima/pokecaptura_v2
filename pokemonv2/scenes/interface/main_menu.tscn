@@ -26,4 +26,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "New Game"
 
+[node name="ResetGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 176.0
+offset_right = 331.0
+offset_bottom = 207.0
+text = "Reset Game
+"
+
 [connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="ResetGame" to="." method="_on_reset_game_pressed"]

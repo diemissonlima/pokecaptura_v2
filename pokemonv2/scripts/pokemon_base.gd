@@ -30,6 +30,7 @@ class_name PokemonBase
 @export var type_1: Sprite2D
 @export var type_2: Sprite2D
 @export var is_shiny_label: Label
+@export var animation: AnimationPlayer
 
 var nature_description: String
 var dropped_credit: int
@@ -67,7 +68,10 @@ func is_shiny() -> void:
 	
 	if random_number <= shiny_probability:
 		shiny = true
+		$Sprite2D.show()
 		animated_sprite.play("shiny")
+		animation.play("animation_shiny")
+		animation.speed_scale = 1.5
 		is_shiny_label.show()
 
 
@@ -183,3 +187,7 @@ func get_ability() -> void:
 		
 		"Shiny Hunter":
 			ability["description"] = "Aumenta em " + str(modificador_percent) + "% a chance de o Pokémon selvagem ser SHINY"
+
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	$Sprite2D.hide()

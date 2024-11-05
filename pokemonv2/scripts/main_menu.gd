@@ -8,3 +8,7 @@ func _on_new_game_pressed() -> void:
 	current_map = SQL.db.query_result[0]["value"]
 	
 	transition_manager.fade_to_scene("res://scenes/map_management/" + current_map + ".tscn")
+
+
+func _on_reset_game_pressed() -> void:
+	SQL.reset_database()
