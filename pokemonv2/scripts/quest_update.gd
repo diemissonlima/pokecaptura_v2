@@ -5,6 +5,8 @@ var active_quests: Array = []
 
 func _ready() -> void:
 	load_quests_onready_scene()
+	
+	give_rewards("quest", 5)
 
 
 func on_item_collected(type_1: String, type_2: String) -> void:
@@ -21,24 +23,28 @@ func on_item_collected(type_1: String, type_2: String) -> void:
 
 func give_rewards(quest_name: String, value: int) -> void:
 	# Implementar lógica para dar recompensas (ex: itens, XP)
-	var quest_info: Array = []
-	var amount: int
-	var rewards_list: Array = [
-		"Pokeball", "Greatball", "Ultraball", "Repeatball", "Heavyball", "Credito"
-	]
-	var reward = rewards_list.pick_random()
-
-	if reward == "Credito":
-		amount = value * 150
-		
-	else:
-		amount = randi_range(2, 5)
-		
-	SQL.update_database("inventario", reward, "increase", amount)
+	var quest_rewards: Array = []
 	
-	quest_info.append([quest_name, reward, amount])
+	var random_number: int = randi_range(1, 100)
+	var possible_rewards: Dictionary = {
+		"item_1": {"name": "Credito", "probability": [1, 30], "amount": [value * 150, value * 150]},
+		"item_2": {"name": "Pokeball", "probability": [31, 50], "amount": [1, 5]},
+		"item_3": {"name": "Greatball", "probability": [51, 70], "amount": [1, 5]},
+		"item_4": {"name": "Ultraball", "probability": [71, 80], "amount": [1, 5]},
+		"item_5": {"name": "Repeatball", "probability": [81, 90], "amount": [1, 5]},
+		"item_6": {"name": "Heavyball", "probability": [91, 98], "amount": [1, 5]},
+		"item_7": {"name": "Masterball", "probability": [99, 100], "amount": [1, 1]}
+		}
 	
-	get_tree().call_group("screen_capture", "show_quest_rewards", quest_info)
+	for item in possible_rewards.values():
+		if random_number >= item["probability"][0] and random_number <= item["probability"][1]:
+			var amount: int = randi_range(item["amount"][0], item["amount"][1])
+			
+			quest_rewards.append([quest_name, item["name"], amount])
+	
+			SQL.update_database("inventario", item["name"], "increase", amount)
+	
+	get_tree().call_group("screen_capture", "show_quest_rewards", quest_rewards)
 
 
 func load_quests_onready_scene() -> void:

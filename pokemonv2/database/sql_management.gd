@@ -5,7 +5,6 @@ var db: SQLite
 
 func _ready() -> void:
 	create_database()
-	#reset_database()
 	#insert_data()
 
 

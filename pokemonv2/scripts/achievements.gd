@@ -18,11 +18,13 @@ func _ready() -> void:
 		
 		var progress_bar = type.get_node("ProgressBar")
 		var progress_bar_label = progress_bar.get_node("Label")
+		var level_label = progress_bar.get_node("Label2")
 		
 		progress_bar.max_value = achievement_level_dict[str(achievement_info[1])]
 		progress_bar.value = achievement_info[0]
 		
 		progress_bar_label.text = str(achievement_info[0]) + " / " + str(achievement_level_dict[str(achievement_info[1])])
+		level_label.text = "Nivel " + str(achievement_info[1])
 
 
 func _process(_delta: float) -> void:
@@ -35,6 +37,7 @@ func update_achievement(type: String) -> void:
 		if type == j.name:
 			var progress_bar = j.get_node("ProgressBar")
 			var progress_bar_label = progress_bar.get_node("Label")
+			var level_label = progress_bar.get_node("Label2")
 			var achievement_info = SQL.verify_achievement(type)
 			
 			var amount = achievement_info[0]
@@ -53,36 +56,34 @@ func update_achievement(type: String) -> void:
 				achievement_level_up(type, current_level)
 			
 			progress_bar_label.text = str(progress_bar.value) + " / " + str(achievement_level_dict[str(current_level)])
-
-
+			level_label.text = "Nivel " + str(current_level)
+			
+			
 func achievement_level_up(type: String, current_level: int) -> void:
 	SQL.update_achievement(type, "current_level", current_level)
 	SQL.update_achievement(type, "amount", 0)
 	
-	var rewards: Array = give_rewards(current_level)
+	var rewards: Array = give_rewards()
 	
 	get_tree().call_group("screen_capture", "notify_achievement_levelup", type, rewards)
 
 
-func give_rewards(current_level: int) -> Array:
-	var possible_rewards: Dictionary = {
-		"2": ["Pokeball", [2, 5]],
-		"3": ["Greatball", [2, 5]],
-		"4": ["Ultraball", [2, 5]],
-		"5": ["Repeatball", [2, 5]],
-		"6": ["Heavyball", [2, 5]],
-		"7": ["Masterball", [1, 1]]
-	}
-
-	var dict_key: String = str(current_level)
-	var reward_list: Array = possible_rewards[dict_key]
-	
-	var reward_item_name: String = reward_list[0]
-	var reward_item_amount: int = randi_range(reward_list[1][0], reward_list[1][1])
-	
+func give_rewards() -> Array:
 	var rewards: Array = []
+	var random_number: int = randi_range(1, 100)
+	var possible_rewards: Dictionary = {
+		"item_1": {"name": "Pokeball", "probability": [1, 40], "amount": [1, 5]},
+		"item_2": {"name": "Greatball", "probability": [41, 70], "amount": [1, 5]},
+		"item_3": {"name": "Ultraball", "probability": [71, 80], "amount": [1, 5]},
+		"item_4": {"name": "Repeatball", "probability": [81, 90], "amount": [1, 5]},
+		"item_5": {"name": "Heavyball", "probability": [91, 98], "amount": [1, 5]},
+		"item_6": {"name": "Masterball", "probability": [99, 100], "amount": [1, 1]}
+		}
+		
+	for item in possible_rewards.values():
+		if random_number >= item["probability"][0] and random_number <= item["probability"][1]:
+			var amount: int = randi_range(item["amount"][0], item["amount"][1])
+			
+			rewards.append([item["name"], amount])
 	
-	rewards.append(reward_item_name)
-	rewards.append(reward_item_amount)
-
 	return rewards

@@ -203,10 +203,10 @@ func show_quest_rewards(quest_info: Array) -> void:
 
 
 func notify_achievement_levelup(type: String, rewards: Array) -> void:
-	rewards_info.text = "Marco do tipo " + type + " subiu de nível!\nRecompensa:\n" + str(rewards[1]) + " " + rewards[0]
+	rewards_info.text = "Marco do tipo " + type + " subiu de nível!\nRecompensa:\n" + str(rewards[0][1]) + " " + rewards[0][0]
 	rewards_info.show()
 	
-	SQL.update_database("inventario", rewards[0], "increase", rewards[1])
+	SQL.update_database("inventario", rewards[0][0], "increase", rewards[0][1])
 	
 	update_label_pokeball()
 
@@ -258,20 +258,16 @@ func on_button_pressed(button_name: String) -> void:
 		"Heavyball":
 			if pokemon_captured.weight <= 50:
 				pokeball_rate = 0.5
-			elif pokemon_captured.weight > 50 and pokemon_captured.weight <= 150:
-				pokeball_rate = 1.0
-			elif pokemon_captured.weight > 150 and pokemon_captured.weight <= 300:
-				pokeball_rate = 2.0
-			elif pokemon_captured.weight > 300 and pokemon_captured.weight <= 450:
-				pokeball_rate = 3.0
-			elif pokemon_captured.weight > 450 and pokemon_captured.weight <= 600:
-				pokeball_rate = 4.0
-			elif pokemon_captured.weight > 600 and pokemon_captured.weight <= 750:
+			elif pokemon_captured.weight > 50 and pokemon_captured.weight <= 200:
+				pokeball_rate = 1.5
+			elif pokemon_captured.weight > 200 and pokemon_captured.weight <= 400:
+				pokeball_rate = 2.5
+			elif pokemon_captured.weight > 400 and pokemon_captured.weight <= 600:
+				pokeball_rate = 3.5
+			elif pokemon_captured.weight > 600 and pokemon_captured.weight <= 800:
+				pokeball_rate = 4.5
+			elif pokemon_captured.weight > 800:
 				pokeball_rate = 5.0
-			elif pokemon_captured.weight > 750 and pokemon_captured.weight <= 900:
-				pokeball_rate = 6.0
-			elif pokemon_captured.weight > 900:
-				pokeball_rate = 7.0
 			
 		"Masterball":
 			pokeball_rate = 51.0

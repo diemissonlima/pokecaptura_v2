@@ -175,6 +175,7 @@ func _on_quit_pressed() -> void:
 	$Background.show()
 	pokemon_info.clear()
 	sprite.texture = null
+	pokemon_name.text = ""
 
 
 func _on_add_party_pressed() -> void:
