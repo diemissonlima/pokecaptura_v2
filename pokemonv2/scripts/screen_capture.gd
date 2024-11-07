@@ -251,7 +251,7 @@ func on_button_pressed(button_name: String) -> void:
 			
 		"Repeatball":
 			if pokemon_captured.info_catch.modulate.a == 1.0:
-				pokeball_rate = 3.0
+				pokeball_rate = 4.0
 			else:
 				pokeball_rate = 1.0
 				

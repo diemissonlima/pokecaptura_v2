@@ -32,8 +32,8 @@ func give_rewards(quest_name: String, value: int) -> void:
 		"item_3": {"name": "Greatball", "probability": [51, 70], "amount": [1, 5]},
 		"item_4": {"name": "Ultraball", "probability": [71, 80], "amount": [1, 5]},
 		"item_5": {"name": "Repeatball", "probability": [81, 90], "amount": [1, 5]},
-		"item_6": {"name": "Heavyball", "probability": [91, 98], "amount": [1, 5]},
-		"item_7": {"name": "Masterball", "probability": [99, 100], "amount": [1, 1]}
+		"item_6": {"name": "Heavyball", "probability": [91, 99], "amount": [1, 5]},
+		"item_7": {"name": "Masterball", "probability": [100, 100], "amount": [1, 1]}
 		}
 	
 	for item in possible_rewards.values():

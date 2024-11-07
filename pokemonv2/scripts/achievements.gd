@@ -76,8 +76,8 @@ func give_rewards() -> Array:
 		"item_2": {"name": "Greatball", "probability": [41, 70], "amount": [1, 5]},
 		"item_3": {"name": "Ultraball", "probability": [71, 80], "amount": [1, 5]},
 		"item_4": {"name": "Repeatball", "probability": [81, 90], "amount": [1, 5]},
-		"item_5": {"name": "Heavyball", "probability": [91, 98], "amount": [1, 5]},
-		"item_6": {"name": "Masterball", "probability": [99, 100], "amount": [1, 1]}
+		"item_5": {"name": "Heavyball", "probability": [91, 99], "amount": [1, 5]},
+		"item_6": {"name": "Masterball", "probability": [100, 100], "amount": [1, 1]}
 		}
 		
 	for item in possible_rewards.values():

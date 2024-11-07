@@ -33,6 +33,11 @@ class_name BaseMap
 @export var pokemon_legendary_list: Array[PackedScene]
 @export var path_background: String
 
+@export_category("SpawnPokemonTeste")
+@export var commom_list: Array[PackedScene]
+@export var incommom_list: Array[PackedScene]
+@export var rare_list: Array[PackedScene]
+
 var pokemon_spawned
 var party_slot_can_click: bool = false
 
@@ -83,6 +88,21 @@ func spawn_legendary() -> void:
 
 func spawn_pokemon() -> void:
 	pokemon_spawned = pokemon_list.pick_random().instantiate()
+	pokemon_spawned.global_position = spawn_position.global_position
+	pokemon_spawned.scale = Vector2(0.7, 0.7)
+	get_tree().root.call_deferred("add_child", pokemon_spawned)
+
+
+func spawn_pokemon2() -> void:
+	var random_number: int = randi_range(1, 100)
+	
+	if random_number >= 1 and random_number <= 50:
+		pokemon_spawned = commom_list.pick_random().instantiate()
+	elif random_number > 50 and random_number <= 85:
+		pokemon_spawned = incommom_list.pick_random().instantiate()
+	elif random_number > 85:
+		pokemon_spawned = rare_list.pick_random().instantiate()
+	
 	pokemon_spawned.global_position = spawn_position.global_position
 	pokemon_spawned.scale = Vector2(0.7, 0.7)
 	get_tree().root.call_deferred("add_child", pokemon_spawned)
