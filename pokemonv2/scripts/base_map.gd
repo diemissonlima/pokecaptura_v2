@@ -48,7 +48,6 @@ func _ready() -> void:
 	map_name_label.text = "Mapa " + map_name
 	
 	get_tree().call_group("screen_capture", "get_texture_path", path_background)
-	spawn_legendary()
 	
 	update_map_progress()
 	
@@ -74,23 +73,28 @@ func update_map_progress() -> void:
 
 
 func spawn_legendary() -> void:
-	var random_number: float = randf()
-	var probability: float = 0.1
+	var pokemon_legendary = pokemon_legendary_list.pick_random()
+	pokemon_list.append(pokemon_legendary)
 	
-	if random_number <= probability:
-		var pokemon_legendary = pokemon_legendary_list.pick_random()
-		pokemon_list.append(pokemon_legendary)
-		
-		spawn_lendario.show()
-		await get_tree().create_timer(5.0).timeout
-		spawn_lendario.hide()
+	spawn_lendario.show()
+	await get_tree().create_timer(5.0).timeout
+	spawn_lendario.hide()
 
 
 func spawn_pokemon() -> void:
+	data.amount_pokemon_seen += 1
+	
+	if data.amount_pokemon_seen % 150 == 0:
+		spawn_legendary()
+	
 	pokemon_spawned = pokemon_list.pick_random().instantiate()
 	pokemon_spawned.global_position = spawn_position.global_position
 	pokemon_spawned.scale = Vector2(0.7, 0.7)
 	get_tree().root.call_deferred("add_child", pokemon_spawned)
+	
+	SQL.db.query(
+		"UPDATE misc SET value = '" + str(data.amount_pokemon_seen) + "' WHERE name = 'amount_pokemon_seen'"
+	)
 
 
 func spawn_pokemon2() -> void:

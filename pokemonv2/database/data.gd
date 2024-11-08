@@ -1,5 +1,6 @@
 extends Node
 
+var amount_pokemon_seen: int = 0
 var companion: Dictionary = {}
 
 var level_dict: Dictionary = {
@@ -923,7 +924,17 @@ func _ready() -> void:
 	
 	if not companion.is_empty():
 		get_tree().call_group("mapa", "get_info_companion", companion["level"])
+	
+	load_amount_pokemon_seen()
 
+
+func load_amount_pokemon_seen() -> void:
+	SQL.db.query(
+		"SELECT value FROM misc WHERE name = 'amount_pokemon_seen'"
+	)
+	
+	amount_pokemon_seen = int(SQL.db.query_result[0]["value"])
+	
 
 func load_sprite(dex_number: String, shiny: int) -> String:
 	var new_slot_id: int

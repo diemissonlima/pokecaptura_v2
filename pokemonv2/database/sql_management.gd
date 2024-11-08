@@ -72,7 +72,8 @@ func reset_database() -> void:
 	db.query("DELETE FROM quests")
 	db.query("UPDATE sqlite_sequence SET seq = 0")
 	db.query("UPDATE misc SET value = 'mapa_01' WHERE name = 'current_map'")
-	
+	db.query("UPDATE misc SET value = 0 WHERE name = 'amount_pokemon_seen'")
+
 
 func return_pokedex_progress(region: String) -> Array:
 	var pokedex_progress: Array = []
