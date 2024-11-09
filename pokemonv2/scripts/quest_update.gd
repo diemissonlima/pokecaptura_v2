@@ -5,8 +5,6 @@ var active_quests: Array = []
 
 func _ready() -> void:
 	load_quests_onready_scene()
-	
-	give_rewards("quest", 5)
 
 
 func on_item_collected(type_1: String, type_2: String) -> void:

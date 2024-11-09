@@ -134,10 +134,10 @@ func update_pokemon(id_pokemon: String, sql_column: String) -> void:
 			db.update_rows("pokemon", "id = '" + id + "'", {"status_pokedex": 2})
 
 
-func update_database(table_name: String, item_used: String, type: String, value: int) -> void:
+func update_database(table_name: String, column: String, type: String, value: int) -> void:
 	var query = db.select_rows(
 		table_name,
-		"name = '" + item_used + "'",
+		"name = '" + column + "'",
 		["*"]
 	)
 	
@@ -150,7 +150,7 @@ func update_database(table_name: String, item_used: String, type: String, value:
 		"decrease":
 			amount -= value
 	
-	db.update_rows(table_name, "name = '" + item_used + "'", {"amount": amount})
+	db.update_rows(table_name, "name = '" + column + "'", {"amount": amount})
 
 
 func verify_item_amount_on_inventory(item_name: String) -> int:

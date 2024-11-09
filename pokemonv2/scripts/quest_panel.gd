@@ -96,11 +96,7 @@ func generate_quest() -> void:
 	
 	for quest in QuestUpdate.active_quests:
 		while type == quest["type"]:
-			#print("Quest é igual!")
-			#print("Type antes: ", type)
 			type = type_list.pick_random()
-			#print("Type depois: ", type)
-	
 	
 	var quest_name = name_list[type].pick_random()
 	var quest_objective = randi_range(2, 5)
